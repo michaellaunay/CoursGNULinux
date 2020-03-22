@@ -12,7 +12,7 @@ Formation à GNU/Linux
 
 .. header::
 
-   *Ecréall 2009*
+   *Ecréall 2020 à partir de la version de 2009*
 
 .. footer::
 
@@ -392,9 +392,11 @@ Présentation interactive du système d'exploitation:
 
 Administration graphique du système:
 
- * Configuration du réseau (Système > Préférences > Network Configuration)
- * Synaptic : l'installation de logiciels (Système > Administration > Gestionnaire de paquets Synaptic)
- * configuration des dépôts (Système > Administration > Sources de logiciels)
+ * Configuration du réseau (Système (Flèche descendante de la barre de menus, à droite) > Wifi ou Filaire (non) connecté ou Administration (Roue dentée) > Wifi ou Réseau)
+ * Synaptic (Pour l'installer https://doc.ubuntu-fr.org/synaptic ): l'installation de logiciels (Système > Administration > Gestionnaire de paquets Synaptic)
+ * configuration des dépôts (Rechercher depuis le menu Activité -> Logiciels & mises à jour)
+ * personalisations basiques https://doc.ubuntu-fr.org/personnalisation_basique
+ * la configuration de Gnome (installer gnome-tweaks )
  * les applets
  * la résolution graphique
  * les bureaux virtuels
@@ -557,7 +559,7 @@ Les LUGs
 
 Un LUG est un groupe d'utilisateurs de Linux (Linux User Group) réuni généralement au sein d'une association loi 1901.
 
-Dans la région lilloise on compte essentiellement Chtinux http://www.chtinux.org/ anciennement Campux et CLX http://clx.anet.fr/
+Dans la région lilloise on compte essentiellement Chtinux http://www.chtinux.org/ anciennement Campux et CLX http://clx.asso.fr/spip
 
 Les LUGs réalisent la promotion de Linux est des logiciels libres. Ils organisent des manifestations telles que des install party.
 
@@ -612,6 +614,12 @@ Pour modifier le shell par défaut associé à un utilisateur il faut modifier *
   michaellaunay@luciole:~$ sudo usermod -s /bin/sh michaellaunay
   michaellaunay@luciole:~$ grep michael /etc/passwd
   michaellaunay:x:1000:1000:Michael Launay,,,:/home/michaellaunay:/bin/sh
+
+Pour créer un compte qui pourra se connecter sans avoir de shell (utilisation de tunnel) : ::
+
+  usermod -s /bin/false prestataire
+
+Détails sur le format du fichier passwd
 
   michaellaunay@luciole:~$ man 5 passwd
   PASSWD(5)                   Formats et conversions de fich                   PASSWD(5)
@@ -706,18 +714,20 @@ Les variables d'environnement sont accessibles en consultation avec la commande 
   HOME=/home/michaellaunay
   LOGNAME=michaellaunay
   DISPLAY=:0.0
+  OLDPWD=/home/michaellaunay
 
 Signification des variables d'environnement : ::
 
   BASH      # Le nom du fichier bash
   DISPLAY   # Le numéro de serveur et de session d'affichage
   EDITOR    # L'éditeur à utiliser par défaut
-  HISTSIZE  # La taille de du fichier historique
+  HISTSIZE  # La taille du fichier historique
   HOSTNAME  # Le nom de la machine
   HOME      # Le répertoire personnel de l'utilisateur
   LANG      # La langue de l'utilisateur et l'encodage utilisé pour afficher cette langue
   LOGNAME   # Le nom d'utilisateur lors de l'ouverture de la session
   MAIL      # Le chemin vers la boite mail de l'utilisateur
+  OLDPWD    # Le répertoire où nous étions avant le dernier cd
   PATH      # Le chemin vers les exécutables
   PS1       # Permet de constituer l'invite de commande
   PS2       # Symbole affiché sur les lignes de commande débordant sur plusieurs lignes
@@ -888,6 +898,20 @@ La construction **$[ nombre1 opérateur nombre2 ]** permet de réaliser le calcu
   michaellaunay@luciole:~$ echo $[ 10 - 1 ]
   9
 
+La création de variable et sa modification : ::
+
+  michaellaunay@tigron:~$ CMPT=[0] # équivalent à la ligne suivante
+  michaellaunay@tigron:~$ let CMPT=0
+  michaellaunay@tigron:~$ echo $CMPT
+  0
+  michaellaunay@tigron:~$ let CMPT+=1
+  michaellaunay@tigron:~$ echo $CMPT
+  1
+  michaellaunay@tigron:~$ let CMPT+=1
+  michaellaunay@tigron:~$ echo $CMPT
+  2
+
+
 La boucle while et until
 ++++++++++++++++++++++++
 
@@ -966,6 +990,31 @@ Elle permet de positionner une fonction qui sera exécuté lors de la réception
   trap "echo Fin demandée" SIGTERM
   trap "echo Reprise d\'exécution" SIGCONT
   trap "echo Signal USR" SIGUSR1 SIGUSR2
+
+L'expansion de paramètre
+++++++++++++++++++++++++
+
+Liste des Filtres pour l'expansion de paramètre du Shell https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html : ::
+
+  ${parameter} sera remplacé par la valeur de parameter
+  michaellaunay@tigron:~$ CMPT=$(( 1 + 20 / 2 )) # Réalise l'opération puis affecte CMPT pour les opérations possible voir https://www.gnu.org/software/bash/manual/html_node/Shell-Arithmetic.html#Shell-Arithmetic
+  michaellaunay@tigron:~$ echo ${CMPT}
+  11
+  michaellaunay@tigron:~$ name[1]='un' # équivalent à 'declare -n name' voir https://www.gnu.org/software/bash/manual/html_node/Arrays.html#Arrays
+  michaellaunay@tigron:~$ name[2]='deux'
+  michaellaunay@tigron:~$ name[3]='trois'
+  michaellaunay@tigron:~$ echo ${name[2]}
+  deux
+  # équivalent à 
+  michaellaunay@tigron:~$ name=('zero' 'un' 'deux' 'trois')
+  michaellaunay@tigron:~$ echo ${name[1]}
+  un
+  michaellaunay@tigron:~$ unset name[0]
+  michaellaunay@tigron:~$ echo ${name[0]}
+
+  michaellaunay@tigron:~$ echo ${name[1]}
+  un
+
 
 Les scripts
 +++++++++++
@@ -1448,7 +1497,7 @@ Si j'ouvre un navigateur sur ma machine et que je mets comme adresse http://loca
 Compréhension de ssh :
 
   - http://fr.wikipedia.org/wiki/Ssh
-  - http://www.unixgarden.com/index.php/administration-systeme/principes-et-utilisation-de-ssh
+  - http://web.archive.org/web/20110907084212/http://www.unixgarden.com/index.php/administration-systeme/principes-et-utilisation-de-ssh
 
 Si la clé d'une machine à laquelle on se connecte habituellement a changé (cas d'une réinstallation), on peut être amennée a supprimer son entrée dans le fichier *~/.ssh/known_hosts*.
 
