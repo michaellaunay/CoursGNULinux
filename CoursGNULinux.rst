@@ -12,7 +12,7 @@ Formation à GNU/Linux
 
 .. header::
 
-   *Ecréall 2020 à partir de la version de 2009*
+   Ecréall 2020 update de la version 2009*
 
 .. footer::
 
@@ -680,7 +680,7 @@ La modification de ces scripts nécessite la commande **source** pour une prise 
 
 Scripts exécutés lors d'un script : ::
 
-  $BASH_ENV #BASH_ENV est une variable. Si elle existe alors le shell essaye d'exécuter le fichier désigné par $BASH_ENV
+  $BASH_ENV #BASH_ENV est une variable. Si elle existe alors les scripts lancés essayent d'exécuter le fichier désigné par $BASH_ENV
 
 Un petit exemple : ::
 
@@ -743,6 +743,8 @@ Pour accéder au contenu d'une variable il suffit de la référencer en la préc
   /home/michaellaunay
 
 Pour voir l'ensemble des définitions réalisées dans un shell (variable et fonction) il suffit de taper **set**.
+
+Pour voir les lignes exécutées dans un script **set -x** en début de cript.
 
 Les caractères spéciaux
 +++++++++++++++++++++++
