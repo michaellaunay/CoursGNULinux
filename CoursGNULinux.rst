@@ -902,15 +902,15 @@ La construction **$[ nombre1 opérateur nombre2 ]** permet de réaliser le calcu
 
 La création de variable et sa modification : ::
 
-  michaellaunay@tigron:~$ CMPT=[0] # équivalent à la ligne suivante
-  michaellaunay@tigron:~$ let CMPT=0
-  michaellaunay@tigron:~$ echo $CMPT
+  michaellaunay@luciole:~$ CMPT=[0] # équivalent à la ligne suivante
+  michaellaunay@luciole:~$ let CMPT=0
+  michaellaunay@luciole:~$ echo $CMPT
   0
-  michaellaunay@tigron:~$ let CMPT+=1
-  michaellaunay@tigron:~$ echo $CMPT
+  michaellaunay@luciole:~$ let CMPT+=1
+  michaellaunay@luciole:~$ echo $CMPT
   1
-  michaellaunay@tigron:~$ let CMPT+=1
-  michaellaunay@tigron:~$ echo $CMPT
+  michaellaunay@luciole:~$ let CMPT+=1
+  michaellaunay@luciole:~$ echo $CMPT
   2
 
 
@@ -999,22 +999,22 @@ L'expansion de paramètre
 Liste des Filtres pour l'expansion de paramètre du Shell https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html : ::
 
   ${parameter} sera remplacé par la valeur de parameter
-  michaellaunay@tigron:~$ CMPT=$(( 1 + 20 / 2 )) # Réalise l'opération puis affecte CMPT pour les opérations possible voir https://www.gnu.org/software/bash/manual/html_node/Shell-Arithmetic.html#Shell-Arithmetic
-  michaellaunay@tigron:~$ echo ${CMPT}
+  michaellaunay@luciole:~$ CMPT=$(( 1 + 20 / 2 )) # Réalise l'opération puis affecte CMPT pour les opérations possible voir https://www.gnu.org/software/bash/manual/html_node/Shell-Arithmetic.html#Shell-Arithmetic
+  michaellaunay@luciole:~$ echo ${CMPT}
   11
-  michaellaunay@tigron:~$ name[1]='un' # équivalent à 'declare -n name' voir https://www.gnu.org/software/bash/manual/html_node/Arrays.html#Arrays
-  michaellaunay@tigron:~$ name[2]='deux'
-  michaellaunay@tigron:~$ name[3]='trois'
-  michaellaunay@tigron:~$ echo ${name[2]}
+  michaellaunay@luciole:~$ name[1]='un' # équivalent à 'declare -n name' voir https://www.gnu.org/software/bash/manual/html_node/Arrays.html#Arrays
+  michaellaunay@luciole:~$ name[2]='deux'
+  michaellaunay@luciole:~$ name[3]='trois'
+  michaellaunay@luciole:~$ echo ${name[2]}
   deux
   # équivalent à 
-  michaellaunay@tigron:~$ name=('zero' 'un' 'deux' 'trois')
-  michaellaunay@tigron:~$ echo ${name[1]}
+  michaellaunay@luciole:~$ name=('zero' 'un' 'deux' 'trois')
+  michaellaunay@luciole:~$ echo ${name[1]}
   un
-  michaellaunay@tigron:~$ unset name[0]
-  michaellaunay@tigron:~$ echo ${name[0]}
+  michaellaunay@luciole:~$ unset name[0]
+  michaellaunay@luciole:~$ echo ${name[0]}
 
-  michaellaunay@tigron:~$ echo ${name[1]}
+  michaellaunay@luciole:~$ echo ${name[1]}
   un
 
 
@@ -1558,7 +1558,8 @@ Démarrage du firewall : ::
 
   ufw enable
 
-  /etc/init.d/ufw start
+  service ufw start
+
 
 Gestion des permissions et droits d'accès
 =========================================
@@ -1578,7 +1579,18 @@ La gestions des droits d'accès et d'exécution se résume alors à gérer les t
 
 Comme vu précédemment la commande **ls -l** permet d'afficher les attributs d'un fichier et donc ses permissions.
 
-A la création d'un fichier les droits sont automatiquement positionnés en fonction de la valeur par défaut du système et de **umask**.
+A la création d'un fichier les droits sont automatiquement positionnés en fonction de la valeur par défaut du système et de **umask** : ::
+
+  michaellaunay@luciole:~$ umask
+  0022
+  michaellaunay@luciole:~/tmp$ touch test1
+  michaellaunay@luciole:~/tmp$ ls -lh test1
+  -rw-r--r-- 1 michaellaunay michaellaunay 0 avril  5 12:17 test1
+  michaellaunay@luciole:~/tmp$ umask 027
+  michaellaunay@luciole:~/tmp$ touch test2
+  michaellaunay@luciole:~/tmp$ ls -lh test2
+  -rw-r----- 1 michaellaunay michaellaunay 0 avril  5 12:18 test2
+
 
 Le propriétaire est alors le créateur, et le groupe est généralement le groupe par défaut de l'utilisateur sauf dans le cas ou le répertoire porte le SGID alors le groupe est celui du répertoire.
 
