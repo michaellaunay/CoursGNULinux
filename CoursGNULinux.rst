@@ -1075,7 +1075,7 @@ Il est également possible de forcer l'exécution de commande en utilisant **`**
   michaellaunay@luciole:~$ echo date
   date
   michaellaunay@luciole:~$ echo `date`
-  samedi 2 mai 2009, 11:01:49 (UTC+0200)
+  dimanche 19 avril 2020, 17:24:32 (UTC+0200)
 
 La complétion de commande
 +++++++++++++++++++++++++
@@ -1100,40 +1100,45 @@ Les commandes : ::
   ls        # Permet d'afficher les informations d'un fichier ou d'un répertoire
   ls UnChemin # Affiche le contenu de UnChemin si c'est un répertoire, sinon affiche le nom de UnChemin
   ls -lah   # Affiche les détails, les fichiers cachés, et utilise des unités informatiques
+  ls -F     # Affiche un / derrière le nom des répertoires 
+  info ls   # Permet de connaître le sens des colonnes des options de ls, par exemple le chiffre de la seconde colonne de l'option -l est le nombre de hard links.
   cd        # Permet de déplacer le répertoire courant
   pwd       # Affiche le chemin du répertoire courant
 
 exemple : ::
 
-  michaellaunay@luciole:~/Documents/ecreall/Cours$ ls -lh /
-  total 124K
-  drwxr-xr-x   2 root root 4,0K 2009-03-11 09:09 bin
-  drwxr-xr-x   3 root root 4,0K 2009-04-16 09:11 boot
-  lrwxrwxrwx   1 root root   11 2009-03-01 21:23 cdrom -> media/cdrom
-  drwxr-xr-x  15 root root  15K 2009-04-30 16:30 dev
-  drwxr-xr-x 139 root root  12K 2009-04-30 09:12 etc
-  drwxr-xr-x   5 root root 4,0K 2009-03-01 23:00 home
-  lrwxrwxrwx   1 root root   33 2009-03-01 22:11 initrd.img -> boot/initrd.img-2.6.27-11-generic
-  lrwxrwxrwx   1 root root   32 2009-03-01 21:35 initrd.img.old -> boot/initrd.img-2.6.27-7-generic
-  drwxr-xr-x  15 root root  12K 2009-04-26 11:00 lib
-  drwxr-xr-x   4 root root 4,0K 2009-03-16 09:48 lib32
-  lrwxrwxrwx   1 root root    4 2009-03-01 21:23 lib64 -> /lib
-  drwx------   2 root root  16K 2009-03-01 21:21 lost+found
-  drwxr-xr-x   6 root root 4,0K 2009-04-29 21:10 media
-  drwxr-xr-x   2 root root 4,0K 2008-10-20 14:27 mnt
-  drwxr-xr-x   3 root root 4,0K 2009-03-05 21:45 opt
-  dr-xr-xr-x 188 root root    0 2009-04-29 23:08 proc
-  drwxr-xr-x  14 root root 4,0K 2009-04-09 17:41 root
-  drwxr-xr-x   2 root root 4,0K 2009-04-26 11:00 sbin
-  -rw-------   1 root root  32K 2009-04-02 11:35 sql8WpVhY
-  drwxr-xr-x   2 root root 4,0K 2008-10-29 22:04 srv
-  drwxr-xr-x  12 root root    0 2009-04-29 23:08 sys
-  drwxrwxrwt  18 root root 4,0K 2009-05-02 10:47 tmp
-  drwxr-xr-x  12 root root 4,0K 2009-03-01 22:32 usr
-  drwxr-xr-x  15 root root 4,0K 2008-10-29 22:28 var
-  lrwxrwxrwx   1 root root   30 2009-03-01 22:11 vmlinuz -> boot/vmlinuz-2.6.27-11-generic
-  lrwxrwxrwx   1 root root   29 2009-03-01 21:35 vmlinuz.old -> boot/vmlinuz-2.6.27-7-generic
+  michaellaunay@luciole:~$ ls -lh /
+  total 2,1G
+  drwxr-xr-x   2 root root  12K avril 19 16:40 bin
+  drwxr-xr-x   4 root root 4,0K avril  8 06:51 boot
+  drwxr-xr-x   2 root root 4,0K mai   16  2019 cdrom
+  drwxr-xr-x  19 root root 4,6K avril 18 22:11 dev
+  drwxr-xr-x 158 root root  12K avril 15 06:43 etc
+  drwxr-xr-x   5 root root 4,0K août  22  2019 home
+  lrwxrwxrwx   1 root root   32 janv.  6 18:48 initrd.img -> boot/initrd.img-5.0.0-38-generic
+  lrwxrwxrwx   1 root root   32 janv.  6 18:48 initrd.img.old -> boot/initrd.img-5.0.0-37-generic
+  drwxr-xr-x  21 root root 4,0K mars   5 06:28 lib
+  drwxr-xr-x   2 root root 4,0K mars   5 06:28 lib32
+  drwxr-xr-x   2 root root 4,0K mars   5 06:28 lib64
+  drwx------   2 root root  16K mai   16  2019 lost+found
+  drwxr-xr-x   3 root root 4,0K juin  24  2019 media
+  drwxr-xr-x   2 root root 4,0K févr. 10  2019 mnt
+  drwxr-xr-x   5 root root 4,0K août  26  2019 opt
+  dr-xr-xr-x 354 root root    0 avril 18 22:11 proc
+  drwx------   8 root root 4,0K mars  25 10:16 root
+  drwxr-xr-x  39 root root 1,1K avril 19 10:15 run
+  drwxr-xr-x   2 root root  12K avril 19 16:40 sbin
+  drwxr-xr-x  17 root root 4,0K mars  22 22:44 snap
+  drwxr-xr-x   2 root root 4,0K févr. 10  2019 srv
+  -rw-------   1 root root 2,0G mai   16  2019 swapfile
+  dr-xr-xr-x  13 root root    0 avril 18 22:11 sys
+  drwxrwxrwt  24 root root 4,0K avril 19 17:20 tmp
+  drwxr-xr-x  14 root root 4,0K août   1  2019 usr
+  drwxr-xr-x  15 root root 4,0K juin  17  2019 var
+  lrwxrwxrwx   1 root root   29 janv.  6 18:48 vmlinuz -> boot/vmlinuz-5.0.0-38-generic
+  lrwxrwxrwx   1 root root   29 janv.  6 18:48 vmlinuz.old -> boot/vmlinuz-5.0.0-37-generic
 
+  
   michaellaunay@luciole:~/Documents/ecreall/Cours$ cd
   michaellaunay@luciole:~$ pwd
   /home/michaellaunay
@@ -1193,11 +1198,13 @@ Archivage / Compression
 
 **zip**, **unzip** permet de compresser et décompresser les fichiers aux format zip
 
-**tar** avec les options **cf** permet d'archiver une arborescence en conservant les informations de propriétaire, les dates de création, les permissions d'accès. Avec les options **xf** permet d'extraire une archive.
-
 **gzip** permet de compresser et décompresser les fichiers au format gzip
 
+**tar** avec les options **cf** permet d'archiver une arborescence en conservant les informations de propriétaire, les dates de création, les permissions d'accès. Avec les options **xf** permet d'extraire une archive.
+
 **tar cfz** permet de combiner **tar** et **gzip** en une commande.
+L'option  **--listed-incremental=nom_fichier.list** permet d'enregistrer un snapshot des fichiers archivés en vue de permettre des tar incrémentaux. C.f. https://doc.ubuntu-fr.org/tar#utilisation_en_archivage_incrementiel 
+Attention il est indispensable que la première archive soit lancée avec cette option pour que l'incrémentation soit possible !
 
 Autres commandes
 ++++++++++++++++
@@ -1211,6 +1218,12 @@ Autres commandes
 **ln** permet de créer des liens. Ainsi **ln -s Source Destination** permet de créer un lien symbolique.
 
 **cp** permet de copier un fichier dans un autre. **cp -r Rep1 Rep2** copie toute l'arborescence Rep1 vers Rep2.
+
+**script NOM_Fichier** permet d'enregistrer la session (les interactions en ligne de commande) vers un fichier, ce qui permet de l'auditer voire de la rejouer.
+L'option -t permet d'enregistrer les dates des échanges vers le flux d'erreur.
+L'enregistrement sera arrêté par la commande **exit**.
+**scriptreplay** Permet de rejour la session.
+Exemple : **NOM=`date +%y%m%d%H%m%S`_upgrade_jessie;script -t 2>~/$NOM.time -a ~/$NOM.script**
 
 Les noms de fichiers
 ++++++++++++++++++++
@@ -1402,6 +1415,11 @@ Exemple : ::
   address sizes	: 36 bits physical, 48 bits virtual
   power management:
 
+/proc permet en tant que root et selon l'état du processus observé d'analyser ses ressources et sa mémoire.
+
+Ainsi il est possible de récupérer le contenu de la mémoire du processus arrêté.
+Voir https://unix.stackexchange.com/questions/6301/how-do-i-read-from-proc-pid-mem-under-linux et https://unix.stackexchange.com/questions/6267/how-to-re-load-all-running-applications-from-swap-space-into-ram/6271#6271
+
 Enchainement et parallélisation des commandes
 ---------------------------------------------
 
@@ -1559,6 +1577,34 @@ Démarrage du firewall : ::
   ufw enable
 
   service ufw start
+
+Configuring MASQUERADE
+======================
+
+Pour réaliser une passerelle ou exposer des machines virtuelle ou une DMZ il faut autoriser MASQUERADE dans 
+/etc/default/ufw en changeant DEFAULT\_FORWARD\_POLICY par "ACCEPT"
+
+Puis éditer /etc/ufw/sysctl.conf en décommentant : ::
+
+  #net/ipv4/ip_forward=1
+
+Et enfin éditer /etc/ufw/before.rules pour ajouter la règle suivante (avec votre IP publique) en tête : ::
+
+  # nat Table rules
+  #*nat
+  #:POSTROUTING ACCEPT [0:0]
+
+  # Forward traffic from VMnet through eth0.
+  -A POSTROUTING -s 192.168.188.129/24 -o eth0 -j MASQUERADE
+
+Création de pont entre interface réseau
+=======================================
+
+Si le serveur possède plusieurs interface réseau il peut être intéressant de les fusionner.
+Le pacquet bridge-utils permet de fusionner plusieurs interface réseau en une virtuelle.
+apt-get install bridge-utils
+
+Pour la configuration voir https://help.ubuntu.com/community/NetworkConnectionBridge
 
 
 Gestion des permissions et droits d'accès
@@ -2187,6 +2233,31 @@ Afin d'éviter que la taille des fichiers de logs n'explose la capacité du disq
 
 La commande **dmesg** permet d'afficher les messages du noyau.
 
+Modification de la configuration de logrotate
+---------------------------------------------
+
+Logrotate possède une configuration par défaut contenue dans "/etc/logrotate.conf" puis un répertoire avec les configurations des services pour compléter ou remplacer la configuration par défaut.
+
+Il est fréquent que pour des raisons légales, on doive garder un ou deux ans de logs selon la nature des utilisateurs et des services.
+Souvant on garde 104 semaines de connexions et 52 semaines de navigation et 14 semaines pour les autres services.
+
+Pour modifier la conf par défaut à 14 semaines on édite "/etc/logrotate.conf" : ::
+
+  - Remplacer "rotate 4" par "rotate 14" pour garder 3 mois de log par défaut
+  - Décommenter "compress" pour compresser les anciens fichiers log
+  - Ajouter delaycompress chaque vieux fichier de log
+  - Limiter la taille d'un fichier de log à 100M
+
+On doit donc avoir dans /etc/logrotate.conf :
+
+    rotate 14
+    compress
+    delaycompress
+    size 100M
+
+Puis on change "rotate X" à "rotate 104" dans les fichier des services concernés se trouvant dans le répertoire "/etc/logrotate.d/".
+Par exemple, on va modifier "/etc/logrotate.d/apache2" pour mettre rotate à 104, et modifier le fichier "/etc/logrotate.d/rsyslog" modifier les logs des services d'authentifications.
+
 Périphérique disque et système de fichiers
 ==========================================
 
@@ -2235,9 +2306,9 @@ La numérotation des partitions est réalisée en accolant au nom du périphéri
 Utilitaires de partitionnement
 ------------------------------
 
-La commande permettant de créer les partitions est **fdisk**
+Historiquement la commande permettant de créer les partitions était **fdisk**, mais elle est limité à des partitions de taille inférieure à 4To.
 
-La commande **parted** et **gparted** permettent de créer et retailler des partitions déjà existantes.
+Elle est remplacée par la commande **parted** et par sa version graphique **gparted** qui permettent de créer et retailler des partitions déjà existantes, mais il faut descendre le paquet.
 
 La commande **partprobe** permet d'avertir le système que l'on a modifié la tables des partitions.
 
@@ -2256,7 +2327,7 @@ Arborescence de /
 
  * /bin contient les exécutables du système d'exploitation,
  * /boot les fichiers de démarrage,
- * /dev les périphériques,
+ * /dev les périphériques sous forme de fichiers pouvant être lus ou écrits,
  * /etc les fichier de configuration et ceux nécessaires au démarrage,
  * /home les répertoires des utilisateurs,
  * /lib le bibliothèques partagées et les modules du noyau dans le sous répertoire modules,
@@ -2264,6 +2335,7 @@ Arborescence de /
  * /proc les états du noyau,
  * /root le répertoire du super utilisateur root,
  * /sbin les exécutables du super utilisateur,
+ * /sys contient les caractéristiques et informations sur les périfériques comme le nom du fabriquant, les bus connectés,
  * /tmp les fichiers temporaires liés à l'exécution des applications ou services, ils sont effacés au reboot,
  * /usr les ressources du système non essentielles (Unix Système Ressources)
  * /var les fichiers tels que les based de données, les pages html, les mails, les logs
@@ -2279,12 +2351,11 @@ Arborescence de /usr
  * /usr/bin/ Binaires de l'utilisateur,
  * /usr/include/ Entêtes des bibliothèques partagées,
  * /usr/lib/ Bibliothèques partagées des logiciels utilisateurs,
+ * /usr/local/ Hiérarchie pour les données de locales.
  * /usr/sbin/ Binaires pour l'administrateur,
  * /usr/share/ Fichiers indépendants de la plateforme (non binaires),
  * /usr/src/ Les sources du noyau,
- * /usr/X11R6/ Les fichiers du serveur X Window System, X11 version 6,
- * /usr/local/ Hiérarchie pour les données de locales.
-
+ 
 Arborescence de /var
 ++++++++++++++++++++
 
@@ -2392,10 +2463,62 @@ Les applications de l'environnement graphique vont alors monter le périphériqu
 
 Sous **gnome** le comportement peut être modifié via le gestionnaire de fichiers **nautilus** dans Edition-Préférences-Supports**.
 
+Exemple des noms persistants donnés par udev: ::
+
+  michaellaunay@luciole:~$ ls -lR /dev/disk
+  /dev/disk:
+  total 0
+  drwxr-xr-x 2 root root 260 avril 18 22:11 by-id
+  drwxr-xr-x 2 root root  80 avril 18 22:11 by-partlabel
+  drwxr-xr-x 2 root root 100 avril 18 22:11 by-partuuid
+  drwxr-xr-x 2 root root 160 avril 18 22:11 by-path
+  drwxr-xr-x 2 root root 100 avril 18 22:11 by-uuid
+
+  /dev/disk/by-id:
+  total 0
+  lrwxrwxrwx 1 root root  9 avril 18 22:11 ata-ST8000VN0022-2EL112_ZA1F9KQR -> ../../sda
+  lrwxrwxrwx 1 root root 10 avril 18 22:11 ata-ST8000VN0022-2EL112_ZA1F9KQR-part1 -> ../../sda1
+  lrwxrwxrwx 1 root root 13 avril 18 22:11 nvme-eui.0025385491b00f2f -> ../../nvme0n1
+  lrwxrwxrwx 1 root root 15 avril 18 22:11 nvme-eui.0025385491b00f2f-part1 -> ../../nvme0n1p1
+  lrwxrwxrwx 1 root root 15 avril 18 22:11 nvme-eui.0025385491b00f2f-part2 -> ../../nvme0n1p2
+  lrwxrwxrwx 1 root root 13 avril 18 22:11 nvme-Samsung_SSD_970_EVO_Plus_1TB_S4EWNF0M403887L -> ../../nvme0n1
+  lrwxrwxrwx 1 root root 15 avril 18 22:11 nvme-Samsung_SSD_970_EVO_Plus_1TB_S4EWNF0M403887L-part1 -> ../../nvme0n1p1
+  lrwxrwxrwx 1 root root 15 avril 18 22:11 nvme-Samsung_SSD_970_EVO_Plus_1TB_S4EWNF0M403887L-part2 -> ../../nvme0n1p2
+  lrwxrwxrwx 1 root root  9 avril 18 22:11 usb-Generic_STORAGE_DEVICE-0:0 -> ../../sdb
+  lrwxrwxrwx 1 root root  9 avril 18 22:11 wwn-0x5000c500b5c4d662 -> ../../sda
+  lrwxrwxrwx 1 root root 10 avril 18 22:11 wwn-0x5000c500b5c4d662-part1 -> ../../sda1
+
+  /dev/disk/by-partlabel:
+  total 0
+  lrwxrwxrwx 1 root root 15 avril 18 22:11 'EFI\x20System\x20Partition' -> ../../nvme0n1p1
+  lrwxrwxrwx 1 root root 10 avril 18 22:11  Sauvegardes -> ../../sda1
+
+  /dev/disk/by-partuuid:
+  total 0
+  lrwxrwxrwx 1 root root 15 avril 18 22:11 54795468-79c2-48ce-9c7e-f6bd6aea6914 -> ../../nvme0n1p2
+  lrwxrwxrwx 1 root root 15 avril 18 22:11 e9a9f238-ec93-4777-82e8-cbea7c8cf986 -> ../../nvme0n1p1
+  lrwxrwxrwx 1 root root 10 avril 18 22:11 eeb50a63-ec05-4e34-b673-b90bc5ea2cfa -> ../../sda1
+
+  /dev/disk/by-path:
+  total 0
+  lrwxrwxrwx 1 root root  9 avril 18 22:11 pci-0000:00:14.0-usb-0:1:1.0-scsi-0:0:0:0 -> ../../sda
+  lrwxrwxrwx 1 root root 10 avril 18 22:11 pci-0000:00:14.0-usb-0:1:1.0-scsi-0:0:0:0-part1 -> ../../sda1
+  lrwxrwxrwx 1 root root  9 avril 18 22:11 pci-0000:00:14.0-usb-0:5:1.0-scsi-0:0:0:0 -> ../../sdb
+  lrwxrwxrwx 1 root root 13 avril 18 22:11 pci-0000:03:00.0-nvme-1 -> ../../nvme0n1
+  lrwxrwxrwx 1 root root 15 avril 18 22:11 pci-0000:03:00.0-nvme-1-part1 -> ../../nvme0n1p1
+  lrwxrwxrwx 1 root root 15 avril 18 22:11 pci-0000:03:00.0-nvme-1-part2 -> ../../nvme0n1p2
+
+  /dev/disk/by-uuid:
+  total 0
+  lrwxrwxrwx 1 root root 10 avril 18 22:11 0a2768a9-34ac-4944-83a2-2e10ed4c48a5 -> ../../sda1
+  lrwxrwxrwx 1 root root 15 avril 18 22:11 aad5ec2d-1dce-4a2b-8b07-2cd2bef72410 -> ../../nvme0n1p2
+  lrwxrwxrwx 1 root root 15 avril 18 22:11 C3AC-80CA -> ../../nvme0n1p1
+
+
 Voir :
 
- http://www.unixgarden.com/index.php/comprendre/le-plugplay-sous-gnulinux
- http://www.unixgarden.com/index.php/programmation/decouvertes-et-experimentation-avec-d-bus
+ https://doc.ubuntu-fr.org/udev
+ https://web.archive.org/web/20100417131709/www.unixgarden.com/index.php/programmation/decouvertes-et-experimentation-avec-d-bus
 
 Utilitaire smartd
 -----------------
@@ -2660,9 +2783,9 @@ L'instruction print
 
 Exemple : ::
 
-  print 1
-  print "Hello world"
-  print 'coucou'
+  print(1)
+  print("Hello world")
+  print('coucou')
 
 Les primitives d'accès aux informations de type
 -----------------------------------------------
@@ -2681,9 +2804,7 @@ Le caractère **#** marque le début d'un commentaire.
 Les chaînes de caractères
 -------------------------
 
-Le type str.
-
-Le type unicode.
+En python 3 l'encodage par défaut est UTF-8 qui est une représentation des types unicode.
 
 On passe d'unicode au str en appelant la fonction encode (u"C'est la fête".encode('ISO-8859-15').
 
@@ -2694,7 +2815,7 @@ Les délimiteurs et types de chaînes :
  * Les guillemets **"** et **"""**,
  * Les apostrophes **'**,
  * Les chaînes raw **r''**,
- * Les chaînes unicode **u''**.
+ * Les chaînes formatable **f''**,
 
 Les numériques
 --------------
@@ -2828,13 +2949,13 @@ Exemple : ::
 
   def mondecorateur(fonction) :
     def nouvellefonction() :
-       print 'execution de %s'%fonction .__name__
+       print('execution de %s'%fonction .__name__)
        return fonction()
     return nouvellefonction
 
   @mondecorateur
   def f() :
-    print 'coucou'
+    print('coucou')
 
   f()
   >>execution de f
@@ -2877,7 +2998,7 @@ Les erreurs sont signalées par le mécanisme des exceptions : ::
   >>> try:
   ...    PasDefinie = None
   ... except NameError:
-  ...    print u"Variable non définie"
+  ...    print("Variable non définie")
   ...
   Variable non définie
 
@@ -3025,8 +3146,10 @@ Les principales options d'amorçage du noyau sont :
  * apm=off|on désactive ou active la gestion de l'alimentation en énergie,
  * noresume ne réveille pas une hibernation.
 
-InitV vs upstart
-----------------
+Systemd vs InitV vs upstart
+---------------------------
+
+@TODO Systemd
 
 InitV signifie Init system V.
 
@@ -3159,10 +3282,19 @@ La commande **dhclient**, permet de relancer la négociation avec le serveur.
 
 Infos : http://fr.wikipedia.org/wiki/DHCP
 
+
+Commande réseau
+---------------
+
+Les commandes qui vont être présentées ("ifconfig", "iwconfig", "ifup/ifdown", "route"), peuvent être remplacées par la commande "ip".
+Toutefois on les rencontre dans de nombreux scripts et il est donc utile de savoir les manipuler.
+
 ifconfig
 --------
 
 La commande **ifconfig** permet à la fois de consulter les paramètres réseau mais également de configurer les interfaces.
+Cette commande est aujourd'hui obsolète et remplacée par **ip** que nous détaillerons ci-après, on peut l'installer avec **apt install net-tools**.
+Toutefois elle est beaucoup plus simple, mais moins complète que **ip** .
 
 Exemple de configuration : ::
 
@@ -3193,6 +3325,35 @@ La commande **route** permet de consulter et de fixer l'adresse de la passerelle
 
 En consultation elle est identique à **netstat -nr**
 
+ip
+--
+
+La commande ip est le couteau suisse de la configuration réseau, son paquet **iproute2** remplace les commandes du paquet **net-tools** : ::
+
+  Attribuer une adresse : ::
+  
+    ip addr add 192.168.0.54/24 dev eth0
+  
+  Connaitre son adresse : ::
+
+    ip -4c addr show #-4 affiche uniquement les IPv4, -c pour l'affichage couleur
+
+  Activer une interface réseau : ::
+
+    ip link set eth0 update
+  
+  Désactiver une interface réseau : ::
+
+    ip link set eth0 down
+
+  Supprimer une adresse d'une interface : ::
+
+    ip addr del 192.168.0.54 dev eth0
+
+  Ajouter une gateway : ::
+
+    ip route add default via 192.168.0.1
+  
 Les interfaces virtuelles
 -------------------------
 
@@ -3259,31 +3420,6 @@ Exemple : ::
 
 La modification est trivial puisqu'il suffit d'ajouter une ligne $Adresse $Nom1 $Nom2.
 
-xinetd
-------
-
-Le service **xinetd** permet d'optimiser les connexions en ne démarrant un service qu'à la demande de connexion au service.
-
-Par défaut le service *xinetd* n'est pas installé.
-
-Les fichiers de configuration par service
-+++++++++++++++++++++++++++++++++++++++++
-
-La configuration de *xinetd* se fait par l'ajout de fichier dans le répertoire */etc/xinetd.d/*.
-
-Pour le format voir man *xinetd.conf*.
-
-
-Modifications et redémarrage de inetd
-+++++++++++++++++++++++++++++++++++++
-
-Ajouter un service revient à créer un fichier correspondant dans */etc/xinetd.d/*, puis à relancer xinetd.
-
-Les fichiers hosts.allow et hosts.deny
-++++++++++++++++++++++++++++++++++++++
-
-Ces fichiers contiennent les règles de sécurités utilisées pour autoriser ou non l'usage d'un service.
-
 Les outils et commandes de tests réseau
 ---------------------------------------
 
@@ -3296,12 +3432,6 @@ host
 ++++
 
 Un autre utilitaire de résolution de nom de domaine.
-
-last
-++++
-
-La commande **last** permet de connaître les derniers *login* réalisés sur la machine, leur date et adresse d'origine.
-
 Traceroute
 ++++++++++
 
@@ -3348,6 +3478,11 @@ ngrep
 +++++
 
 La commande **ngrep** permet de n'afficher les paquets réseaux qu'à la condition qu'ils contiennent la chaîne cherchée.
+
+last
+++++
+
+La commande **last** permet de connaître les derniers *login* réalisés sur la machine, leur date et adresse d'origine.
 
 Gestion des paquetages et installation de logiciels sous Ubuntu
 ===============================================================
@@ -3604,7 +3739,7 @@ Toutefois, il est possible de disposer des avantages du chiffrement sans passer 
   root@monserveur:~# vim /etc/apache2/sites-available/ssl.monsite.com
   #remove SSLCertificateFile and update SSLCertificateKeyFile with
   SSLCertificateKeyFile /etc/apache2/ssl/ssl.monsite.com.pem
-  root@monserveur:~# /etc/init.d/apache2 restart
+  root@monserveur:~# service apache2 restart
 
 Liens :
 
