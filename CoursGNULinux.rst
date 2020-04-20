@@ -1581,7 +1581,7 @@ Démarrage du firewall : ::
 Configuring MASQUERADE
 ======================
 
-Pour réaliser une passerelle ou exposer des machines virtuelle ou une DMZ il faut autoriser MASQUERADE dans 
+Pour réaliser une passerelle ou exposer des machines virtuelles ou une DMZ il faut autoriser MASQUERADE dans 
 /etc/default/ufw en changeant DEFAULT\_FORWARD\_POLICY par "ACCEPT"
 
 Puis éditer /etc/ufw/sysctl.conf en décommentant : ::
@@ -2013,8 +2013,8 @@ Exemple : ::
 
   root@serveur:~# crontab -l
   # m h  dom mon dow   command
-  00 4 * * * /usr/bin/webalizer -c /etc/webalizer/www_lille_sortir.conf
-  10 4 * * * /usr/bin/webalizer -c /etc/webalizer/ssl_lille_sortir.conf
+  00 4 * * * /usr/bin/webalizer -c /etc/webalizer/www_ecreall.conf
+  10 4 * * * /usr/bin/webalizer -c /etc/webalizer/ssl_ecreall.conf
   * * * * * /root/load.sh update
   0 * * * * /root/load.sh graph > /dev/null
 
