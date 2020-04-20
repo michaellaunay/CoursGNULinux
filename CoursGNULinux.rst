@@ -2306,7 +2306,7 @@ La numérotation des partitions est réalisée en accolant au nom du périphéri
 Utilitaires de partitionnement
 ------------------------------
 
-Historiquement la commande permettant de créer les partitions était **fdisk**, mais elle est limité à des partitions de taille inférieure à 4To.
+Historiquement la commande permettant de créer les partitions était **fdisk**, mais elle est limité à des partitions de taille inférieure à 2To.
 
 Elle est remplacée par la commande **parted** et par sa version graphique **gparted** qui permettent de créer et retailler des partitions déjà existantes, mais il faut descendre le paquet.
 
