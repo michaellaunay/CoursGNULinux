@@ -12,11 +12,7 @@ Formation à GNU/Linux
 
 .. header::
 
-<<<<<<< HEAD
-   *Ecréall 2020*
-=======
-   Ecréall 2020 update de la version 2009*
->>>>>>> 2995194c59448f1fe02af876d5aff990795bd679
+   Ecréall 2020 update de la version 2009 pour Ubuntu 20.04
 
 .. footer::
 
@@ -1109,7 +1105,6 @@ Elle permet de positionner une fonction qui sera exécuté lors de la réception
   trap "echo Reprise d\'exécution" SIGCONT
   trap "echo Signal USR" SIGUSR1 SIGUSR2
 
-<<<<<<< HEAD
 La commande sed
 +++++++++++++++
 
@@ -1137,7 +1132,7 @@ Ici sed permet de renommer les fichiers de type Ubuntu20.04_00_EssayerOuInstalle
 
 
 Pour plus d'information sur **sed** voir https://www.commentcamarche.net/faq/9536-sed-introduction-a-sed-part-i
-=======
+
 L'expansion de paramètre
 ++++++++++++++++++++++++
 
@@ -1162,7 +1157,6 @@ Liste des Filtres pour l'expansion de paramètre du Shell https://www.gnu.org/so
   michaellaunay@luciole:~$ echo ${name[1]}
   un
 
->>>>>>> 2995194c59448f1fe02af876d5aff990795bd679
 
 Les scripts
 +++++++++++
@@ -1703,7 +1697,6 @@ Vérification :
     root@triticale:/etc/dovecot# ufw status
     État : actif
 
-<<<<<<< HEAD
     Vers                       Action      De
     ----                       ------      --
     22/tcp                     ALLOW       Anywhere                  
@@ -1714,40 +1707,6 @@ Vérification :
     25/tcp (v6)                ALLOW       Anywhere (v6)             
     80/tcp (v6)                ALLOW       Anywhere (v6)             
     443/tcp (v6)               ALLOW       Anywhere (v6) 
-=======
-  ufw enable
-
-  service ufw start
-
-Configuring MASQUERADE
-======================
-
-Pour réaliser une passerelle ou exposer des machines virtuelles ou une DMZ il faut autoriser MASQUERADE dans 
-/etc/default/ufw en changeant DEFAULT\_FORWARD\_POLICY par "ACCEPT"
-
-Puis éditer /etc/ufw/sysctl.conf en décommentant : ::
-
-  #net/ipv4/ip_forward=1
-
-Et enfin éditer /etc/ufw/before.rules pour ajouter la règle suivante (avec votre IP publique) en tête : ::
-
-  # nat Table rules
-  #*nat
-  #:POSTROUTING ACCEPT [0:0]
-
-  # Forward traffic from VMnet through eth0.
-  -A POSTROUTING -s 192.168.188.129/24 -o eth0 -j MASQUERADE
-
-Création de pont entre interface réseau
-=======================================
-
-Si le serveur possède plusieurs interface réseau il peut être intéressant de les fusionner.
-Le pacquet bridge-utils permet de fusionner plusieurs interface réseau en une virtuelle.
-apt-get install bridge-utils
-
-Pour la configuration voir https://help.ubuntu.com/community/NetworkConnectionBridge
-
->>>>>>> 2995194c59448f1fe02af876d5aff990795bd679
 
 Gestion des permissions et droits d'accès
 =========================================
@@ -3517,7 +3476,6 @@ La commande **dhclient**, permet de relancer la négociation avec le serveur.
 
 Infos : http://fr.wikipedia.org/wiki/DHCP
 
-<<<<<<< HEAD
 La commande ip
 --------------
 
@@ -3539,7 +3497,9 @@ ip maddr show dev em1 : Affiche les informations multicast de em1
 ip neigh : Affiche les objets voisins c'est à dire la table ARP pour IPv4.
 ip neigh show dev em1 : Affiche le cache ARP de l'interface em1
 
-
+ip link : permet d'activer le interface réseau, ainsi que de créer des interfaces virtuelles.
+ip link set dev eno12345678 up : Met en fonctionnement l'interface eno12345678
+ip link set dev eno12345678 down : Éteint l'interface eno12345678
 
 
 La commande ip permet de consulter et changer l'état ou les paramettres de tous les types de périphériques réseaux.
@@ -3549,17 +3509,6 @@ voir : http://cpham.perso.univ-pau.fr/ENSEIGNEMENT/UERHD/DescriptifCmdIP.pdf
 
 ifconfig (déprécié)
 -------------------
-=======
-
-Commande réseau
----------------
-
-Les commandes qui vont être présentées ("ifconfig", "iwconfig", "ifup/ifdown", "route"), peuvent être remplacées par la commande "ip".
-Toutefois on les rencontre dans de nombreux scripts et il est donc utile de savoir les manipuler.
-
-ifconfig
---------
->>>>>>> 2995194c59448f1fe02af876d5aff990795bd679
 
 La commande **ifconfig** permet à la fois de consulter les paramètres réseau mais également de configurer les interfaces.
 Cette commande est aujourd'hui obsolète et remplacée par **ip** que nous détaillerons ci-après, on peut l'installer avec **apt install net-tools**.
@@ -3741,17 +3690,14 @@ ngrep
 
 La commande **ngrep** permet de n'afficher les paquets réseaux qu'à la condition qu'ils contiennent la chaîne cherchée.
 
-<<<<<<< HEAD
 wireshark
 +++++++++
 
 Permet d'osculter les paquets réseaux comme ceux enregistrés par **tcpdump**.
-=======
 last
 ++++
 
 La commande **last** permet de connaître les derniers *login* réalisés sur la machine, leur date et adresse d'origine.
->>>>>>> 2995194c59448f1fe02af876d5aff990795bd679
 
 Gestion des paquetages et installation de logiciels sous Ubuntu
 ===============================================================
