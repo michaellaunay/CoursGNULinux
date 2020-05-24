@@ -3,7 +3,7 @@ Formation à GNU/Linux
 =====================
 
 :author: Michaël Launay <michaellaunay@ecreall.com>
-:version: 1.0
+:version: 1.9
 :licence: Cette création est mise à disposition selon le Contrat Paternité 2.0 France disponible en ligne http://creativecommons.org/licenses/by/2.0/fr/ ou par courrier postal à Creative Commons, 171 Second Street, Suite 300, San Francisco, California 94105, USA.
 
 .. raw:: pdf
@@ -12,7 +12,7 @@ Formation à GNU/Linux
 
 .. header::
 
-   *Ecréall 2009*
+   *Ecréall 2020*
 
 .. footer::
 
@@ -262,57 +262,167 @@ Les versions desktop d'Ubuntu sont fournies avec l'environnement graphique Gnome
 
 Elles conviennent parfaitement à un poste de travail mais sont à proscrire pour un serveur en raison du nombre de services fonctionnant par défaut.
 
-Installation d'Ubuntu 16.04
+Installation d'Ubuntu 20.04
 ++++++++++++++++++++++++++
 
-Mettre le CD dans lecteur DVD, ou une clé usb bootable et démarrer dessus l'ordinateur.
+Choisir l'image "iso" d'Ubuntu correspondant à sa machine à l'adresse https://releases.ubuntu.com/20.04/
 
-Dans le cas d'une installation virtuelle depuis un poste GNU/Linux, il est possible de monter l'image iso comme un CD : ::
+La différence entre Desktop et Server est que dans la Desktop vous aurrez tout l'environnement graphique, alors que la version Server suppose une utilisation en ligne de commande.
 
- mkdir /home/michaellaunay/VCD
- sudo mount -t iso9660 -o loop /home/michaellaunay/Download/ubuntu-9.04-desktop-i386.iso /home/michaellaunay/VCD
+Créer un disque d'amorçage en suivant https://help.ubuntu.com/community/BurningIsoHowto
 
-Étape 01 :
+Insérer la clé dans votre lecteur usb.
+Redémarrer votre ordinateur pour pouvoir modifier les paramètres du **bios**.
+Selon la marque de votre ordinateur la touche pour entrer dans le bios lors du démarrage est soit Ech, Entrée, F2, ou Suppr.
+Modifier votre bios pour qu'il démarre sur la clé usb (généralement le menu boot).
+Enregistrer et quitter le bios.
+L'ordinateur va alors démarrer sur la clé et charger Ubuntu comme système d'exploitation.
+Ubuntu commence par vérifier qu'il n'y a pas eu de corruption de la clé.
+Puis il affiche différents écrans que nous allons expliquer ici.
 
-.. figure:: Installation01ChoixDeLaLangue.jpg
+Étape 01
+++++++++
+
+.. figure:: ./images_ubuntu_20_04/00_EssayerOuInstaller.png
        :align: center
 
-       Choix de la langue du live cd
+       Choix de la langue du live usb.
+       Et choix entre tester Ubuntu ou lancer l'istallation.
 
-Étape 02 :
+Si vous cliquez sur le bouton "Essayer Ubuntu" vous pourrez tester Ubuntu sans rien installer sur votre machine, les logiciels utiliser seront ceux présents sur la clé usb (vou pourrez en installer d'autres).
+C'est un excellent moyen de dépanner une machine pour par exemple accéder à vos disques lorsque votre l'OS de votre machine ne fonctionne plus.
 
-.. figure:: Installation02LancementDeLInstallation.jpg
+Étape 02
+++++++++
+
+.. figure:: ./images_ubuntu_20_04/02_Clavier.png
        :align: center
 
-       Lancement de l'installation
+       Choix de la disposition du clavier.
 
-Étape 03 :
+Les différents choix déterminent comment vous aller pouvoir saisir les caractères comme œ.
+Par exemple avec le choix de clavier "alt." il suffira de faire "Alt Gr" "o", pour avoir œ.
+Vous pouvez tester les touches du clavier dans la zone de saisie du texte.
 
-.. figure:: Installation03ConfirmationDeLaLangue.jpg
+Étape 03
+++++++++
+
+.. figure:: ./images_ubuntu_20_04/03_TypeInstall.png
+      :align: center
+
+      Type d'installation avec mise à jour ou non.
+
+L'installation minimale n'installe pas les logiciels comme libre office vous laissant le faire par la suite.
+Demander la mise à jour lors de l'installation suppose d'être relié à internet.
+
+Étape 04
+++++++++
+
+.. figure:: ./images_ubuntu_20_04/03_TypeInstall.png
        :align: center
 
-       Choix de la langue du système à installer
+       Choix du partitionnement si l'on clique sur "autre chose" on pourra créer ses partitions.
 
-Étape 04 :
+Par défaut le disque sera formaté et une partion racine sera créée ainsi qu'une partition swap.
+La partition de swap est utilisée pour stocker temporairement la mémoire d'un programme qui s'éxécutait, mais qui n'est pas celui en cours d'utilisation.
+Par exemple si vous n'avez que très peu de mémoire et que vous lancez plusieurs programmes, celui avec lequel vous interagissez sera en mémoire et les autres peuvent être dans le swap.
 
-.. figure:: Installation04Localisation.jpg
+Si votre swap a la même taille que votre mémoire vive vous pourrez "hiberner" votre ordinateur, ainsi toute la mémoire vive sera copiée dans le swap et l'ordinateur sera éteint, lorsqu'il sera rallumé tout le swap sera recopié en mémoire vive et les programmes reprendront là où ils en étaint.
+
+C'est pour cela qu'il est intéressant de créer et paramétrer ses partitions et au minimum de créer une partition "/home" pour préserver le contenu de ses données en cas de crash sévère de l'OS, nous allons voir comment partitionner le disque.
+
+Nous détaillerons le partitionnement ci-après.
+
+Étape 05
+++++++++
+
+.. figure:: ./images_ubuntu_20_04/05_TypePartitionLVM.png
        :align: center
 
-       Choix du fuseau horaire
+       Ubuntu propose d'utiliser LVM.
 
-Étape 05 :
+LVM (Logical Volume Manager) est un gestionnaire de volumes logiques qui vous permettra de créer des partitions virtuelles afin de pouvoir les retailler ou d'en créer de nouvelles.
+Linux crée alors une couche intermédiaire entre le(s) disque(s) physique(s) et l'OS, c'est dans cette couche virtuelle que vous aurrez vos partitions virtuelles qui seront écrites dans la partition réelle.
+Toutefois si la partition physique est habimée on pert les partitions virtuelles écrites dessus, c'est pourquoi il faut faire des copies de sauvegardes ou avoir des disques montés en raid.
+Vous pouvez également chiffrer la partion LVM.
 
-.. figure:: Installation05ChoixDuClavier.jpg
+Étape 06
+++++++++
+
+.. figure:: ./images_ubuntu_20_04/07_FuseauHoraire.png
        :align: center
 
-       Choix du clavier
+       Choix du fuseau horaire.
 
-Étape 06 :
+Si vous êtes en France métropolitaine choisissez le fuseau passant par la France.
 
-.. figure:: Installation06ChoixDuPartitionnement.jpg
+Étape 07
+++++++++
+
+.. figure:: ./images_ubuntu_20_04/15_User1000.png
        :align: center
 
-       Choix du partitionnement
+       Création du 1er compte utilisateur.
+
+Sous Ubuntu cet utilisateur aura la particularité de pouvoir mettre à jour le système et plus généralement de pouvoir devenir super utilisaterur (root).
+
+Étape 08
+++++++++
+
+Ubuntu affiche un récapitulatif des choix réalisés, la confirmation lance alors le partitionnement des disques, leur formatage puis l'installation du système.
+
+.. figure:: ./images_ubuntu_20_04/15_User1000.png
+       :align: center
+
+       Une fois les choix confirmés, l'installation commence.
+
+En fin d'installation un écran vous invite à retirer la clé usb et à redémarrer l'ordinateur.
+
+.. figure:: ./images_ubuntu_20_04/17_FinInstallation.png
+       :align: center
+
+       Fin d'installation.
+
+Une fois redémarrer saisissez votre identifiant et votre mot de passe (ceux donnés à l'étape 07)
+
+Vous pouvez alors associer votre machine à vos compte google et microsoft pour par exemple voir vos agendas et recevoir vos notifications.
+
+.. figure:: ./images_ubuntu_20_04/18_ConfigurationComptesEnLigne.png
+       :align: center
+
+       Configuration des comptes en lignes.
+
+
+Vous pouvez associer votre machine au mécanisme livepatch de Canonical l'éditeur d'Ubuntu pour faire automatiquement la mise à jour de votre machine.
+
+.. figure:: ./images_ubuntu_20_04/19_LivePatch.png
+       :align: center
+
+       Configuration de votre compte Ubuntu pour le live patch.
+
+Vous pouvez aider Canonical à corriger les bogues en autorisant la remonter des incidents.
+
+.. figure:: ./images_ubuntu_20_04/20_UbuntuWatch.png
+       :align: center
+
+       Remonté des informations pour les développeurs.
+
+Il est possible de permettre la géolocalisation.
+
+.. figure:: ./images_ubuntu_20_04/21_Geolocalisation.png
+       :align: center
+
+       Autorisation de la géolocalisation.
+
+On peut installer immédiatement les applications compatibles avec Ubuntu 20.04
+
+.. figure:: ./images_ubuntu_20_04/22_AutresApplications.png
+       :align: center
+
+       Fin d'installation.
+
+Étape alternative 04 bis
+++++++++++++++++++++++++
 
 Le partitionnement est l'étape la plus importante car il est difficile de corriger les erreurs.
 
@@ -320,45 +430,47 @@ Pour les serveurs cette étape influence directement la sécurité du système (
 
 Au minimum, il est recommandé d'avoir une partition /, /home et swap.
 
-Pour activer le partitionnement manuel il suffit de cocher sur "Définir les partitions manuellement".
+Pour activer le partitionnement manuel il suffit de cocher sur le bouton "Autre chose" à l'étape 04.
 
-Étape 07 :
+Il faut alors choisir un disque.
 
-.. figure:: Installation07NouvelleTableDePartition.jpg
+.. figure:: ./images_ubuntu_20_04/09_TypePartition_Partitioner_sda.png
        :align: center
 
-       Création d'une nouvelle table de partition
+       Création de la table de partition
 
-Étape 08 :
-
-.. figure:: Installation08NouvellePartition.jpg
+.. figure:: ./images_ubuntu_20_04/10_TypePartition_Partitioner_sda_NouvelleTable.png
        :align: center
 
-       Création d'une nouvelle partition
+       Création de la table de partition
+
+Le bouton "+" permet de créer de nouvelle partion
+
 
 Dans notre cas nous allons créer 3 partitions /, /home et swap.
 
-La taille du swap doit être au moins égale à celle de la RAM afin de permettre l'hibernation.
+.. figure:: ./images_ubuntu_20_04/12_TypePartition_Partitioner_sda_NouvelleTable_root.png
+       :align: center
 
-Étape 09 :
+       Création de la racine "/"
 
-.. figure:: Installation09Partitions.jpg
+Sur le même principe on crée "/home"
+On peut cocher la case formater pour purger le disque de ce qu'il contenait avant.
+
+Puis vient la partition de "swap".
+
+.. figure:: ./images_ubuntu_20_04/13_TypePartition_Partitioner_sda_root_home_swap.png
+       :align: center
+
+       Création du swap
+
+N'oubliez pas que la taille du swap doit être au moins égale à celle de la mémoire vive (RAM) pour permettre l'hibernation.
+  
+.. figure:: ./images_ubuntu_20_04/14_TypePartition_Partitioner_sda_root_home_swap.png
        :align: center
 
        Création des partitions
 
-Étape 10 :
-
-.. figure:: Installation10Identite.jpg
-       :align: center
-
-       Création du 1er compte utilisateur
-
-Sous Ubuntu cet utilisateur aura la particularité de pouvoir mettre à jour le système et plus généralement de pouvoir devenir super utilisaterur (root).
-
-Étape finale:
-
-Ubuntu affiche un récapitulatif des choix réalisés, la confirmation lance alors le partitionnement des disques, leur formatage puis l'installation du système.
 
 Installation de GNU/Linux Ubuntu en version serveur
 ---------------------------------------------------
@@ -557,7 +669,7 @@ Les LUGs
 
 Un LUG est un groupe d'utilisateurs de Linux (Linux User Group) réuni généralement au sein d'une association loi 1901.
 
-Dans la région lilloise on compte essentiellement Chtinux http://www.chtinux.org/ anciennement Campux et CLX http://clx.anet.fr/
+Dans la région lilloise on compte essentiellement Chtinux http://www.chtinux.org/ anciennement Campux et CLX http://clx.asso.fr/spip
 
 Les LUGs réalisent la promotion de Linux est des logiciels libres. Ils organisent des manifestations telles que des install party.
 
@@ -712,7 +824,7 @@ Signification des variables d'environnement : ::
   BASH      # Le nom du fichier bash
   DISPLAY   # Le numéro de serveur et de session d'affichage
   EDITOR    # L'éditeur à utiliser par défaut
-  HISTSIZE  # La taille de du fichier historique
+  HISTSIZE  # La taille du fichier historique
   HOSTNAME  # Le nom de la machine
   HOME      # Le répertoire personnel de l'utilisateur
   LANG      # La langue de l'utilisateur et l'encodage utilisé pour afficher cette langue
@@ -966,6 +1078,34 @@ Elle permet de positionner une fonction qui sera exécuté lors de la réception
   trap "echo Fin demandée" SIGTERM
   trap "echo Reprise d\'exécution" SIGCONT
   trap "echo Signal USR" SIGUSR1 SIGUSR2
+
+La commande sed
++++++++++++++++
+
+Elle permet de faire des traitements sur les lignes d'un flux.
+Par exemple elle permet de trouver un motif et de le remplacer.
+On la rencontre dans de nombreux scripts.
+
+Par exemple dans la ligne suivante : ::
+
+  ls -1 | xargs -i echo mv {} {} | sed -e "s/Ubuntu20.04_//2" | bash
+
+"ls -1" affiche le contenu du répertoire courrant, une ligne par fichier.
+
+Le résultat est envoyé à **xargs** qui pour chaque ligne va créer une chaîne de caractères "mv contenu_ligne contenu_ligne"
+
+Le résultat est envoyé à **sed** qui supprime la seconde occurence de la chaine "Ubuntu20.04" qu'il rencontre.
+
+Le résultat est exécuter par bash en transformant la chaine de caractère reçu en ligne de commande.
+
+Ici sed permet de renommer les fichiers de type Ubuntu20.04_00_EssayerOuInstaller.png en 00_EssayerOuInstaller.png.
+
+À cette ligne complexe, on préfèrera renommer de façon plus élégante et rapide avec la ligne de cmd : ::
+
+  for filename in *; do mv $filename ${filename/Ubuntu20.04_/}; done
+
+
+Pour plus d'information sur **sed** voir https://www.commentcamarche.net/faq/9536-sed-introduction-a-sed-part-i
 
 Les scripts
 +++++++++++
@@ -1448,7 +1588,7 @@ Si j'ouvre un navigateur sur ma machine et que je mets comme adresse http://loca
 Compréhension de ssh :
 
   - http://fr.wikipedia.org/wiki/Ssh
-  - http://www.unixgarden.com/index.php/administration-systeme/principes-et-utilisation-de-ssh
+  - http://web.archive.org/web/20110907084212/http://www.unixgarden.com/index.php/administration-systeme/principes-et-utilisation-de-ssh
 
 Si la clé d'une machine à laquelle on se connecte habituellement a changé (cas d'une réinstallation), on peut être amennée a supprimer son entrée dans le fichier *~/.ssh/known_hosts*.
 
@@ -1458,56 +1598,46 @@ L'installation du deamon **apt-get install ssh**
 
 Pour sécuriser les connexions **ssh**, il faut éditer */etc/ssh/sshd_config* et mettre l'option *PermitRootLogin=no* et ajouter en fin de fichier *AllowUsers idUtilisateurAutorise*.
 
+La commande **screen** est très utilisée avec "ssh", elle permet de conserver le **tty** ouvert lors des déconnexions et donc de reprendre là où on en était.
+Il suffit de la relancer avec l'option "-r" pour rattacher une session précédente,  de même en début de session on peut faire "Ctrl A" "esc" pour enregistrer les lignes et donc avoir la scroll bar.
+
 iptables et ufw
 ---------------
 
 La commande **iptables** permet de consulter et modifier les règles du firewall.
 
-Pour pouvoir rendre nos règles persistantes, il faut éditer le firewall d'Ubuntu qui s'appelle **ufw**.
+Le service **ufw** est un "firewall" pré-configurer que l'on peut facilement compléter.
 
-Editez */etc/ufw/before.rules* dont les lignes reprennent les options des commandes **iptables**.
+Pour l'installer il suffit de faire :
 
-Remplacer de "# connection tracking for outbound" à "# ufw-not-local" par : ::
+  apt install ufw
 
-    -A ufw-before-output -p tcp -m state --state ESTABLISHED,RELATED -j ACCEPT
-    -A ufw-before-output -p udp -m state --state ESTABLISHED,RELATED -j ACCEPT
+Modification du firewall pour permettre en entrée http, https, smtp :
 
-    # ok icmp codes
-    -A ufw-before-input -p icmp --icmp-type destination-unreachable -j ACCEPT
-    -A ufw-before-input -p icmp --icmp-type source-quench -j ACCEPT
-    -A ufw-before-input -p icmp --icmp-type time-exceeded -j ACCEPT
-    -A ufw-before-input -p icmp --icmp-type parameter-problem -j ACCEPT
-    -A ufw-before-input -p icmp --icmp-type echo-request -j ACCEPT
+    vim /etc/ufw/ufw.conf  # ENABLED=yes #si pas déjà positionné
+    ufw allow 22/tcp # Ouvre le port ssh à tous (on peut restreindre à certaines adresse)
+    ufw allow 80/tcp # Ouverture de http
+    ufw allow 443/tcp # Ouverture de https
+    ufw allow 25/tcp # Ouverture de smtp (envoi des courriels)
+    ufw enable # Rend actif ufw
 
-    -A ufw-before-input -i eth0 -p tcp -m tcp --tcp-flags ALL ALL -j DROP
-    -A ufw-before-input -i eth0 -p tcp -m tcp --tcp-flags ALL NONE -j DROP
-    -A ufw-before-input -i lo -j ACCEPT
-    -A ufw-before-input -m state --state RELATED,ESTABLISHED -j ACCEPT
-    -A ufw-before-input -p tcp -m tcp --dport www -j ACCEPT
-    -A ufw-before-input -p udp -m udp --dport www -j ACCEPT
-    -A ufw-before-input -p tcp -m tcp --dport https -j ACCEPT
-    -A ufw-before-input -p udp -m udp --dport https -j ACCEPT
-    -A ufw-before-input -p tcp -m tcp --dport mail -j ACCEPT
-    -A ufw-before-input -i eth0 -p tcp -m tcp --dport ntp -j ACCEPT
-    -A ufw-before-input -i eth0 -p udp -m udp --dport ntp -j ACCEPT
-    -A ufw-before-input -p tcp -m tcp --dport ssh -j ACCEPT
-    -A ufw-before-input -p udp -m udp --dport ssh -j ACCEPT
+Ces commandes permettent aussi de gérer ipv6
 
-    # allow dhcp client to work
-    #-A ufw-before-input -p udp --sport 67 --dport 68 -j ACCEPT
+Vérification :
 
-Editez /etc/ufw/ufw.conf : ::
+    root@triticale:/etc/dovecot# ufw status
+    État : actif
 
-  ENABLED=yes
-  if [ "$ENABLED" = "yes" ]; then
-    modprobe ip_conntrack_ftp ports=9821
-  fi
-
-Démarrage du firewall : ::
-
-  ufw enable
-
-  /etc/init.d/ufw start
+    Vers                       Action      De
+    ----                       ------      --
+    22/tcp                     ALLOW       Anywhere                  
+    25/tcp                     ALLOW       Anywhere                  
+    80/tcp                     ALLOW       Anywhere                  
+    443/tcp                    ALLOW       Anywhere                  
+    22/tcp (v6)                ALLOW       Anywhere (v6)             
+    25/tcp (v6)                ALLOW       Anywhere (v6)             
+    80/tcp (v6)                ALLOW       Anywhere (v6)             
+    443/tcp (v6)               ALLOW       Anywhere (v6) 
 
 Gestion des permissions et droits d'accès
 =========================================
@@ -2107,6 +2237,105 @@ Le fichier /etc/group
 
 Le fichier */etc/group* contient la définition de tous les groupes.
 
+Installation openldap
+---------------------
+
+Ldap est un annuaire qui permet de gérer le utilisateur d'un service sans créer un compte unix.
+
+Installation du serveur ldap :
+
+    apt install slapd ldap-utils
+
+Modification de la configuration :
+
+    dpkg-reconfigure slapd
+    # saisie de "ecreall.com" comme domaine
+    # saisie de "people" comme organization
+    # saisie du mot de passe (comme celui de l'utilisateur michaellaunay mais pour LDAP)
+
+Attention ! Configurer LTS pour chiffrer les connexions si elles sont extérieures à la machine, car les mots de passe circulent en clair (voir  https://wiki.debian.org/LDAP/OpenLDAPSetup#Enable_TLS.2FSSL)!
+
+Activer le service au démarrage :
+
+    systemctl enable slapd
+
+Rendre "ldap" accessible en éditant "/etc/ldap/ldap.conf" en ajoutant :
+
+    BASE    dc=ecreall,dc=com
+    URI     ldap://127.0.0.1
+
+Ajout d'une entrée LDAP :
+
+    Créer un fichier ecreall.ldif contenant :
+
+        dn: ou=People,dc=ecreall,dc=com
+        ou: People
+        objectClass: top
+        objectClass: organizationalUnit
+
+        dn: ou=Group,dc=ecreall,dc=com
+        ou: Group
+        objectClass: top
+        objectClass: organizationalUnit
+
+        dn: cn=Gérant,dc=ecreall,dc=com
+        objectclass: organizationalRole
+        cn: Gérant
+
+    ldapadd -x -D "cn=admin,dc=ecreall,dc=com" -W -f ecreall.ldif
+
+Mettre à jour l'index (cache) :
+
+    systemctl stop slapd
+    slapindex
+    chown -R openldap:openldap /var/lib/ldap
+    systemctl start slapd
+
+Vérification :
+
+    ldapsearch -x -b 'dc=ecreall,dc=com' '(objectclass=*)'
+
+Ajout d'une OrganizationUnit :
+
+    Créer un fichier "e-services.ldif" et y mettre :
+
+        dn: ou=Études,dc=ereall,dc=com
+        objectClass: organizationalUnit
+        ou: Études
+
+    ldapadd -x -D "cn=admin,dc=ecreall,dc=com" -W -f e-services.ldif
+
+Ajouter une personne :
+
+    Exemple pour ajouter Michaël Launay, créer un fichier "ldif_files/michaellaunay.ldif" :
+
+        dn: cn=Michaël Launay, ou=People, dc=ecreall, dc=com
+        objectclass: top
+        objectclass: person
+        objectclass: organizationalPerson
+        objectclass: inetorgperson
+        cn: Michaël Launay
+        sn: Launay
+        gn: Michaël
+        uid: michaellaunay
+        title: Gérant
+        mail: michaellaunay@ecreall.com
+        telephoneNumber: 0320793290
+        officePostalAddress: 11 A Avenue de l'Harmonie
+        postalCode: 59650
+        l: Villeneuve d ASCQ
+    
+    L'ajouter :
+    
+        ldapadd -x -D "cn=admin,dc=ecreall,dc=com" -W -f ldif_files/michaellaunay.ldif
+
+
+Voir :
+
+    https://wiki.debian.org/LDAP/OpenLDAPSetup
+    https://guide.ubuntu-fr.org/server/openldap-server.html
+    http://www-sop.inria.fr/members/Laurent.Mirtain/ldap-livre.html
+
 Syslog
 ======
 
@@ -2137,6 +2366,12 @@ Chaque piste contenant un certain nombre de secteurs de 512 octets.
 L'ensemble des pistes des différents plateaux accessible sans nouveau déplacement des têtes de lecture constitue un cylindre.
 
 Voire http://fr.wikipedia.org/wiki/Disque_dur.
+
+Le nommage des périphériques disques dépend de leur nature et de la façon dont ils sont gérés par le bios.
+
+Ainsi sda, sdb correspondent à des disques durs alors que nvme0n1p7 correspond à un disque ssd monté sur le connecteur nvme.
+
+Depuis 2013 les nommages des périphériques suivent les règles *ifname* voir :  https://access.redhat.com/documentation/fr-fr/red_hat_enterprise_linux/7/html/networking_guide/sec-understanding_the_device_renaming_procedure
 
 Les concepts
 ------------
@@ -2741,7 +2976,7 @@ Les paramètres ne sont pas typés.
 
 Les paramètres peuvent recevoir une valeur par défaut *p1 = 0*.
 
-Les paramètres non explicites (ex: *def f(**dict)*) sont placés dans un dictionnaires.
+Les paramètres non explicites (ex: def f(**dict)) sont placés dans un dictionnaires.
 
 Les paramètres arbitraires (ex : def f(*pars))sont placé dans un tuple.
 
@@ -2909,32 +3144,20 @@ GRUB
 **GRUB** est l'acronyme de GRand Unified Bootloader. C'est un programme GNU de démarrage permettant de choisir le système d'exploitation qui sera chargé.
 
 Le fichier */boot/grub/menu.lst* permet de créer le menu de démarrage, et d'imposer un choix par défaut.
-
++
 *GRUB* peut charger l'image du noyau depuis le réseau.
 
-La version 2 est en cours de développement.
+La version 2 est celle installée avec Ubuntu 20.04.
 
-La mise à jour du noyau entraine la modification du fichier */boot/grub/menu.lst*, mais il est possible de la forcer avec la commande **update-grub**.
+La mise à jour du noyau entraine la modification du fichier */boot/grub/grub.cfg*, mais il est possible de la forcer avec la commande **update-grub**.
 
-Une section du menu de démarrage est composée comme suit : ::
+Pour customiser le bootloader on doit éditer le fichier /etc/grub.d/40_custom
 
-  # Le titre affiché par le menu
-  title Ubuntu 8.10, kernel 2.6.27-11-generic
-    root (hd0,0) # partition contenant la racine
-                 # peut être remplacé par le label de la partition :
-                 # uuid 543bb90e-ac40-4e09-bc39-151d2f00becb
+Lors du démarage de Grub on peut passer des options au kernel en appuyant sur la touche "e".
 
-    # l'emplacement du noyau et les paramètres de lancement
-    kernel /boot/vmlinuz-2.6.27-11-generic root=/dev/sda1 ro quiet splash
-    # on peut remplacer /dev/sda1 par le label du disque, exemple :
-    # kernel /boot/vmlinuz-2.6.27-11-generic root=UUID=543bb90e-ac40-4e09-bc39-151d2f00becb ro
+Voir la doc :
+https://doc.ubuntu-fr.org/grub-pc
 
-    initrd          /boot/initrd.img-2.6.27-11-generic
-    quiet
-
-GRUB désigne le premier disque par *(hd0)*, la première partition est désignée par *(hd0,0)
-
-Si */boot* est une partition indépendante, la valeur de *root* doit être adaptée, et */boot* doit être supprimé de *kernel* et *initrd*.
 
 Démarrage du noyau
 ------------------
@@ -3096,8 +3319,37 @@ La commande **dhclient**, permet de relancer la négociation avec le serveur.
 
 Infos : http://fr.wikipedia.org/wiki/DHCP
 
-ifconfig
---------
+La commande ip
+--------------
+
+La commande ip permet d'afficher et modifier toutes les interfaces réseaux.
+
+
+ip addr : Affiche les adresses ip et toutes les informations.
+ip addr show dev em1 : Affiche les informations pour le périphérique em1
+
+ip link : Gère et affiche toutes les interfaces réseaux.
+ip link show dev em1 : Affiche les informations pour em1
+ip -s link : ffiche les interfaces statiques.
+
+ip route : Affiche et permet la modification de la table de routage.
+
+ip maddr : Affiche et permet la gestion des adresses multicast.
+ip maddr show dev em1 : Affiche les informations multicast de em1
+
+ip neigh : Affiche les objets voisins c'est à dire la table ARP pour IPv4.
+ip neigh show dev em1 : Affiche le cache ARP de l'interface em1
+
+
+
+
+La commande ip permet de consulter et changer l'état ou les paramettres de tous les types de périphériques réseaux.
+Elle remplace les commandes ifconfig, iwconfig, ifup/ifdown, route que nous détaillerons ci après, car elles sont encore proposées par certaines docs.
+
+voir : http://cpham.perso.univ-pau.fr/ENSEIGNEMENT/UERHD/DescriptifCmdIP.pdf
+
+ifconfig (déprécié)
+-------------------
 
 La commande **ifconfig** permet à la fois de consulter les paramètres réseau mais également de configurer les interfaces.
 
@@ -3109,24 +3361,32 @@ La configuration ainsi réalisée n'est pas permanent, elle sera perdue au proch
 
 Pour modifier de façon permanente la configuration réseau il faut éditer */etc/network/interfaces*.
 
-iwconfig
---------
+**ifconfig** est remplacé par la commande **ip addr** ou **ip a**
+**ifconfig eth0 192.168.0.11** est remplacé par **ip addr add 192.168.0.11/255.255.255.0 dev enxe4b97aef38eb**
+Les noms comme eth0 sont remplacés par la convention de nommage **ifname** car 
+
+iwconfig (déprécié)
+-------------------
 
 La commande **iwconfig** permet de configurer les cartes wifi.
 
-ifup/ifdown
------------
+ifup/ifdown (déprécié)
+----------------------
 
 La commande **ifup** permet de démarrer une interface réseau en fonction de la configuration indiquée dans */etc/network/interfaces*
+Remplacée par **ip link set NOM_PERIPHERIQUE up**
 
 La commande **ifdown** permet de l'arrêter.
+Remplacée par **ip link set NOM_PERIPHERIQUE down**
 
-route
------
+route (déprécié)
+----------------
 
 La commande **route** permet de consulter et de fixer l'adresse de la passerelle : ::
 
  root@luciole:~# route add default gw 192.168.0.1
+
+Remplacée par **ip route**
 
 En consultation elle est identique à **netstat -nr**
 
@@ -3135,28 +3395,13 @@ Les interfaces virtuelles
 
 La création d'interface virtuelle permet de donner plusieurs adresses IP à une même carte réseau.
 
-C'est indispensable si plusieurs sites web doivent être sécurisés par certificat *X509* sur la même machine.
+Cela permet par exemple de créer une adresse ip fixe pour une entrée DNS tout en la redirigeant via l'interface du datacenter vers une autre ip.
 
-Exemple : ::
+La ligne de commande est du type : ::
 
-  michaellaunay@serveurdbx4:~$ cat /etc/network/interfaces
-  auto lo
-  iface lo inet loopback
+  ip link add link DEVICE name NAME type vlan
 
-  auto eth0
-  iface eth0 inet static
-          address 88.191.88.173
-          netmask 255.255.255.0
-          network 88.191.88.0
-          broadcast 88.191.88.255
-          gateway 88.191.88.1
-
-  auto eth0:1
-  iface eth0:1 inet static
-          address 88.191.223.152
-          netmask 255.255.255.0
-
-Ici nous avons l'interface eth0 qui possède une adresse 88.191.88.173 et 88.191.223.152
+Voir https://www.systutorials.com/docs/linux/man/8-ip-link/
 
 Fixer le nom de machine
 -----------------------
@@ -3286,6 +3531,11 @@ ngrep
 
 La commande **ngrep** permet de n'afficher les paquets réseaux qu'à la condition qu'ils contiennent la chaîne cherchée.
 
+wireshark
++++++++++
+
+Permet d'osculter les paquets réseaux comme ceux enregistrés par **tcpdump**.
+
 Gestion des paquetages et installation de logiciels sous Ubuntu
 ===============================================================
 
@@ -3317,21 +3567,20 @@ Toutefois il faudra télécharger la clé d'authentification du nouveau dépôt 
 
   wget -q http://fr.packages.medibuntu.org/medibuntu-key.gpg -O- | sudo apt-key add -
 
-Puis mettre à jour le cache avec **apt-get update**
+Puis mettre à jour le cache avec **apt update**
 
 Installation de paquets
 -----------------------
 
-La commande **apt-get install $NOM_PAQUET** permet d'installer des paquets : ::
+La commande **apt install $NOM_PAQUET** permet d'installer des paquets : ::
 
-  apt-get install libdvdcss2 libdvdread4 mkisofs dvdbackup dvdauthor transcode lsdvd
-  apt-get install libavcodec-unstripped-52 libavdevice-unstripped-52 libavformat-unstripped-52
-  apt-get install libavutil-unstripped-49 libpostproc-unstripped-51 libswscale-unstripped-0 ffmpeg
-
+  apt install libdvdread7 mkisofs dvdbackup dvdauthor oggvideotools ffmpeg
+  apt install libavcodec-58 libavdevice58 libavformat58
+  
 Suppression de paquets
 ----------------------
 
-Pour supprimer un paquet on utilise **apt-get remove $NOM_PAQUET**.
+Pour supprimer un paquet on utilise **apt remove $NOM_PAQUET**.
 
 Informations sur les paquetages
 -------------------------------
@@ -3341,15 +3590,15 @@ Pour avoir la liste des paquets installés **dpkg -l**.
 Recherche de paquetages
 -----------------------
 
-La commande **apt-cache search $MOT_CLE** permet de chercher un paquet à partir d'un mot de sa description.
+La commande **apt search $MOT_CLE** permet de chercher un paquet à partir d'un mot de sa description.
 
 Mise à jour des paquetages
 --------------------------
 
 Pour mettre à jour la distribution : ::
 
-  apt-get update
-  apt-get dist-upgrade
+  apt update
+  apt upgrade
 
 Interfaces graphiques
 ---------------------
@@ -3374,18 +3623,18 @@ Il supporte le protocole https et est donc utilisé pour servir les applications
 Installation
 ------------
 
-La commande **apt-get install apache2** permet d'utiliser une version récente d'Apache.
+La commande **apt install apache2** permet d'utiliser une version récente d'Apache.
 
 Configuration
 -------------
 
-Nous allons créer une petit site *www.monsite.com* et allons voirs comment le sécuriser.
+Nous allons créer un petit site *www.monsite.com* et nous allons voir comment le sécuriser.
 
-Dans un premier temps nous allons ajouter sur le poste client les entrées www.monsite.com et ssl.monsite.com pour réaliser des tests sans passer par le DNS.
+Dans un premier temps nous allons ajouter sur le poste client les entrées www.monsite.com pour réaliser des tests sans passer par le DNS.
 
 Ajout de ssl.monsite.com /etc/hosts : ::
 
-  192.168.0.7 www.monsite.com ssl.monsite.com
+  192.168.0.7 www.monsite.com
 
 Puis sur le serveur nous allons activer les modules utilisés pour la sécurisation : ::
 
@@ -3395,11 +3644,11 @@ Cette commande créer 2 liens dans /etc/apache2/mods-enabled pointant vers ../mo
 
 Pour ajouter un site, il suffit de créer un fichier de configuration dans */etc/apache2/sites-available* puis de l'activer : ::
 
-  root@monserveur:~# vim /etc/apache2/sites-available/ssl.monsite.com
+  root@monserveur:~# vim /etc/apache2/sites-available/www.monsite.com
 
     <VirtualHost *:443>
       ServerAdmin michaellaunay@ecreall.com
-      ServerName ssl.monsite.com
+      ServerName www.monsite.com
       SSLEngine on
       SSLCipherSuite ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP
       SSLCertificateFile /etc/apache2/ssl/server.crt
@@ -3409,14 +3658,25 @@ Pour ajouter un site, il suffit de créer un fichier de configuration dans */etc
                     AllowOverride None
                     Order allow,deny
                     allow from all
-            </Directory>
+      </Directory>
+      DocumentRoot /var/www
+    </VirtualHost>
 
+    <VirtualHost *:80>
+      ServerAdmin michaellaunay@ecreall.com
+      ServerName www.monsite.com
+      <Directory /var/www/>
+                    Options Indexes FollowSymLinks MultiViews
+                    AllowOverride None
+                    Order allow,deny
+                    allow from all
+      </Directory>
       DocumentRoot /var/www
     </VirtualHost>
 
 Puis d'activer le site : ::
 
-  root@monserveur:~# a2ensite ssl.monsite.com
+  root@monserveur:~# a2ensite www.monsite.com
   root@monserveur:~# /etc/init.d/apache2 restart
 
 Sécurisation
@@ -3511,7 +3771,7 @@ Sont utilisation est libre mais si les sources de l'application réalisée ne so
 Installation
 ------------
 
-La commande **apt-get install mysql-server** permet d'installer le serveur contenant la base de données alors que **apt-get install mysql-client** se contentera d'installer le client.
+La commande **apt install mysql-server** permet d'installer le serveur contenant la base de données alors que **apt-get install mysql-client** se contentera d'installer le client.
 
 Configuration
 -------------
@@ -3542,6 +3802,25 @@ Toutefois, il est possible de disposer des avantages du chiffrement sans passer 
   #remove SSLCertificateFile and update SSLCertificateKeyFile with
   SSLCertificateKeyFile /etc/apache2/ssl/ssl.monsite.com.pem
   root@monserveur:~# /etc/init.d/apache2 restart
+
+Mais les certificats autosignés ont l'inconvéniant de ne pas avoir d'autorité connue et donc d'être refusé.
+
+Nous pouvons utiliser les service let's encrypt qui poermette d'avoir un 
+
+Configuration de Let's Encrypt pour générer nos certificats ssl :
+
+    apt install apache2 #Si ce n'est pas fait, vérifier que le port http est ouvert sur ufw !
+    apt install certbot
+    certbot certonly --webroot -w /var/www/html -d URL_De_Mon_Site
+
+Vérification de la génération :
+
+    root@triticale:~# openssl x509 -noout -text -in /etc/letsencrypt/live/URL_De_Mon_Site/fullchain.pem | grep "Not After"
+            Not After : Aug  5 11:25:06 2020 GMT
+
+Modifier le cron de renouvellement "/etc/cron.d/certbot" et mettre :
+    
+    0 */12 * * * root test -x /usr/bin/certbot -a \! -d /run/systemd/system && perl -e 'sleep int(rand(43200))' && certbot -q renew --apache
 
 Liens :
 
