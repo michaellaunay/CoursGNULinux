@@ -31,12 +31,12 @@ Objectif
 
 Cette formation a pour but de fournir les bases indispensables à l'utilisation et à l'administration des systèmes GNU/Linux.
 
-La formation priviliégie la distribution Ubuntu.
+La formation privilégie la distribution Ubuntu.
 
 Introduction
 ============
 
-En 1991, l'étudiant Finlandais Linus Torvalds publie sur internet l'intégralité du code source d'un noyau Unix qu'il a écrit en C et en assembleur et qui fonctionne sur PC AT 386(486).
+En 1991, l'étudiant finlandais Linus Torvalds publie sur internet l'intégralité du code source d'un noyau Unix qu'il a écrit en C et en assembleur et qui fonctionne sur PC AT 386(486).
 
 Depuis cette date GNU/Linux ne cesse d'évoluer. Il occupe en 2015 1,6% [#]_ du marché mondial des systèmes d'exploitation pour ordinateur personnel, plus de 60% des serveurs web, prés de 75% du Cloud et plus de 80% des smartphones (Android étant basé sur GNU/Linux) et est en autre utilisé en France par la Gendarmerie (Ubuntu) et par l'Assemblée Nationale (Ubuntu), dans la Freebox, par l'entreprise Google (Android) et la fondation Wikipedia (serveur Ubuntu).
 
@@ -63,7 +63,7 @@ En 1971 Unics devient Unix et est alors récrit en C spécialement développé p
 
 1977 Bill Joy alors étudiant à l'UCB réalise la première version de BSD (Berkeley Software Distribution).
 
-A partir de là, les éditions se succèdent (SYSTEM III puis V en 1985 et SVR2 à SVR4 pour AT&T, 4.2BSD pour l'UCB en 1983).
+À partir de là, les éditions se succèdent (SYSTEM III puis V en 1985 et SVR2 à SVR4 pour AT&T, 4.2BSD pour l'UCB en 1983).
 
 La DARPA finance BSD ce qui aboutit à l'intégration de la première pile TCP/IP en 1983 qui sera intégrée telle quel dans Windows en raison de sa licence permissive.
 
@@ -89,15 +89,15 @@ Janvier 2009 version 7.1 de FreeBSD
 
 La Free Software Foundation (FSF), le projet GNU
 
-1983 Richard Stallman (RMS) qui travaillait au laboratoire d'intelligence artificiel du MIT crée le projet GNU.
+1983 Richard Stallman (RMS) qui travaillait au laboratoire d'intelligence artificielle du MIT crée le projet GNU.
 
 GNU est un acronyme récursif (GNU's Not Unix).
 
 GNU a pour objectif de fournir un système d'exploitation compatible avec UNIX sans dépendre des ayant droits (AT&T et BSD) dont RMS récuse les licences.
 
-1985 création de la Free Software Foundation (FSF) organisation Américaine à but non lucratif pour le soutien du logiciel libre.
+1985 création de la Free Software Foundation (FSF) organisation américaine à but non lucratif pour le soutien du logiciel libre.
 
-1987 Rob Pike, Ken Thompson et Dennis Ritchie débute les travaux de Plan 9 qui inspirera les UNIX modernes.
+1987 Rob Pike, Ken Thompson et Dennis Ritchie débutent les travaux de Plan 9 qui inspirera les UNIX modernes.
 
 1989 écriture de la GNU GPL (GNU Genral Public Licence ou  GPL) version 1.
 
@@ -110,7 +110,7 @@ GNU a pour objectif de fournir un système d'exploitation compatible avec UNIX s
 La licence BSD versus la licence GPL
 ------------------------------------
 
-Il existe presque plusieurs centaines de licences appliquées aux logiciels libres, mais dans la majorité des cas on peut les séparer en deux catégories selon qu'elles sont compatible avec la licence BSD ou la licence GPL.
+Il existe presque plusieurs centaines de licences appliquées aux logiciels libres, mais dans la majorité des cas on peut les séparer en deux catégories selon qu'elles sont compatibles avec la licence BSD ou la licence GPL.
 
 La licence GPL
 --------------
@@ -129,9 +129,9 @@ Le gauche d'auteur
 
 Le code n'est pas dans le domaine public.
 
-Il est protéger par le droit d'auteur.
+Il est protégé par le droit d'auteur.
 
-L'exécution du logiciel et la diffusion des sources modifiées n'est possible qu'à la condition de respecter les obligations de la licence.
+L'exécution du logiciel et la diffusion des sources modifiées ne sont possibles qu'à la condition de respecter les obligations de la licence.
 
 Notamment :
 
@@ -143,7 +143,7 @@ Notamment :
 
 Puisque le copyleft des versions 1 et 2 de la GPL ne s'appliquait pas aux entrées sorties du programme, il était possible dans le cas par exemple d'un service web de contourner l'obligation de diffusion des sources. De même, il suffisait de transformer tout code GPL en bibliothèque dynamique pour ne pas propager la GPL aux extensions apportées à un programme existant.
 
-Cette faille a été corrigé avec la version GPL v3 qui accorde aux utilisateurs d’un programme accédé par réseau les mêmes droits que les utilisateurs d’un programme installé localement.
+Cette faille a été corrigée avec la version GPL v3 qui accorde aux utilisateurs d’un programme accédé par réseau les mêmes droits que les utilisateurs d’un programme installé localement.
 
 La GPL a été adaptée au droit Français par le CEA, CNRS, INRIA sous le nom de CECILL. Sa version 2 est compatible avec la licence publique générale GNU.
 
@@ -163,16 +163,16 @@ GNU/Linux
 ---------
 
 Linux est développé sur internet par des milliers de contributeurs distants de nationalité et de culture différentes.
-C'est l'un des projets collaboratifs les plus important.
+C'est l'un des projets collaboratifs les plus importants.
 
 
 Les distributions
 =================
 
-Qu'est ce qu'un noyau ?
+Qu'est-ce qu'un noyau ?
 -----------------------
 
-Pour définir le noyau nous pouvons nous baser sur les services qu'il fournit :
+Pour définir le noyau, nous pouvons nous baser sur les services qu'il fournit :
  Abstraction du matériel (fourniture d'interface)
  Gestion des interruptions
  Gestion des tâches et autres logiciels
@@ -180,7 +180,7 @@ Pour définir le noyau nous pouvons nous baser sur les services qu'il fournit :
  Gestion des droits d'accès
 
 Historiquement on distingue les micro-noyaux des noyaux monolithiques.
-Cette séparation vient de ce que le noyau est sensé gérer (kernel space) et donc de ce qui est de la responsabilité des utilisateurs (user space). Dans les faits aujourd'hui même les noyaux monolithiques comme Linux sont modulaires et ne charge les modules que si nécessaire pendant l'utilisation.
+Cette séparation vient de ce que le noyau est censé gérer (kernel space) et donc de ce qui est de la responsabilité des utilisateurs (user space). Dans les faits aujourd'hui même les noyaux monolithiques comme Linux sont modulaires et ne charge les modules que si nécessaire pendant l'utilisation.
 
 
 Qu'est ce qu'une distribution ?
@@ -253,21 +253,21 @@ Le choix d'une distribution doit se faire en fonction :
  * de la pérennité désirée,
  * du niveau de sécurisation attendu.
 
-Une fois ces exigences connues, il ne reste plus qu'à se procurer les images des distributions adéquates soit directement sur les sites des distributions, soit sur un miroir.
+Une fois ces exigences connues, il ne reste plus qu'à se procurer les images des distributions adéquates, soit directement sur les sites des distributions, soit sur un miroir.
 
 Installation de GNU/Linux Ubuntu version pc de bureau
 -----------------------------------------------------
 
 Les versions desktop d'Ubuntu sont fournies avec l'environnement graphique Gnome, des outils de maintenance, la suite open-office, le lecteur de courrier evolution, le logiciel de dessin Gimp, le navigateur firefox, un client vnc permettant de se connecter à distance, des jeux, des logiciels multimédias.
 
-Elles conviennent parfaitement à un poste de travail mais sont à proscrire pour un serveur en raison du nombre de services fonctionnant par défaut.
+Elles conviennent parfaitement à un poste de travail, mais sont à proscrire pour un serveur en raison du nombre de services fonctionnant par défaut.
 
 Installation d'Ubuntu 20.04
 ++++++++++++++++++++++++++
 
 Choisir l'image "iso" d'Ubuntu correspondant à sa machine à l'adresse https://releases.ubuntu.com/20.04/
 
-La différence entre Desktop et Server est que dans la Desktop vous aurrez tout l'environnement graphique, alors que la version Server suppose une utilisation en ligne de commande.
+La différence entre Desktop et Server est que dans la Desktop vous aurez tout l'environnement graphique, alors que la version Server suppose une utilisation en ligne de commande.
 
 Créer un disque d'amorçage en suivant https://help.ubuntu.com/community/BurningIsoHowto
 
@@ -289,7 +289,7 @@ Puis il affiche différents écrans que nous allons expliquer ici.
        Choix de la langue du live usb.
        Et choix entre tester Ubuntu ou lancer l'istallation.
 
-Si vous cliquez sur le bouton "Essayer Ubuntu" vous pourrez tester Ubuntu sans rien installer sur votre machine, les logiciels utiliser seront ceux présents sur la clé usb (vou pourrez en installer d'autres).
+Si vous cliquez sur le bouton "Essayer Ubuntu" vous pourrez tester Ubuntu sans rien installer sur votre machine, les logiciels utilisés seront ceux présents sur la clé usb (vou pourrez en installer d'autres).
 C'est un excellent moyen de dépanner une machine pour par exemple accéder à vos disques lorsque votre l'OS de votre machine ne fonctionne plus.
 
 Étape 02
@@ -300,7 +300,7 @@ C'est un excellent moyen de dépanner une machine pour par exemple accéder à v
 
        Choix de la disposition du clavier.
 
-Les différents choix déterminent comment vous aller pouvoir saisir les caractères comme œ.
+Les différents choix déterminent comment vous allez pouvoir saisir les caractères comme œ.
 Par exemple avec le choix de clavier "alt." il suffira de faire "Alt Gr" "o", pour avoir œ.
 Vous pouvez tester les touches du clavier dans la zone de saisie du texte.
 
@@ -323,11 +323,11 @@ Demander la mise à jour lors de l'installation suppose d'être relié à intern
 
        Choix du partitionnement si l'on clique sur "autre chose" on pourra créer ses partitions.
 
-Par défaut le disque sera formaté et une partion racine sera créée ainsi qu'une partition swap.
-La partition de swap est utilisée pour stocker temporairement la mémoire d'un programme qui s'éxécutait, mais qui n'est pas celui en cours d'utilisation.
+Par défaut le disque sera formaté et une partition racine sera créée ainsi qu'une partition swap.
+La partition de swap est utilisée pour stocker temporairement la mémoire d'un programme qui s'exécutait, mais qui n'est pas celui en cours d'utilisation.
 Par exemple si vous n'avez que très peu de mémoire et que vous lancez plusieurs programmes, celui avec lequel vous interagissez sera en mémoire et les autres peuvent être dans le swap.
 
-Si votre swap a la même taille que votre mémoire vive vous pourrez "hiberner" votre ordinateur, ainsi toute la mémoire vive sera copiée dans le swap et l'ordinateur sera éteint, lorsqu'il sera rallumé tout le swap sera recopié en mémoire vive et les programmes reprendront là où ils en étaint.
+Si votre swap a la même taille que votre mémoire vive vous pourrez "hiberner" votre ordinateur, ainsi toute la mémoire vive sera copiée dans le swap et l'ordinateur sera éteint, lorsqu'il sera rallumé tout le swap sera recopié en mémoire vive et les programmes reprendront là où ils en éteint.
 
 C'est pour cela qu'il est intéressant de créer et paramétrer ses partitions et au minimum de créer une partition "/home" pour préserver le contenu de ses données en cas de crash sévère de l'OS, nous allons voir comment partitionner le disque.
 
@@ -342,9 +342,9 @@ Nous détaillerons le partitionnement ci-après.
        Ubuntu propose d'utiliser LVM.
 
 LVM (Logical Volume Manager) est un gestionnaire de volumes logiques qui vous permettra de créer des partitions virtuelles afin de pouvoir les retailler ou d'en créer de nouvelles.
-Linux crée alors une couche intermédiaire entre le(s) disque(s) physique(s) et l'OS, c'est dans cette couche virtuelle que vous aurrez vos partitions virtuelles qui seront écrites dans la partition réelle.
-Toutefois si la partition physique est habimée on pert les partitions virtuelles écrites dessus, c'est pourquoi il faut faire des copies de sauvegardes ou avoir des disques montés en raid.
-Vous pouvez également chiffrer la partion LVM.
+Linux crée alors une couche intermédiaire entre le(s) disque(s) physique(s) et l'OS, c'est dans cette couche virtuelle que vous aurez vos partitions virtuelles qui seront écrites dans la partition réelle.
+Toutefois si la partition physique est abîmée, on pert les partitions virtuelles écrites dessus, c'est pourquoi il faut faire des copies de sauvegardes ou avoir des disques montés en raid.
+Vous pouvez également chiffrer la partition LVM.
 
 Étape 06
 ++++++++
@@ -354,7 +354,7 @@ Vous pouvez également chiffrer la partion LVM.
 
        Choix du fuseau horaire.
 
-Si vous êtes en France métropolitaine choisissez le fuseau passant par la France.
+Si vous êtes en France métropolitaine, choisissez le fuseau passant par la France.
 
 Étape 07
 ++++++++
@@ -364,7 +364,7 @@ Si vous êtes en France métropolitaine choisissez le fuseau passant par la Fran
 
        Création du 1er compte utilisateur.
 
-Sous Ubuntu cet utilisateur aura la particularité de pouvoir mettre à jour le système et plus généralement de pouvoir devenir super utilisaterur (root).
+Sous Ubuntu cet utilisateur aura la particularité de pouvoir mettre à jour le système et plus généralement de pouvoir devenir super utilisateur (root).
 
 Étape 08
 ++++++++
@@ -385,7 +385,7 @@ En fin d'installation un écran vous invite à retirer la clé usb et à redéma
 
 Une fois redémarrer saisissez votre identifiant et votre mot de passe (ceux donnés à l'étape 07)
 
-Vous pouvez alors associer votre machine à vos compte google et microsoft pour par exemple voir vos agendas et recevoir vos notifications.
+Vous pouvez alors associer votre machine à vos comptes google et microsoft pour par exemple voir vos agendas et recevoir vos notifications.
 
 .. figure:: ./images_ubuntu_20_04/18_ConfigurationComptesEnLigne.png
        :align: center
@@ -400,7 +400,7 @@ Vous pouvez associer votre machine au mécanisme livepatch de Canonical l'édite
 
        Configuration de votre compte Ubuntu pour le live patch.
 
-Vous pouvez aider Canonical à corriger les bogues en autorisant la remonter des incidents.
+Vous pouvez aider Canonical à corriger les bogues en autorisant la remontée des incidents.
 
 .. figure:: ./images_ubuntu_20_04/20_UbuntuWatch.png
        :align: center
@@ -424,13 +424,13 @@ On peut installer immédiatement les applications compatibles avec Ubuntu 20.04
 Étape alternative 04 bis
 ++++++++++++++++++++++++
 
-Le partitionnement est l'étape la plus importante car il est difficile de corriger les erreurs.
+Le partitionnement est l'étape la plus importante, car il est difficile de corriger les erreurs.
 
-Pour les serveurs cette étape influence directement la sécurité du système (/var/lib, /var/log, /var/spool, /var/www, /tmp), la sécurité est alors physique et ne repose pas seulement sur le mécanisme des quotas. De plus, l'analyse post-mortem d'une partition dédiée est plus facile que celle d'un énorme fourretout.
+Pour les serveurs cette étape influence directement la sécurité du système (/var/lib, /var/log, /var/spool, /var/www, /tmp), la sécurité est alors physique et ne repose pas seulement sur le mécanisme des quotas. De plus, l'analyse post-mortem d'une partition dédiée est plus facile que celle d'un énorme fourre-tout.
 
 Au minimum, il est recommandé d'avoir une partition /, /home et swap.
 
-Pour activer le partitionnement manuel il suffit de cocher sur le bouton "Autre chose" à l'étape 04.
+Pour activer le partitionnement manuelle, il suffit de cocher sur le bouton "Autre chose" à l'étape 04.
 
 Il faut alors choisir un disque.
 
@@ -444,7 +444,7 @@ Il faut alors choisir un disque.
 
        Création de la table de partition
 
-Le bouton "+" permet de créer de nouvelle partion
+Le bouton "+" permet de créer de nouvelle partition
 
 
 Dans notre cas nous allons créer 3 partitions /, /home et swap.
@@ -454,8 +454,8 @@ Dans notre cas nous allons créer 3 partitions /, /home et swap.
 
        Création de la racine "/"
 
-Sur le même principe on crée "/home"
-On peut cocher la case formater pour purger le disque de ce qu'il contenait avant.
+Sur le même principe, on crée "/home"
+On peut cocher la case "formater" pour purger le disque de ce qu'il contenait avant.
 
 Puis vient la partition de "swap".
 
@@ -477,16 +477,16 @@ Installation de GNU/Linux Ubuntu en version serveur
 
 La philosophie des distributions serveur est moins il y a de programmes installés plus le système est stable et moins il y a de faille de sécurité.
 
-En conséquence les interfaces graphiques ne sont disponible qu'en option et le moyen privilégié d'administrer le système est la ligne de commande.
+En conséquence, les interfaces graphiques ne sont disponibles qu'en option et le moyen privilégié d'administrer le système est la ligne de commande.
 
-Pour un serveur il vaut mieux opter pour les version LTS (Long Term Support) des distributions.
+Pour un serveur il vaut mieux opter pour les versions LTS (Long Term Support) des distributions.
 
-Les différences entre Debian server et Ubuntu server sont liées aux versions du noyau et des bibliothèques utilisées, aux dépôts et fichiers de configurations par défaut.
+Les différences entre "Debian server" et "Ubuntu server" sont liées aux versions du noyau et des bibliothèques utilisées, aux dépôts et fichiers de configurations par défaut.
 
 Attention
 +++++++++
 
-Sous Ubuntu, il n'est pas possible de créer une partition /var car le système y stocke des fichiers au démarrage, alors que les points de montage ne sont pas encore installés, ce qui provoque un plantage du système difficile à comprendre.
+Sous Ubuntu, il n'est pas possible de créer une partition /var, car le système y stocke des fichiers au démarrage, alors que les points de montage ne sont pas encore installés, ce qui provoque un plantage du système difficile à comprendre.
 
 Travaux pratiques
 +++++++++++++++++
@@ -507,14 +507,14 @@ Administration graphique du système:
  * Configuration du réseau (Système (Flèche descendante de la barre de menus, à droite) > Wifi ou Filaire (non) connecté ou Administration (Roue dentée) > Wifi ou Réseau)
  * Synaptic (Pour l'installer https://doc.ubuntu-fr.org/synaptic ): l'installation de logiciels (Système > Administration > Gestionnaire de paquets Synaptic)
  * configuration des dépôts (Rechercher depuis le menu Activité -> Logiciels & mises à jour)
- * personalisations basiques https://doc.ubuntu-fr.org/personnalisation_basique
+ * personnalisations basiques https://doc.ubuntu-fr.org/personnalisation_basique
  * la configuration de Gnome (installer gnome-tweaks )
  * les applets
  * la résolution graphique
  * les bureaux virtuels
  * les services (Système > Administration > Services)
 
-Les logiciels d'administration ne sont que des sur-couches graphiques (front-end) qui appellent les commandes en ligne, par conséquent leur possibilités sont moindres.
+Les logiciels d'administration ne sont que des surcouches graphiques (front-end) qui appellent les commandes en ligne, par conséquent leurs possibilités sont moindres.
 
 L'aide et la communauté
 =======================
@@ -712,7 +712,7 @@ Historiquement la première version est **sh** (1977 écrit par Stephen Bourne) 
 
 Bash est l'interpréteur de commande par défaut des Unix libres et de Mac OS X.
 
-Pour connaitre la version de bash en cours d'utilisation::
+Pour connaître la version de bash en cours d'utilisation::
 
   michaellaunay@luciole:~$ echo $BASH
   /bin/bash
@@ -774,7 +774,7 @@ Lien : http://fr.wikipedia.org/wiki/Bourne-Again_shell
 Les fichiers de ressources et de configuration de bash
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Au lancement du shell celui-ci détermine s'il a été appelé de façon interactive ou pour exécuter un script ou en tant que shell de login. En fonction de la nature de son lancement il exécutera plusieurs fichiers lui permettant de ce paramétrer.
+Au lancement du shell celui-ci détermine s'il a été appelé de façon interactive ou pour exécuter un script ou en tant que shell de login. En fonction de la nature de son lancement, il exécutera plusieurs fichiers lui permettant de ce paramétrer.
 
 Scripts exécutés lors du lancement d'un shell interactif en ouverture de session (interactive login shell) : ::
 
@@ -805,7 +805,7 @@ Un petit exemple : ::
   michaellaunay@luciole:~$ BASH_ENV='/tmp/hello.sh' # on affecte la chaîne /tmp/hello.sh à la variable BASH_ENV
   michaellaunay@luciole:~$ export BASH_ENV # maintenant BASH_ENV sera accessible à toute commande exécutée depuis le shell courant
   michaellaunay@luciole:~$ echo "echo cuicui" > /tmp/oiseau.sh
-  michaellaunay@luciole:~$ bash /tmp/oiseau.sh # on exécute oiseau.sh avec bash car on n'a pas fait le chmod +x dessus
+  michaellaunay@luciole:~$ bash /tmp/oiseau.sh # on exécute oiseau.sh avec bash, car on n'a pas fait le chmod +x dessus
   coucou
   cuicui
 
@@ -849,7 +849,7 @@ Signification des variables d'environnement : ::
   TERM      # Le type de terminal
   USERNAME  # Le nom d'utilisateur
 
-Pour accéder au contenu d'une variable il suffit de la référencer en la précédent de **$**::
+Pour accéder au contenu d'une variable, il suffit de la référencer en la précédent de **$**::
 
   michaellaunay@luciole:~$ echo $HOME
   /home/michaellaunay
@@ -947,7 +947,7 @@ Pour créer une variable ou en modifier sa valeur il suffit de la définir : ::
   michaellaunay@luciole:~$ echo $PATH
   /home/michaellaunay/MesScripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-Pour supprimer une variable on peut utiliser **unset** : ::
+Pour supprimer une variable, on peut utiliser **unset** : ::
 
   michaellaunay@luciole:~$ unset BASH_ENV
 
@@ -984,7 +984,7 @@ La commande **test** permet de tester une expression et de retourner 0 si le tes
   michaellaunay@luciole:~$ echo $?
   1
 
-On peut aussi remplacer **test** par des crochets mais il faut alors encadrer les crochets par des espaces : ::
+On peut aussi remplacer **test** par des crochets, mais il faut alors encadrer les crochets par des espaces : ::
 
   michaellaunay@luciole:~$ [ 1 = 2 ]
   michaellaunay@luciole:~$ echo $?
@@ -1047,7 +1047,7 @@ Exemple : ::
 La boucle for
 +++++++++++++
 
-Pour chaque élément d'un ensemble on exécute une commande : ::
+Pour chaque élément d'un ensemble, on exécute une commande : ::
 
   michaellaunay@luciole:~$ NORD="Lille Roubaix"
   michaellaunay@luciole:~$ CENTRE="Paris Chartres"
@@ -1066,7 +1066,7 @@ Pour chaque élément d'un ensemble on exécute une commande : ::
 Le choix multiple (case)
 ++++++++++++++++++++++++
 
-Permet de réaliser un branchement. Ne pas oublier les deux point-virgules à la fin d'un cas : ::
+Permet de réaliser un branchement. Ne pas oublier les deux points-virgules à la fin d'un cas : ::
 
   michaellaunay@luciole:~$ VAR=Lille
   michaellaunay@luciole:~$ case $VAR in
@@ -1086,7 +1086,7 @@ Permet de réaliser un branchement. Ne pas oublier les deux point-virgules à la
 Les opérateurs && et ||
 +++++++++++++++++++++++
 
-L'opérateur **&&** permet d'exécuter la commande suivante si la commande précédente réussie (retourne 0) : ::
+L'opérateur **&&** permet d'exécuter la commande suivante si la commande précédente réussit (retourne 0) : ::
 
   michaellaunay@luciole:~$ grep refusée /var/log/user.log > /tmp/connexion.txt && vim /tmp/connexion.txt
 
@@ -1116,17 +1116,17 @@ Par exemple dans la ligne suivante : ::
 
   ls -1 | xargs -i echo mv {} {} | sed -e "s/Ubuntu20.04_//2" | bash
 
-"ls -1" affiche le contenu du répertoire courrant, une ligne par fichier.
+"ls -1" affiche le contenu du répertoire courant, une ligne par fichier.
 
 Le résultat est envoyé à **xargs** qui pour chaque ligne va créer une chaîne de caractères "mv contenu_ligne contenu_ligne"
 
-Le résultat est envoyé à **sed** qui supprime la seconde occurence de la chaine "Ubuntu20.04" qu'il rencontre.
+Le résultat est envoyé à **sed** qui supprime la seconde occurence de la chaîne "Ubuntu20.04" qu'il rencontre.
 
-Le résultat est exécuter par bash en transformant la chaine de caractère reçu en ligne de commande.
+Le résultat est exécuté par bash en transformant la chaîne de caractères reçu en ligne de commande.
 
 Ici sed permet de renommer les fichiers de type Ubuntu20.04_00_EssayerOuInstaller.png en 00_EssayerOuInstaller.png.
 
-À cette ligne complexe, on préfèrera renommer de façon plus élégante et rapide avec la ligne de cmd : ::
+À cette ligne complexe, on préférera renommer de façon plus élégante et rapide avec la ligne de cmd : ::
 
   for filename in *; do mv $filename ${filename/Ubuntu20.04_/}; done
 
@@ -1139,7 +1139,7 @@ L'expansion de paramètre
 Liste des Filtres pour l'expansion de paramètre du Shell https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html : ::
 
   ${parameter} sera remplacé par la valeur de parameter
-  michaellaunay@luciole:~$ CMPT=$(( 1 + 20 / 2 )) # Réalise l'opération puis affecte CMPT pour les opérations possible voir https://www.gnu.org/software/bash/manual/html_node/Shell-Arithmetic.html#Shell-Arithmetic
+  michaellaunay@luciole:~$ CMPT=$(( 1 + 20 / 2 )) # Réalise l'opération puis affecte CMPT pour les opérations possibles voir https://www.gnu.org/software/bash/manual/html_node/Shell-Arithmetic.html#Shell-Arithmetic
   michaellaunay@luciole:~$ echo ${CMPT}
   11
   michaellaunay@luciole:~$ name[1]='un' # équivalent à 'declare -n name' voir https://www.gnu.org/software/bash/manual/html_node/Arrays.html#Arrays
@@ -1173,7 +1173,7 @@ Cette ligne s'appelle le shebang_.
 Les fonctions
 +++++++++++++
 
-Une fonction est une portion de code nommée réutilisable qui a accès à toutes les variables du script ou du shell d'où elle est appelée : ::
+Une fonction est une portion de code nommée, réutilisable qui a accès à toutes les variables du script ou du shell d'où elle est appelée : ::
 
   michaellaunay@luciole:~$ function carré() {
   > echo $[ $1 * $1]
@@ -1298,7 +1298,7 @@ Un **chemin relatif** est un chemin qui permet de se déplacer jusqu'au fichier 
 
 **.** indique le répertoire courant alors que **..** indique le parent.
 
-Un **chemin absolu** est un chemin qui commence à la racine **/** de l'arborescence et énonce tous les sous répertoires jusqu'à la cible : ::
+Un **chemin absolu** est un chemin qui commence à la racine **/** de l'arborescence et énonce tous les sous-répertoires jusqu'à la cible : ::
 
   michaellaunay@luciole:~$ ls -l /etc/passwd
   -rw-r--r-- 1 root root 1583 2009-04-02 11:35 /etc/passwd
@@ -1340,7 +1340,7 @@ Archivage / Compression
 
 **gzip** permet de compresser et décompresser les fichiers au format gzip
 
-**tar** avec les options **cf** permet d'archiver une arborescence en conservant les informations de propriétaire, les dates de création, les permissions d'accès. Avec les options **xf** permet d'extraire une archive.
+**tar** avec les options **cf** permet d'archiver une arborescence en conservant les informations de propriétaire, les dates de création, les permissions d'accès. Avec les options **xf**, permet d'extraire une archive.
 
 **tar cfz** permet de combiner **tar** et **gzip** en une commande.
 L'option  **--listed-incremental=nom_fichier.list** permet d'enregistrer un snapshot des fichiers archivés en vue de permettre des tar incrémentaux. C.f. https://doc.ubuntu-fr.org/tar#utilisation_en_archivage_incrementiel 
@@ -1376,7 +1376,7 @@ Les caractères spéciaux et les espaces peuvent être utilisés à la condition
 
 La taille des noms ne doit pas excéder 255 octets.
 
-Si l'on utilise des caractères accentués ou asiatique, le nombre de caractères maximal est inférieur à 255 car il faut 2 à 4 octets pour représenter un caractère autre que ASCII en `utf-8`_.
+Si l'on utilise des caractères accentués ou asiatiques, le nombre de caractères maximal est inférieur à 255, car il faut 2 à 4 octets pour représenter un caractère autre que ASCII en `utf-8`_.
 
 Tout fichier ou répertoire commençant par un **.** sera caché et accessible uniquement avec l'option **-a** de **ls**.
 
@@ -1421,16 +1421,16 @@ Ainsi : ::
         Le propriétaire n'a pas les droits d'exécuter ou de traverser (--x n'est pas positionné).
 
   second groupe de 3 lettres :
-    même signification que précédemment mais pour les groupes et sauf pour le SUID.
+    même signification que précédemment, mais pour les groupes et sauf pour le SUID.
     --s (SGID) indique qu'un utilisateur appartenant au groupe qui exécute le fichier usurpe les
         droits du groupe et que le groupe a les droits d'exécution.
     --S (SGID) indique qu'un utilisateur appartenant au groupe qui exécute le fichier usurpe les
         droits du groupe mais que le groupe n'a pas les droits d'exécuter ou de traverser.
 
   troisième groupe de 3 lettres :
-    même signification que précédemment mais pour tous les autres utilisateurs et sauf SGID
+    même signification que précédemment, mais pour tous les autres utilisateurs et sauf SGID
     --t (Sticky bit) Indique que les utilisateurs ont le droit de modifier le contenu du fichier
-        ou du répertoire mais pas de le supprimer.
+        ou du répertoire, mais pas de le supprimer.
         Les utilisateurs ont le droit d'exécution ou de traverser.
     --T (Sticky bit) Idem mais les utilisateurs n'ont pas le droit d'exécuter ou de traverser.
 
@@ -1442,21 +1442,21 @@ La taille du fichier unFichier est de 32ko.
 
 La date est celle de dernière modification. La date du dernier accès est accessible avec la commande **ls -u -l**.
 
-Les permissions d'un lien ne sont pas utilisées car ceux sont celles de la cible qui sont vérifiées.
+Les permissions d'un lien ne sont pas utilisées, car ceux sont celles de la cible qui sont vérifiées.
 
 Si les permissions sont suivies d'un + alors des ACL sont positionnées.
 
 Les types de fichiers
 +++++++++++++++++++++
 
-Outre les fichiers normaux, les répertoires et les liens il existe de nombreux fichiers spéciaux sous Unix.
+Outre les fichiers normaux, les répertoires et les liens, il existe de nombreux fichiers spéciaux sous Unix.
 
 En effet la philosophie d'Unix est de vouloir que tout soit fichier : ::
 
   Les périphériques sont manipulés comme s'ils étaient des fichiers.
   Les piles (fifo, lifo), les pipes nommées, sockets sont manipulés comme des fichiers.
   Les caractéristiques du système sont traduites à travers une arborescence.
-  Le noyau lui même est adressé à travers une arborescence qui permet de connaître son état et de le modifier.
+  Le noyau lui-même est adressé à travers une arborescence qui permet de connaître son état et de le modifier.
   Les processus sont eux même manipulés à travers une arborescence de fichiers.
 
 /dev
@@ -1497,9 +1497,9 @@ Dans ce cas tous les messages d'erreur ont été envoyés à la poubelle.
 
 **sysfs** est une arborescence virtuelle résidant en mémoire qui exporte des informations sur les périphériques.
 
-Cette arborescence offre plusieurs type de classement, une même information peut donc être trouvée de différente manière.
+Cette arborescence offre plusieurs types de classement, une même information peut donc être trouvée de différente manière.
 
-Les commandes telle que **lsusb** ou **lspci** vont chercher les informations dont elles ont besoin dans cette arborescence.
+Les commandes telles que **lsusb** ou **lspci** vont chercher les informations dont elles ont besoin dans cette arborescence.
 
 **/sys/class/** montre les périphériques regroupés en classes : ::
 
@@ -1560,10 +1560,10 @@ Exemple : ::
 Ainsi il est possible de récupérer le contenu de la mémoire du processus arrêté.
 Voir https://unix.stackexchange.com/questions/6301/how-do-i-read-from-proc-pid-mem-under-linux et https://unix.stackexchange.com/questions/6267/how-to-re-load-all-running-applications-from-swap-space-into-ram/6271#6271
 
-Enchainement et parallélisation des commandes
+Enchaînement et parallélisation des commandes
 ---------------------------------------------
 
-Toute commande doit être vue comme une boite noire ayant une entrée standard (stdin), une sortie standard (stdout) et une sortie d'erreur standard qui permet aussi d'afficher des informations (stderr).
+Toute commande doit être vue comme une boîte noire ayant une entrée standard (stdin), une sortie standard (stdout) et une sortie d'erreur standard qui permet aussi d'afficher des informations (stderr).
 
 Par défaut l'entrée standard est la saisie clavier et les sorties sont l'écran.
 
@@ -1600,7 +1600,7 @@ Les pipes
 
 Le pipe permet d'enchaîner les commandes, l'entrée d'une commande est alors le résultat de la commande précédente.
 
-L'intérêt est de pouvoir créer des comportements complexes à partir de commandes simples. Cette association peut à son tour être manipulée comme une boite noire et être inséré dans un pipe plus complexe.
+L'intérêt est de pouvoir créer des comportements complexes à partir de commandes simples. Cette association peut à son tour être manipulée comme une boite noire et être insérée dans un pipe plus complexe.
 
 Exemple::
 
@@ -1634,7 +1634,7 @@ Les options de bases : ::
 ssh
 ---
 
-La commande **ssh** permet de se connecter à distance sur un machine Unix ceci de façon chiffrée. Elle permet aussi d'ouvrir des tunnels chiffrés.
+La commande **ssh** permet de se connecter à distance sur une machine Unix ceci de façon chiffrée. Elle permet aussi d'ouvrir des tunnels chiffrés.
 
 L'ouverture d'un tunnel entre 2 machines est de la forme : ::
 
@@ -1652,14 +1652,14 @@ Me permet d'ouvrir un tunnel entre ma machine et le serveur plateforme en utilis
 
 Une fois mon mot de passe ou ma clé acceptée je me retrouve sur la machine distante et un tunnel est ouvert entre ma machine locale et plateforme.
 
-Si j'ouvre un navigateur sur ma machine et que je mets comme adresse http://localhost:9880, la communication est chiffrée et envoyée sur plateforme ou elle ressort sur le port 80 ce qui me permet d'accéder au serveur web de plateforme1 sans que quiconque ne sache ce que je fais.
+Si j'ouvre un navigateur sur ma machine et que je mets comme adresse http://localhost:9880, la communication est chiffrée et envoyée sur plateforme où elle ressort sur le port 80 ce qui me permet d'accéder au serveur web de plateforme1 sans que quiconque ne sache ce que je fais.
 
 Compréhension de ssh :
 
   - http://fr.wikipedia.org/wiki/Ssh
   - http://web.archive.org/web/20110907084212/http://www.unixgarden.com/index.php/administration-systeme/principes-et-utilisation-de-ssh
 
-Si la clé d'une machine à laquelle on se connecte habituellement a changé (cas d'une réinstallation), on peut être amennée a supprimer son entrée dans le fichier *~/.ssh/known_hosts*.
+Si la clé d'une machine à laquelle on se connecte habituellement a changé (cas d'une réinstallation), on peut être amené à supprimer son entrée dans le fichier *~/.ssh/known_hosts*.
 
 Le plus simple est alors d'utiliser la commande **ssh-keygen -R NomDeLaMachineDistante**.
 
@@ -1684,7 +1684,7 @@ Pour l'installer il suffit de faire :
 Modification du firewall pour permettre en entrée http, https, smtp :
 
     vim /etc/ufw/ufw.conf  # ENABLED=yes #si pas déjà positionné
-    ufw allow 22/tcp # Ouvre le port ssh à tous (on peut restreindre à certaines adresse)
+    ufw allow 22/tcp # Ouvre le port ssh à tous (on peut restreindre à certaines adresses)
     ufw allow 80/tcp # Ouverture de http
     ufw allow 443/tcp # Ouverture de https
     ufw allow 25/tcp # Ouverture de smtp (envoi des courriels)
@@ -1716,17 +1716,17 @@ Concepts
 
 Tous les utilisateurs ont un compte qui permet de les identifier.
 
-Les programmes fonctionnant en tâche de fond (services) sont lancés depuis des utilisateurs créés spécialement pour eux. Ainsi par exemple le serveur html **apache** est lancé depuis le compte **www-data**.
+Les programmes fonctionnant en tâche de fond (services) sont lancés depuis des utilisateurs créés spécialement pour eux. Ainsi, le serveur html **apache** est lancé depuis le compte **www-data**.
 
-Les utilisateurs peuvent appartenir à des groupes ce qui permettent de donner des droits à un ensemble d'utilisateurs très facilement.
+Les utilisateurs peuvent appartenir à des groupes ce qui permet de donner des droits à un ensemble d'utilisateurs très facilement.
 
 Tout fichier appartient à un utilisateur et à un groupe.
 
-La gestions des droits d'accès et d'exécution se résume alors à gérer les types d'accès en fonction du propriétaire, du groupe, et du reste des utilisateurs.
+La gestion des droits d'accès et d'exécution se résume alors à gérer les types d'accès en fonction du propriétaire, du groupe, et du reste des utilisateurs.
 
 Comme vu précédemment la commande **ls -l** permet d'afficher les attributs d'un fichier et donc ses permissions.
 
-A la création d'un fichier les droits sont automatiquement positionnés en fonction de la valeur par défaut du système et de **umask** : ::
+À la création d'un fichier, les droits sont automatiquement positionnés en fonction de la valeur par défaut du système et de **umask** : ::
 
   michaellaunay@luciole:~$ umask
   0022
@@ -1759,7 +1759,7 @@ On dispose aussi de la commande **chgrp** qui permet de changer le groupe d'un f
 Valeurs symboliques et octales des permissions
 ----------------------------------------------
 
-Les tableaux suivants donnent les équivalents symbolique octale des permissions.
+Les tableaux suivants donnent les équivalents symboliques octales des permissions.
 
 +----------------------+------------+--------+
 | DROIT                | LETTRE     | VALEUR |
@@ -1863,11 +1863,11 @@ On peut aussi vouloir associer de nouveaux attributs aux fichiers pour par exemp
 
 À l'inverse il est très difficile de restreindre les droits d'un utilisateur d'un groupe donné pour un seul fichier.
 
-C'est pour répondre ce besoin qu'ont été implémentée les Access Control List
+C'est pour répondre ce besoin qu'ont été implémentées les Access Control List
 
-Les ACLs repose sur le mécanisme des attributs étendus.
+Les ACLs reposent sur le mécanisme des attributs étendus.
 
-Pour les rendre disponibles il faut que la partition soit montée avec les options *acl* et *user_xattr* (modifier en conséquence */etc/fstab*).
+Pour les rendre disponibles, il faut que la partition soit montée avec les options *acl* et *user_xattr* (modifier en conséquence */etc/fstab*).
 
 Les fonctions d'accès aux *acl* sont **getfacl**, **setfacl**, **getfattr**, **setfattr**.
 
@@ -1876,9 +1876,9 @@ Voir aussi les man pages de *acl* et *attr(5)*.
 Attributs étendus
 -----------------
 
-Les attributs étendus permettent de gérer simplement les méta-données associées à un fichier.
+Les attributs étendus permettent de gérer simplement les métadonnées associées à un fichier.
 
-Ce sont ces attribut étendus qui recevront les informations liées aux ACLs.
+Ceux sont ces attributs étendus qui recevront les informations liées aux ACLs.
 
 Pour installer le paquet : **apt-get install attr**
 
@@ -1953,7 +1953,7 @@ Définition
 
 Un processus est l'instance d'un programme en cours de fonctionnement.
 
-Une application est constituées de un à plusieurs processus qui collaborent à la réalisation du travail demandé.
+Une application est constituée de un à plusieurs processus qui collaborent à la réalisation du travail demandé.
 
 Chaque processus s'exécute en parallèle des autres.
 
@@ -1965,7 +1965,7 @@ L'extension des bibliothèques dynamiques est *.so* (shared object).
 
 Un processus est lancé par un autre processus, ainsi il existe une relation père fils entre les processus.
 
-Le processus ancêtre de tout les autres est *init* qui est lancé lors du démarrage par le noyau.
+Le processus ancêtre de tous les autres est *init* qui est lancé lors du démarrage par le noyau.
 
 Son *PID* est 1.
 
@@ -2085,7 +2085,7 @@ Sous unix deux démons sont chargés de la planification des tâches : **atd** q
 La commande crontab
 -------------------
 
-**crond** est un service qui peu être programmé grace à la commande **crontab**.
+**crond** est un service qui peut être programmé grace à la commande **crontab**.
 
 **crontab -l** liste les commandes déjà programmées pour l'utilisateur courant.
 
@@ -2207,7 +2207,7 @@ Gestion des comptes
 Ajouter un utilisateur
 ++++++++++++++++++++++
 
-La création d'un nouvel utilisateur peut être faite à l'aide des commandes **useradd** ou **adduser** la seconde étant préférable car interactive.
+La création d'un nouvel utilisateur peut être faite à l'aide des commandes **useradd** ou **adduser** la seconde étant préférable, car interactive.
 
 Supprimer un utilisateur
 ++++++++++++++++++++++++
@@ -2928,11 +2928,11 @@ LVM
 
 **LVM** Logical Volume Manager s'intercale entre le noyau et les partitions des disques afin de permettre :
 
- * de redimensionner les partions,
+ * de redimensionner les partitions,
  * de concaténer les disque,
  * de réaliser des instantanés du système de fichier.
 
-Sa mise en place doit être faite dés le partionnement (type 8E).
+Sa mise en place doit être faite dés le partitionnement (type 8E).
 
 *GRUB* ne fonctionne pas avec *LVM* il faut donc soit utiliser *Lilo* soit réserver LVM à */home*.
 
@@ -3524,7 +3524,7 @@ Pour modifier de façon permanente la configuration réseau il faut éditer */et
 
 **ifconfig** est remplacé par la commande **ip addr** ou **ip a**
 **ifconfig eth0 192.168.0.11** est remplacé par **ip addr add 192.168.0.11/255.255.255.0 dev enxe4b97aef38eb**
-Les noms comme eth0 sont remplacés par la convention de nommage **ifname** car 
+Les noms comme eth0 sont remplacés par la convention de nommage **ifname** pour éviter le changement de nom lors du reboot.
 
 iwconfig (déprécié)
 -------------------
@@ -3995,7 +3995,7 @@ postgrey
 
 **postgrey** est un paquet de configuration de *postfix* permettant de différer la réception des mails des serveurs inconnus.
 
-Le but est d'éliminer les spams car les serveurs de spams ne prennent pas la peine de renvoyer un courrier dont la réception est différée.
+Le but est d'éliminer les spams, car les serveurs de spams ne prennent pas la peine de renvoyer un courrier dont la réception est différée.
 
 fail2ban
 ---------
