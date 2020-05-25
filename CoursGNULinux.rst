@@ -3484,10 +3484,13 @@ La commande ip permet d'afficher et modifier toutes les interfaces réseaux.
 
 ip addr : Affiche les adresses ip et toutes les informations.
 ip addr show dev em1 : Affiche les informations pour le périphérique em1
+ip addr add 192.168.1.1/24 dev em1 : Ajoute l'adresse 192.168.1.1 avec le masque 24 au préiphérique em1.
 
 ip link : Gère et affiche toutes les interfaces réseaux.
-ip link show dev em1 : Affiche les informations pour em1
+ip link show dev em1 : Affiche les informations pour em1.
 ip -s link : ffiche les interfaces statiques.
+ip link set dev eno12345678 up : Met en fonctionnement l'interface eno12345678.
+ip link set dev eno12345678 down : Éteint l'interface eno12345678.
 
 ip route : Affiche et permet la modification de la table de routage.
 
@@ -3497,15 +3500,16 @@ ip maddr show dev em1 : Affiche les informations multicast de em1
 ip neigh : Affiche les objets voisins c'est à dire la table ARP pour IPv4.
 ip neigh show dev em1 : Affiche le cache ARP de l'interface em1
 
-ip link : permet d'activer le interface réseau, ainsi que de créer des interfaces virtuelles.
-ip link set dev eno12345678 up : Met en fonctionnement l'interface eno12345678
-ip link set dev eno12345678 down : Éteint l'interface eno12345678
 
 
 La commande ip permet de consulter et changer l'état ou les paramettres de tous les types de périphériques réseaux.
 Elle remplace les commandes ifconfig, iwconfig, ifup/ifdown, route que nous détaillerons ci après, car elles sont encore proposées par certaines docs.
 
-voir : http://cpham.perso.univ-pau.fr/ENSEIGNEMENT/UERHD/DescriptifCmdIP.pdf
+voir :
+
+http://cpham.perso.univ-pau.fr/ENSEIGNEMENT/UERHD/DescriptifCmdIP.pdf
+
+https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf
 
 ifconfig (déprécié)
 -------------------

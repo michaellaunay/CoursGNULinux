@@ -3620,21 +3620,23 @@ Niveau 6 : Reboot.
 <h2><a class="toc-backref" href="#id227">17.3&nbsp;&nbsp;&nbsp;La commande ip</a></h2>
 <p>La commande ip permet d'afficher et modifier toutes les interfaces réseaux.</p>
 <p>ip addr : Affiche les adresses ip et toutes les informations.
-ip addr show dev em1 : Affiche les informations pour le périphérique em1</p>
+ip addr show dev em1 : Affiche les informations pour le périphérique em1
+ip addr add 192.168.1.1/24 dev em1 : Ajoute l'adresse 192.168.1.1 avec le masque 24 au préiphérique em1.</p>
 <p>ip link : Gère et affiche toutes les interfaces réseaux.
-ip link show dev em1 : Affiche les informations pour em1
-ip -s link : ffiche les interfaces statiques.</p>
+ip link show dev em1 : Affiche les informations pour em1.
+ip -s link : ffiche les interfaces statiques.
+ip link set dev eno12345678 up : Met en fonctionnement l'interface eno12345678.
+ip link set dev eno12345678 down : Éteint l'interface eno12345678.</p>
 <p>ip route : Affiche et permet la modification de la table de routage.</p>
 <p>ip maddr : Affiche et permet la gestion des adresses multicast.
 ip maddr show dev em1 : Affiche les informations multicast de em1</p>
 <p>ip neigh : Affiche les objets voisins c'est à dire la table ARP pour IPv4.
 ip neigh show dev em1 : Affiche le cache ARP de l'interface em1</p>
-<p>ip link : permet d'activer le interface réseau, ainsi que de créer des interfaces virtuelles.
-ip link set dev eno12345678 up : Met en fonctionnement l'interface eno12345678
-ip link set dev eno12345678 down : Éteint l'interface eno12345678</p>
 <p>La commande ip permet de consulter et changer l'état ou les paramettres de tous les types de périphériques réseaux.
 Elle remplace les commandes ifconfig, iwconfig, ifup/ifdown, route que nous détaillerons ci après, car elles sont encore proposées par certaines docs.</p>
-<p>voir : <a class="reference external" href="http://cpham.perso.univ-pau.fr/ENSEIGNEMENT/UERHD/DescriptifCmdIP.pdf">http://cpham.perso.univ-pau.fr/ENSEIGNEMENT/UERHD/DescriptifCmdIP.pdf</a></p>
+<p>voir :</p>
+<p><a class="reference external" href="http://cpham.perso.univ-pau.fr/ENSEIGNEMENT/UERHD/DescriptifCmdIP.pdf">http://cpham.perso.univ-pau.fr/ENSEIGNEMENT/UERHD/DescriptifCmdIP.pdf</a></p>
+<p><a class="reference external" href="https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf">https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf</a></p>
 </div>
 <div class="section" id="ifconfig-deprecie">
 <h2><a class="toc-backref" href="#id228">17.4&nbsp;&nbsp;&nbsp;ifconfig (déprécié)</a></h2>
@@ -4051,7 +4053,7 @@ certbot certonly --webroot -w /var/www/html -d URL_De_Mon_Site</blockquote>
 <blockquote>
 <p>0 <a href="#id22"><span class="problematic" id="id23">*</span></a>/12 * * * root test -x /usr/bin/certbot -a ! -d /run/systemd/system &amp;&amp; perl -e 'sleep int(rand(43200))' &amp;&amp; certbot -q renew --apache</p>
 <div class="system-message" id="id22">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">CoursGNULinux.rst</tt>, line 3986); <em><a href="#id23">backlink</a></em></p>
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">CoursGNULinux.rst</tt>, line 3990); <em><a href="#id23">backlink</a></em></p>
 Inline emphasis start-string without end-string.</div>
 </blockquote>
 <p>Liens :</p>
