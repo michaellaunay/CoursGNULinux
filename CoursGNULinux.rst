@@ -383,7 +383,7 @@ En fin d'installation un écran vous invite à retirer la clé usb et à redéma
 
        Fin d'installation.
 
-Une fois redémarrer saisissez votre identifiant et votre mot de passe (ceux donnés à l'étape 07)
+Une fois redémarré saisissez votre identifiant et votre mot de passe (ceux donnés à l'étape 07)
 
 Vous pouvez alors associer votre machine à vos comptes google et microsoft pour par exemple voir vos agendas et recevoir vos notifications.
 
@@ -1681,6 +1681,28 @@ Pour l'installer il suffit de faire :
 
   apt install ufw
 
+Pour connaître la liste des applications pouvant être autorisées par ufw à passer le firewall :
+
+  root@luciole:~# ufw app list
+  Applications disponibles :
+    Apache
+    Apache Full
+    Apache Secure
+    Bind9
+    Dovecot IMAP
+    Dovecot Secure IMAP
+    OpenLDAP LDAP
+    OpenLDAP LDAPS
+    OpenSSH
+    Postfix
+    Postfix SMTPS
+    Postfix Submission
+
+On pourra alors : soit autoriser les ports manuellement, soit autoriser les ports utilisés par une application.
+
+    ufw allow OpenSSH
+
+
 Modification du firewall pour permettre en entrée http, https, smtp :
 
     vim /etc/ufw/ufw.conf  # ENABLED=yes #si pas déjà positionné
@@ -1694,7 +1716,7 @@ Ces commandes permettent aussi de gérer ipv6
 
 Vérification :
 
-    root@triticale:/etc/dovecot# ufw status
+    root@luciole:/etc/dovecot# ufw status
     État : actif
 
     Vers                       Action      De
@@ -2286,6 +2308,11 @@ Ajouter un utilisateur à un groupe
 On utilise la commande **usermod** de la façon suivante : ::
 
   root@server~# usermod -a -G cdrom,dev michaellaunay
+
+Ajouter un utilisateur au groupe des administrateurs
+++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+usermod -a -G sudo identifiant_de_l_utilisateur
 
 Changer de groupe principal
 +++++++++++++++++++++++++++
@@ -3602,7 +3629,25 @@ Fixer le nom de machine
 
 La commande **hostname** permet à la fois de consulter et de changer le nom de la machine.
 
+Il est maintenant souhaitable d'utiliser la commande **hostnamectl** par exemple comme suit :
+
+  hostnamectl set-hostname luciole
+
+En effet de nombreuse machines recoivent leur nom par la couche réseau lors du boot comme par exemple les images cloud.
+
 Attention il ne s'agit pas du Fully Qualified Domain Name, mais seulement du nom de la machine sans le nom de domaine.
+
+Positionner le reverse
+----------------------
+
+Pour ne pas être considérer comme spameur lors de l'envoi de mail il faut positionner le "reverse" du serveur sur le même Full Qualified Domain Name (fqdn), c'est à dire que si on fait une recherche du nom de la machine à partir de son adresse ip, le résultat doit être le nom de la machine suivi de son domaine.
+Pour cela il faut ::
+
+ - Vérifier que dans la zone DNS de notre registrar, là où on a enregistré le nom de notre domaine, on a bien un champ A qui corresponde à l'adresse de la machine ;
+ - Aller sur l'interface d'administration du serveur (Scaleway, OVH, Gandi, etc) ;
+ - Modifier le reverse en donnant le fqdn de la machine.
+
+Pour vérifier, il suffira de comparer l'adresse obtenu avec "dig $FQDN_Du_Serveur" avec "dig -x $IP_Du_Serveur".
 
 Démarrage et arrêt du réseau
 ----------------------------
@@ -3870,10 +3915,46 @@ Postfix est un distributeur de courrier.
 
 Il a pour rôle de recevoir le courrier, de le stocker dans la boite mail du destinataire ou de le relayer à un autre serveur de mail si la boite destinataire n'est pas sur sa machine.
 
+Nous allons voir comment utiliser spf et dkim pour authentifier les mails.
+
+Ressources postfix, spf, dkim et test
+-------------------------------------
+
+https://www.nextinpact.com/article/30341/109074-emails-avec-spf-dkim-dmarc-arcet-bimi-a-quoi-ca-sert-comment-en-profiter
+https://www.bortzmeyer.org/7208.html
+https://ubuntu.tutorials24x7.com/blog/install-mail-server-on-ubuntu-20-04-lts-using-postfix-dovecot-and-roundcube
+https://ubuntu.tutorials24x7.com/blog/set-up-dkim-domainkeys-with-postfix-on-ubuntu-20-04-lts
+https://www.linuxbabe.com/mail-server/setting-up-dkim-and-spf
+
+RFC en français
+https://www.bortzmeyer.org/7208.html
+
+Les variables d'opendkim
+http://www.opendkim.org/opendkim.8.html
+
 Installation
 ------------
 
-Lors de l'installation il faut préciser le nom de host.
+  apt install postfix
+
+Lors de l'installation il faut préciser le nom du host, mettez le FQDN.
+Il faut que le reverse ait été corectement positionné sinon les mails risquent d'être considérés comme du spam dés la connexion du serveur.
+On va en profiter pour installer spf et dkim, puis, dmarc,
+
+Si postfix transmet des mails ::
+
+  apt install opendkim opendkim-tools #Pour la chaîne de signature
+  apt install mailutils # Pour pouvoir tester l'envoi de mail avec la commande mail
+
+Si postfix gére la réception des mails alors installer aussi ::
+
+  apt install postfix-policyd-spf-python
+  vim /etc/postfix/master.cf
+    #Ajouter en fin de fichier
+    policyd-spf  unix  -       n       n       -       0       spawn
+    user=policyd-spf argv=/usr/bin/policyd-spf
+
+L'édition du fichier master permet de lancer le démon d'analyse des mails reçus.
 
 Configuration
 -------------
@@ -3923,7 +4004,119 @@ Exemple pour un serveur destinataire : ::
   smtpd_recipient_restrictions = permit_mynetworks,
                                   permit_sasl_authenticated,
                                   reject_unauth_destination,
-                                  check_policy_service inet:127.0.0.1:60000
+                                  check_policy_service unix:private/policyd-spf
+  milter_protocol = 6
+  milter_default_action = accept
+  smtpd_milters = inet:localhost:8992
+  non_smtpd_milters = inet:localhost:8992
+
+Configuration de spf ::
+
+Ajouter une entrée spf à vos entrées DNS sur votre Registrar.
+
+Par exemple le registrar de **ecreall.com** est OVH et il faut ajouter une entrée SPF et la remplir comme suit :
+
+  Sous-domaine []**.ecreall.com** #Préciser le sous domaine, ici il n'y en a pas donc on laisse vide
+  TTL [Par défaut] #Mais pour les tests [Personnalisé] on peut alors mettre une valeur faible en secondes comme [60]
+  Autoriser l'IP de **ecreall.com** à envoyer des emails ? [v]oui # on autorisera les adresses ip que l'on souaite.
+  Autoriser les serveurs MX à envoyer des emails [v]oui #si MX est notre serveur
+  Autoriser tous les serveurs dont le nom se termine par **ecreall.com** [v]Non # permet de gérer les sous domaines
+  D'autres serveurs ? # Mettre les autres adresses ou noms autorisés à envoyer
+
+Sous Gandi il ne faut surtout pas utiliser le champ spf qui est documenté comme obsolète, à la place il faut utiliser une entrée TXT
+
+Il faut alors mettre "v=spf1 a mx ip4:62.210.112.125 -all" dans le champ.
+
+La valeur des champs spf est expliquée par Google ici https://support.google.com/a/answer/33786
+
+
+Pour tester ::
+
+  nslookup -type=txt ecreall.com
+  #Ce qui donne
+    ecreall.com	text = "v=spf1 a mx ip4:62.210.112.125 -all"
+
+Configuration de opendkim ::
+
+  vim /etc/opendkim.conf 
+  #Ajoutez ou mettez les variables à :
+    Domain                ecreall.com
+    KeyFile               /etc/dkimkeys/dkim.private
+    Selector              dkim
+    UserID                opendkim
+    Socket inet:8992@localhost
+
+Le champ "Domain" indique quels vont être les mails signés avec la clé contenue dans le fichier "Keyfile"
+Le champ "Selector" indique quelle clé dans le fichier utilisée pour ce domaine.
+UsserID indique l'utilisateur du démon, attention le fichier de la clé privée doit pouvoir être lu par cet utilisateur.
+Socket Indique la socket qui sera utilisée par postfix pour se connecter et signer les mails transmis.
+
+Génération de la clé de signature des mails ::
+
+  cd /etc/dkimkeys/
+  opendkim-genkey -t -s dkim -d nova-ideo.com
+  chown root:opendkim dkim.private
+  chmod 660 dkim.private
+
+L'attribut "-s dkim" permet de préciser de signer différemment chaque mail selon son domaine dans le cas où le serveur gère plusieurs domaines.
+
+On a alors ::
+
+  root@luciole:/etc/dkimkeys# ls -lh
+  total 12K
+  -rw-rw---- 1 root opendkim 1,7K févr. 11 16:09 dkim.private
+  -rw------- 1 root root      508 févr. 11 16:09 dkim.txt
+  -rw-r--r-- 1 root root      664 déc.  27  2019 README.PrivateKeys
+
+Vérifier la clé ::
+  root@luciole:/# opendkim-testkey -d ecreall.com -s dkim -vvv
+  opendkim-testkey: using default configfile /etc/opendkim.conf
+  opendkim-testkey: /etc/dkimkeys/dkim.private: WARNING: unsafe permissions
+  opendkim-testkey: key loaded from /etc/dkimkeys/dkim.private
+  opendkim-testkey: checking key 'dkim._domainkey.ecreall.com'
+  opendkim-testkey: key not secure
+  opendkim-testkey: key OK
+
+La ligne "opendkim-testkey: key not secure" est due au fait  DNSSEC n'a pas été activé sur le dns.
+
+
+Afficher le contenu de dkim.txt
+
+  cat /etc/dkimkeys/dkim.txt
+    dkim._domainkey	IN	TXT	( "v=DKIM1; h=sha256; k=rsa; t=y; "
+	  "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxvKAG6fOfx+BnzZX1DSOpWEh/VzRqSb6/zmXp2MwUmS238Rx3LtQB0qJeJW9uGmsIS2GlNc1bL+0RnAeVi5q2vh3oGOQ0+kCmrqtaQwhUa6SYxjd5+QLZXbpt2emtaWIn687ufXmWa4gVnGxVN8O3K2ALcVyToPLB5e48s5fUh5Ln15f+X2XKAJkoZVlqeIvyD9+zHD1D7wvoL"
+	  "EDR3fSMYQmMQfBc2hR8nLArbCQj3HdJD5LITNQ9HlnM8dX56/MonWyavIKKWp3CV9IQZz0syG6i3XoxqdwdFvKh1daF+wnbYxS7ug9OlvWUo+6p4up6zFoEgT6PXo/cnjbYHA+FQIDAQAB" )  ; ----- DKIM key dkim for ecreall.com
+
+Configurer votre registrar :
+
+Se connecter à la zone DNS de son domaine, par exemple pour Ecreall dans OVH, on ajoute une entrée DKIM en remplissant les champs comme suit ::
+
+  Sous-domaine [dkim._domainkey]
+  Version [v]
+  Alorithme (hash) -256 [v]
+  Type de clé [v]
+  Clé Publique [MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1YRDtepyDeIgVolfFz4bRgacdE0hxGFhB+9XTXmZbYcPc0iyDaGJivpd7TYAZ2zRBG+wU6s8viK9mxA/JLDTklhdbnD2oQOjBA1g7bcqqo/F3gHbApaz/M2DrQ4y5HEaHTjm/bsCLzbO7v3buTuhxu6mpVp5m/q+uX7o2LB1GkTw/DbqE2j3tHx5N5sojX6dZxvk+V9nyInArY4ni3uWrH3Y8aLSK7+QHyZVJAVGiT6jdRDdEERQlo2CTZj6UQu3jGtic+GZCU8Hp/SJWQj/xrx/ygZEJ0z294fLEIOGgUw66vRl6iVE9NJCaavTqBxlfgX7QNOa/9bqnR9uDI2flwIDAQAB
+  ]
+  Type de service []
+  Mode test [v] # Permet de demander aux serveur recevant nos mails de ne pas tenir compte de DKIM tant qu'on a pas fini
+  Sous domaine [v] La clé publique n'est pas valide pour les sous-domaine
+
+Quand tout est au point ne pas oublier d'éditer l'entrée pour enlever le mode de test.
+
+dmarc
+=====
+
+L'ajout de DMARC se fait par simple ajoute d'une entrée de type DMARC ou TXT pour le sous-domaine _dmarc avec les valeurs suivantes :
+
+  v=DMARC1;p=quarantine;pct=100;rua=mailto:michaellaunay+dmarc@ecreall.com;sp=quarantine;aspf=s;
+
+Où V est la version du protocole,
+p est la politique à appliqer pour les messages reçu soit disant de notre domaine mais qui échoue, None (rien faire) ou Quarantine marquer douteux, Reject rejeter.
+pct le pourcentage à traiter
+rua l'uri de la ressource à prévenir en cas d'usurpation
+sp la politique des sous domainkeys
+aspf s'il faut suivre spf à la lettre
+
 
 MySQL
 =====
