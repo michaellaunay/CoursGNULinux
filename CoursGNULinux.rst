@@ -263,7 +263,7 @@ Les versions desktop d'Ubuntu sont fournies avec l'environnement graphique Gnome
 Elles conviennent parfaitement à un poste de travail, mais sont à proscrire pour un serveur en raison du nombre de services fonctionnant par défaut.
 
 Installation d'Ubuntu 20.04
-++++++++++++++++++++++++++
++++++++++++++++++++++++++++
 
 Choisir l'image "iso" d'Ubuntu correspondant à sa machine à l'adresse https://releases.ubuntu.com/20.04/
 
@@ -1684,7 +1684,8 @@ Pour l'installer il suffit de faire :
 Pour connaître la liste des applications pouvant être autorisées par ufw à passer le firewall :
 
   root@luciole:~# ufw app list
-  Applications disponibles :
+  Applications disponibles ::
+
     Apache
     Apache Full
     Apache Secure
@@ -3158,11 +3159,11 @@ Les paramètres ne sont pas typés.
 
 Les paramètres peuvent recevoir une valeur par défaut *p1 = 0*.
 
-Les paramètres non explicites (ex: def f(**dict)) sont placés dans un dictionnaires.
+Les paramètres non explicites (ex: def f(\*\*dict)) sont placés dans un dictionnaires.
 
-Les paramètres arbitraires (ex : def f(*pars))sont placé dans un tuple.
+Les paramètres arbitraires (ex : def f(\*pars))sont placé dans un tuple.
 
-Combinaison paramètres implicites et arbitraires (ex: def f(*pars, **dict)).
+Combinaison paramètres implicites et arbitraires (ex: def f(\*pars, \*\*dict)).
 
 La directive return
 
@@ -4012,22 +4013,22 @@ Exemple pour un serveur destinataire : ::
 
 Configuration de spf ::
 
-Ajouter une entrée spf à vos entrées DNS sur votre Registrar.
+  Ajouter une entrée spf à vos entrées DNS sur votre Registrar.
 
-Par exemple le registrar de **ecreall.com** est OVH et il faut ajouter une entrée SPF et la remplir comme suit :
+  Par exemple le registrar de **ecreall.com** est OVH et il faut ajouter une entrée SPF et la remplir comme suit :
 
-  Sous-domaine []**.ecreall.com** #Préciser le sous domaine, ici il n'y en a pas donc on laisse vide
-  TTL [Par défaut] #Mais pour les tests [Personnalisé] on peut alors mettre une valeur faible en secondes comme [60]
-  Autoriser l'IP de **ecreall.com** à envoyer des emails ? [v]oui # on autorisera les adresses ip que l'on souaite.
-  Autoriser les serveurs MX à envoyer des emails [v]oui #si MX est notre serveur
-  Autoriser tous les serveurs dont le nom se termine par **ecreall.com** [v]Non # permet de gérer les sous domaines
-  D'autres serveurs ? # Mettre les autres adresses ou noms autorisés à envoyer
+    Sous-domaine []**.ecreall.com** #Préciser le sous domaine, ici il n'y en a pas donc on laisse vide
+    TTL [Par défaut] #Mais pour les tests [Personnalisé] on peut alors mettre une valeur faible en secondes comme [60]
+    Autoriser l'IP de **ecreall.com** à envoyer des emails ? [v]oui # on autorisera les adresses ip que l'on souaite.
+    Autoriser les serveurs MX à envoyer des emails [v]oui #si MX est notre serveur
+    Autoriser tous les serveurs dont le nom se termine par **ecreall.com** [v]Non # permet de gérer les sous domaines
+    D'autres serveurs ? # Mettre les autres adresses ou noms autorisés à envoyer
 
-Sous Gandi il ne faut surtout pas utiliser le champ spf qui est documenté comme obsolète, à la place il faut utiliser une entrée TXT
+  Sous Gandi il ne faut surtout pas utiliser le champ spf qui est documenté comme obsolète, à la place il faut utiliser une entrée TXT
 
-Il faut alors mettre "v=spf1 a mx ip4:62.210.112.125 -all" dans le champ.
+  Il faut alors mettre "v=spf1 a mx ip4:62.210.112.125 -all" dans le champ.
 
-La valeur des champs spf est expliquée par Google ici https://support.google.com/a/answer/33786
+  La valeur des champs spf est expliquée par Google ici https://support.google.com/a/answer/33786
 
 
 Pour tester ::
@@ -4069,6 +4070,7 @@ On a alors ::
   -rw-r--r-- 1 root root      664 déc.  27  2019 README.PrivateKeys
 
 Vérifier la clé ::
+
   root@luciole:/# opendkim-testkey -d ecreall.com -s dkim -vvv
   opendkim-testkey: using default configfile /etc/opendkim.conf
   opendkim-testkey: /etc/dkimkeys/dkim.private: WARNING: unsafe permissions
@@ -4087,35 +4089,45 @@ Afficher le contenu de dkim.txt
 	  "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxvKAG6fOfx+BnzZX1DSOpWEh/VzRqSb6/zmXp2MwUmS238Rx3LtQB0qJeJW9uGmsIS2GlNc1bL+0RnAeVi5q2vh3oGOQ0+kCmrqtaQwhUa6SYxjd5+QLZXbpt2emtaWIn687ufXmWa4gVnGxVN8O3K2ALcVyToPLB5e48s5fUh5Ln15f+X2XKAJkoZVlqeIvyD9+zHD1D7wvoL"
 	  "EDR3fSMYQmMQfBc2hR8nLArbCQj3HdJD5LITNQ9HlnM8dX56/MonWyavIKKWp3CV9IQZz0syG6i3XoxqdwdFvKh1daF+wnbYxS7ug9OlvWUo+6p4up6zFoEgT6PXo/cnjbYHA+FQIDAQAB" )  ; ----- DKIM key dkim for ecreall.com
 
-Configurer votre registrar :
+Configurer votre registrar ::
 
-Se connecter à la zone DNS de son domaine, par exemple pour Ecreall dans OVH, on ajoute une entrée DKIM en remplissant les champs comme suit ::
+  Se connecter à la zone DNS de son domaine, par exemple pour Ecreall dans OVH, on ajoute une entrée DKIM en remplissant les champs comme suit ::
 
-  Sous-domaine [dkim._domainkey]
-  Version [v]
-  Alorithme (hash) -256 [v]
-  Type de clé [v]
-  Clé Publique [MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1YRDtepyDeIgVolfFz4bRgacdE0hxGFhB+9XTXmZbYcPc0iyDaGJivpd7TYAZ2zRBG+wU6s8viK9mxA/JLDTklhdbnD2oQOjBA1g7bcqqo/F3gHbApaz/M2DrQ4y5HEaHTjm/bsCLzbO7v3buTuhxu6mpVp5m/q+uX7o2LB1GkTw/DbqE2j3tHx5N5sojX6dZxvk+V9nyInArY4ni3uWrH3Y8aLSK7+QHyZVJAVGiT6jdRDdEERQlo2CTZj6UQu3jGtic+GZCU8Hp/SJWQj/xrx/ygZEJ0z294fLEIOGgUw66vRl6iVE9NJCaavTqBxlfgX7QNOa/9bqnR9uDI2flwIDAQAB
-  ]
-  Type de service []
-  Mode test [v] # Permet de demander aux serveur recevant nos mails de ne pas tenir compte de DKIM tant qu'on a pas fini
-  Sous domaine [v] La clé publique n'est pas valide pour les sous-domaine
+    Sous-domaine [dkim._domainkey]
 
-Quand tout est au point ne pas oublier d'éditer l'entrée pour enlever le mode de test.
+    Version [v]
+
+    Alorithme (hash) -256 [v]
+
+    Clé Publique [MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1YRDtepyDeIgVolfFz4bRgacdE0hxGFhB+9XTXmZbYcPc0iyDaGJivpd7TYAZ2zRBG+wU6s8viK9mxA/JLDTklhdbnD2oQOjBA1g7bcqqo/F3gHbApaz/M2DrQ4y5HEaHTjm/bsCLzbO7v3buTuhxu6mpVp5m/q+uX7o2LB1GkTw/DbqE2j3tHx5N5sojX6dZxvk+V9nyInArY4ni3uWrH3Y8aLSK7+QHyZVJAVGiT6jdRDdEERQlo2CTZj6UQu3jGtic+GZCU8Hp/SJWQj/xrx/ygZEJ0z294fLEIOGgUw66vRl6iVE9NJCaavTqBxlfgX7QNOa/9bqnR9uDI2flwIDAQAB
+    ]
+
+    Type de service []
+
+    Mode test [v] # Permet de demander aux serveur recevant nos mails de ne pas tenir compte de DKIM tant qu'on a pas fini
+
+    Sous domaine [v] La clé publique n'est pas valide pour les sous-domaine
+
+  Quand tout est au point ne pas oublier d'éditer l'entrée pour enlever le mode de test.
 
 dmarc
 =====
 
-L'ajout de DMARC se fait par simple ajoute d'une entrée de type DMARC ou TXT pour le sous-domaine _dmarc avec les valeurs suivantes :
+L'ajout de DMARC se fait par simple ajoute d'une entrée de type DMARC ou TXT pour le sous-domaine _dmarc avec les valeurs suivantes ::
 
   v=DMARC1;p=quarantine;pct=100;rua=mailto:michaellaunay+dmarc@ecreall.com;sp=quarantine;aspf=s;
 
 Où V est la version du protocole,
+
 p est la politique à appliqer pour les messages reçu soit disant de notre domaine mais qui échoue, None (rien faire) ou Quarantine marquer douteux, Reject rejeter.
-pct le pourcentage à traiter
-rua l'uri de la ressource à prévenir en cas d'usurpation
-sp la politique des sous domainkeys
-aspf s'il faut suivre spf à la lettre
+
+pct le pourcentage à traiter.
+
+rua l'uri de la ressource à prévenir en cas d'usurpation.
+
+sp la politique des sous domainkeys.
+
+aspf s'il faut suivre spf à la lettre.
 
 
 MySQL
@@ -4167,20 +4179,20 @@ Mais les certificats autosignés ont l'inconvéniant de ne pas avoir d'autorité
 
 Nous pouvons utiliser les service let's encrypt qui poermette d'avoir un 
 
-Configuration de Let's Encrypt pour générer nos certificats ssl :
+Configuration de Let's Encrypt pour générer nos certificats ssl ::
 
     apt install apache2 #Si ce n'est pas fait, vérifier que le port http est ouvert sur ufw !
     apt install certbot
     certbot certonly --webroot -w /var/www/html -d URL_De_Mon_Site
 
-Vérification de la génération :
+Vérification de la génération ::
 
     root@triticale:~# openssl x509 -noout -text -in /etc/letsencrypt/live/URL_De_Mon_Site/fullchain.pem | grep "Not After"
             Not After : Aug  5 11:25:06 2020 GMT
 
-Modifier le cron de renouvellement "/etc/cron.d/certbot" et mettre :
+Modifier le cron de renouvellement "/etc/cron.d/certbot" et mettre ::
     
-    0 */12 * * * root test -x /usr/bin/certbot -a \! -d /run/systemd/system && perl -e 'sleep int(rand(43200))' && certbot -q renew --apache
+    0 \*/12 \* \* \* root test -x /usr/bin/certbot -a \! -d /run/systemd/system && perl -e 'sleep int(rand(43200))' && certbot -q renew --apache
 
 Liens :
 
