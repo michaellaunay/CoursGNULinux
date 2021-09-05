@@ -1670,6 +1670,27 @@ Pour sécuriser les connexions **ssh**, il faut éditer */etc/ssh/sshd_config* e
 La commande **screen** est très utilisée avec "ssh", elle permet de conserver le **tty** ouvert lors des déconnexions et donc de reprendre là où on en était.
 Il suffit de la relancer avec l'option "-r" pour rattacher une session précédente,  de même en début de session on peut faire "Ctrl A" "esc" pour enregistrer les lignes et donc avoir la scroll bar.
 
+Créer une clé::
+
+  ssh-keygen
+
+Ajouter sa clé public à un serveur distant ::
+
+  ssh-copy-id user@Serveur_Distant
+
+Supprimer la clé d'un serveur distant ::
+
+  ssh-keygen -R NomServeurDistant
+  
+
+On peut utiliser **tar** et **ssh** pour faire des archives à travers un flux sécurisé ::
+
+  tar cf - RepertoireSource | ssh user@ServeurSauvegarde "cat > nom_archive.tar"
+
+La restauration se fera alors comme suit ::
+
+  ssh user@ServeurSauvegarde "cat nom_archive.tar" | tar xf
+
 iptables et ufw
 ---------------
 
@@ -1730,6 +1751,40 @@ Vérification :
     25/tcp (v6)                ALLOW       Anywhere (v6)             
     80/tcp (v6)                ALLOW       Anywhere (v6)             
     443/tcp (v6)               ALLOW       Anywhere (v6) 
+
+Permettre le lancement au démarrrage::
+
+    systemctl enable ufw
+
+
+Un peu de configuration pour l'utilisation en ligne
+---------------------------------------------------
+
+Beaucoup de paramètre par défaut peuvent être modifier dans /etc
+
+Configurer vim and bash
+-----------------------
+
+Décommenter "syntax on" dans "/etc/vim/vimrc", ce qui permet d'avoir la coloration syntaxique.
+
+Pour avoir la recherche dans l'historique des commandes en saisissant les premières lettres de la commande éditer "/etc/inputrc" et supprimer le guillemet de tête::
+
+  "\e[5~": history-search-backward
+  "\e[6~": history-search-forward
+
+Pour faire de vim l'éditeur par défaut::
+
+  echo "export EDITOR=vim" > /etc/profile.d/editor.sh
+
+Pour augmenter le nombre de ligne dans l'historique des commandes, créer "/etc/profile.d/history.sh" en mettant::
+
+  # https://wiki.ubuntu.com/Spec/EnhancedBash
+  shopt -s histappend
+  PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+  export HISTSIZE=1000
+  export HISTFILESIZE=1000
+  export GREP_OPTIONS='--color=auto'
+
 
 Gestion des permissions et droits d'accès
 =========================================
@@ -3927,6 +3982,9 @@ https://ubuntu.tutorials24x7.com/blog/install-mail-server-on-ubuntu-20-04-lts-us
 https://ubuntu.tutorials24x7.com/blog/set-up-dkim-domainkeys-with-postfix-on-ubuntu-20-04-lts
 https://www.linuxbabe.com/mail-server/setting-up-dkim-and-spf
 
+Pour tester
+https://www.appmaildev.com/en/spf
+
 RFC en français
 https://www.bortzmeyer.org/7208.html
 
@@ -3995,7 +4053,7 @@ Exemple pour un serveur destinataire : ::
   message_size_limit = 10240000
   header_size_limit = 102400
   bounce_size_limit = 512000
-  disable_vrfy_command = yes
+  disable_vrfy_command = no
   smtpd_helo_required = yes
   smtpd_banner = $myhostname ESMTP
   maps_rbl_domains = relays.ordb.org, sbl.spamhaus.org, list.dsbl.org
@@ -4111,7 +4169,7 @@ Configurer votre registrar ::
   Quand tout est au point ne pas oublier d'éditer l'entrée pour enlever le mode de test.
 
 dmarc
-=====
+-----
 
 L'ajout de DMARC se fait par simple ajoute d'une entrée de type DMARC ou TXT pour le sous-domaine _dmarc avec les valeurs suivantes ::
 
