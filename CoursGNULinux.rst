@@ -951,6 +951,32 @@ Pour supprimer une variable, on peut utiliser **unset** : ::
 
   michaellaunay@luciole:~$ unset BASH_ENV
 
+Protection des espaces des valeurs des variables
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+Attention bash passe les mots d'une variable en les séparant d'un unique espace.
+Ainsi : ::
+
+  michaellaunay@luciole:~$ VARIABLE="  commence par 2 espaces puis en contient cinq     et finit par deux  "
+  michaellaunay@luciole:~$ echo DEBUT${VARIABLE}FIN #L'abscence de guillemet forcent le bash à passer en paramettre chacuns des mots séparé par un unique espace.
+  DEBUT commence par 2 espaces puis en contient cinq et finit par deux FIN
+  michaellaunay@luciole:~$ echo DEBUT"$VARIABLE"FIN #Les guillemets protègent les espaces !
+  DEBUT  commence par 2 espaces puis en contient cinq     et finit par deux  FIN
+
+On peut aussi échapper les espaces avec des antislashs \ lors de l'affectation de la variable.
+
+Évaluation d'une variable
++++++++++++++++++++++++++
+
+Une variable peut contenir une commande.
+Son simple appel suffit à provoquer son évaluation : ::
+
+  michaellaunay@luciole:~$ MON_SCRIPT="/tmp/ma_cmd.sh"
+  michaellaunay@luciole:~$ $MON_SCRIPT #exécute la commande contenue dans la variable MON_SCRIPT
+  Hello
+  michaellaunay@luciole:~$ cat  $MON_SCRIPT #Affiche ce qu'il y a dans le script /tmp/ma_cmd.sh
+  #! /bin/bash
+  echo Hello
 
 Export de variable
 ++++++++++++++++++
@@ -2710,6 +2736,24 @@ Au redémarrage de la machine la journalisation va permettre d'accélérer le di
 
 **ext3** est un système journalisé de manière simple.
 
+Récupération de fichiers
+------------------------
+
+La journalisation sur les partitions de type ext3 et plus comme la ext4 permet de récupérer les fichiers supprimés.
+Pour cela il faut arrêter le système, le booter sur un système externe comme une clé usb bootable (live usb).
+Devenir root, installer sur le système externe extundelete : ::
+
+  apt install extundelete
+
+Repérer la partition contenant les fichiers à restaurer avec la commande lsblk.
+Puis appeler la commande extundelete : ::
+
+  sudo extundelete /dev/sda6 --restore-directory /home/michaellaunay/Maildir/cur/ --after 1636239600
+
+Où --restore-directory permet de dire dans quel répertoire on cherche à récupérer les fichiers.
+Et --after permet de dire à partir de quelle date de suppression on souhaite récupérer les fichiers.
+La date est en seconde à partir du 1er janvier 1970 (On peut utiliser datetime.
+
 Contrôle des systèmes de fichiers
 ---------------------------------
 
@@ -3692,6 +3736,8 @@ Il est maintenant souhaitable d'utiliser la commande **hostnamectl** par exemple
 En effet de nombreuse machines recoivent leur nom par la couche réseau lors du boot comme par exemple les images cloud.
 
 Attention il ne s'agit pas du Fully Qualified Domain Name, mais seulement du nom de la machine sans le nom de domaine.
+
+Il est possible aussi de modifier le nom de façon définitive via le fichier /etc/hostname
 
 Positionner le reverse
 ----------------------

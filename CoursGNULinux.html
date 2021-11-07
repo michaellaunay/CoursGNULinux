@@ -622,6 +622,22 @@ michaellaunay@luciole:~$ echo $PATH
 /home/michaellaunay/MesScripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</code></pre>
 <p>Pour supprimer une variable, on peut utiliser <strong>unset</strong> : :</p>
 <pre><code>michaellaunay@luciole:~$ unset BASH_ENV</code></pre>
+<h4 id="protection-des-espaces-des-valeurs-des-variables">Protection des espaces des valeurs des variables</h4>
+<p>Attention bash passe les mots d'une variable en les séparant d'un unique espace. Ainsi : :</p>
+<pre><code>michaellaunay@luciole:~$ VARIABLE=&quot;  commence par 2 espaces puis en contient cinq     et finit par deux  &quot;
+michaellaunay@luciole:~$ echo DEBUT${VARIABLE}FIN #L&#39;abscence de guillemet forcent le bash à passer en paramettre chacuns des mots séparé par un unique espace.
+DEBUT commence par 2 espaces puis en contient cinq et finit par deux FIN
+michaellaunay@luciole:~$ echo DEBUT&quot;$VARIABLE&quot;FIN #Les guillemets protègent les espaces !
+DEBUT  commence par 2 espaces puis en contient cinq     et finit par deux  FIN</code></pre>
+<p>On peut aussi échapper les espaces avec des antislashs lors de l'affectation de la variable.</p>
+<h4 id="évaluation-dune-variable">Évaluation d'une variable</h4>
+<p>Une variable peut contenir une commande. Son simple appel suffit à provoquer son évaluation : :</p>
+<pre><code>michaellaunay@luciole:~$ MON_SCRIPT=&quot;/tmp/ma_cmd.sh&quot;
+michaellaunay@luciole:~$ $MON_SCRIPT #exécute la commande contenue dans la variable MON_SCRIPT
+Hello
+michaellaunay@luciole:~$ cat  $MON_SCRIPT #Affiche ce qu&#39;il y a dans le script /tmp/ma_cmd.sh
+#! /bin/bash
+echo Hello</code></pre>
 <h4 id="export-de-variable">Export de variable</h4>
 <p>Toute variable créée dans un shell n'est accessible que dans celui-ci.</p>
 <p>Pour la rendre accessible aux commandes et scripts appelés après l'affectation il faut l'exporter : :</p>
@@ -1757,6 +1773,12 @@ sdb est le second disque</code></pre>
 <p>Toutefois, les coupures de courant peuvent aboutir à des états incohérents, ceci à cause du cache en écriture des disques durs.</p>
 <p>Au redémarrage de la machine la journalisation va permettre d'accélérer le diagnostique des disques.</p>
 <p><strong>ext3</strong> est un système journalisé de manière simple.</p>
+<h3 id="récupération-de-fichiers">Récupération de fichiers</h3>
+<p>La journalisation sur les partitions de type ext3 et plus comme la ext4 permet de récupérer les fichiers supprimés. Pour cela il faut arrêter le système, le booter sur un système externe comme une clé usb bootable (live usb). Devenir root, installer sur le système externe extundelete : :</p>
+<pre><code>apt install extundelete</code></pre>
+<p>Repérer la partition contenant les fichiers à restaurer avec la commande lsblk. Puis appeler la commande extundelete : :</p>
+<pre><code>sudo extundelete /dev/sda6 --restore-directory /home/michaellaunay/Maildir/cur/ --after 1636239600</code></pre>
+<p>Où --restore-directory permet de dire dans quel répertoire on cherche à récupérer les fichiers. Et --after permet de dire à partir de quelle date de suppression on souhaite récupérer les fichiers. La date est en seconde à partir du 1er janvier 1970 (On peut utiliser datetime.</p>
 <h3 id="contrôle-des-systèmes-de-fichiers">Contrôle des systèmes de fichiers</h3>
 <p>La commande <strong>df</strong> permet de lister les montages réalisés.</p>
 <p>La commande <strong>du</strong> permet de calculer la taille d'une arborescence.</p>
@@ -2347,6 +2369,7 @@ Ajouter une gateway : ::
 </blockquote>
 <p>En effet de nombreuse machines recoivent leur nom par la couche réseau lors du boot comme par exemple les images cloud.</p>
 <p>Attention il ne s'agit pas du Fully Qualified Domain Name, mais seulement du nom de la machine sans le nom de domaine.</p>
+<p>Il est possible aussi de modifier le nom de façon définitive via le fichier /etc/hostname</p>
 <h3 id="positionner-le-reverse">Positionner le reverse</h3>
 <p>Pour ne pas être considérer comme spameur lors de l'envoi de mail il faut positionner le "reverse" du serveur sur le même Full Qualified Domain Name (fqdn), c'est à dire que si on fait une recherche du nom de la machine à partir de son adresse ip, le résultat doit être le nom de la machine suivi de son domaine. Pour cela il faut :</p>
 <pre><code>- Vérifier que dans la zone DNS de notre registrar, là où on a enregistré le nom de notre domaine, on a bien un champ A qui corresponde à l&#39;adresse de la machine ;
