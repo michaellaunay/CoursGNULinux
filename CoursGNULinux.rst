@@ -3,7 +3,7 @@ Formation à GNU/Linux
 =====================
 
 :author: Michaël Launay <michaellaunay@ecreall.com>
-:version: 1.9
+:version: 1.9.1
 :licence: Cette création est mise à disposition selon le Contrat Paternité 2.0 France disponible en ligne http://creativecommons.org/licenses/by/2.0/fr/ ou par courrier postal à Creative Commons, 171 Second Street, Suite 300, San Francisco, California 94105, USA.
 
 .. raw:: pdf
@@ -69,7 +69,7 @@ La DARPA finance BSD ce qui aboutit à l'intégration de la première pile TCP/I
 
 1985 la 4.3 BSD n'est plus livrée avec les sources de AT&T en raison du prix excessif de la licence.
 
-Face à ce problème, l'UCB réécrit et nettoie complètement son UNIX qui sort en 1989 sous le nom NetBSD. Le noyau est alors le MACH de l'université de Carnegie-Mellon. L'accès aux sources et à la distribution complète devient gratuit.
+Face à ce problème, l'UCB récrit et nettoie complètement son UNIX qui sort en 1989 sous le nom NetBSD. Le noyau est alors le MACH de l'université de Carnegie-Mellon. L'accès aux sources et à la distribution complète devient gratuit.
 
 1991 Sun Microsystems co-fondé en 1982 par Bill Joy sort SunOS qui deviendra Solaris.
 
@@ -93,7 +93,7 @@ La Free Software Foundation (FSF), le projet GNU
 
 GNU est un acronyme récursif (GNU's Not Unix).
 
-GNU a pour objectif de fournir un système d'exploitation compatible avec UNIX sans dépendre des ayant droits (AT&T et BSD) dont RMS récuse les licences.
+GNU a pour objectif de fournir un système d'exploitation compatible avec UNIX sans dépendre des ayants droit (AT&T et BSD) dont RMS récuse les licences.
 
 1985 création de la Free Software Foundation (FSF) organisation américaine à but non lucratif pour le soutien du logiciel libre.
 
@@ -122,7 +122,7 @@ La licence GPL a pour but de protéger l'auteur et l'utilisateur en garantissant
 3. La liberté de redistribuer des copies ;
 4. La liberté d'améliorer le programme et de rendre publiques les modifications afin que l'ensemble de la communauté en bénéficie.
 
-En contrepartie l'utilisation du logiciel est au risque et péril de l'utilisateur.
+En contrepartie, l'utilisation du logiciel est au risque et péril de l'utilisateur.
 
 Le gauche d'auteur
 ++++++++++++++++++
@@ -145,7 +145,7 @@ Puisque le copyleft des versions 1 et 2 de la GPL ne s'appliquait pas aux entré
 
 Cette faille a été corrigée avec la version GPL v3 qui accorde aux utilisateurs d’un programme accédé par réseau les mêmes droits que les utilisateurs d’un programme installé localement.
 
-La GPL a été adaptée au droit Français par le CEA, CNRS, INRIA sous le nom de CECILL. Sa version 2 est compatible avec la licence publique générale GNU.
+La GPL a été adaptée au droit français par le CEA, CNRS, INRIA sous le nom de CECILL. Sa version 2 est compatible avec la licence publique générale GNU.
 
 Le 28 mars 2007 le tribunal de grande instance de Paris a jugé applicable la licence GPL (v2).
 
@@ -183,7 +183,7 @@ Historiquement on distingue les micro-noyaux des noyaux monolithiques.
 Cette séparation vient de ce que le noyau est censé gérer (kernel space) et donc de ce qui est de la responsabilité des utilisateurs (user space). Dans les faits aujourd'hui même les noyaux monolithiques comme Linux sont modulaires et ne charge les modules que si nécessaire pendant l'utilisation.
 
 
-Qu'est ce qu'une distribution ?
+Qu'est-ce qu'une distribution ?
 -------------------------------
 
 Une distribution est un ensemble cohérent de logiciels fourni avec un noyau (Linux ou BSD). Les logiciels sont choisis pour utiliser les mêmes versions de bibliothèque et être compatibles les uns avec les autres ce qui a pour conséquence d'augmenter la stabilité et d'améliorer l'utilisation.
@@ -224,7 +224,7 @@ Les principales distributions
 
 Debian reste très orienté administrateur. Il est important d'être à l'aise avec la ligne de commande. Les versions stables sortent en moyenne tous les 2 ans.
 
-Ubuntu reprend les outils Debian mais les versions sortent tous les 6 mois.
+Ubuntu reprend les outils Debian, mais les versions sortent tous les 6 mois.
 
 Gentoo permet une optimisation poussée du système. Il propose en priorité de compiler les sources de chacun des logiciels et donc de ne garder que les fonctionnalités voulues par l'utilisateur, en tenant compte des nombreux paramètres locaux.
 
@@ -287,9 +287,9 @@ Puis il affiche différents écrans que nous allons expliquer ici.
        :align: center
 
        Choix de la langue du live usb.
-       Et choix entre tester Ubuntu ou lancer l'istallation.
+       Et choix entre tester Ubuntu ou lancer l'installation.
 
-Si vous cliquez sur le bouton "Essayer Ubuntu" vous pourrez tester Ubuntu sans rien installer sur votre machine, les logiciels utilisés seront ceux présents sur la clé usb (vou pourrez en installer d'autres).
+Si vous cliquez sur le bouton "Essayer Ubuntu" vous pourrez tester Ubuntu sans rien installer sur votre machine, les logiciels utilisés seront ceux présents sur la clé usb (vous pourrez en installer d'autres).
 C'est un excellent moyen de dépanner une machine pour par exemple accéder à vos disques lorsque votre l'OS de votre machine ne fonctionne plus.
 
 Étape 02
@@ -327,7 +327,7 @@ Par défaut le disque sera formaté et une partition racine sera créée ainsi q
 La partition de swap est utilisée pour stocker temporairement la mémoire d'un programme qui s'exécutait, mais qui n'est pas celui en cours d'utilisation.
 Par exemple si vous n'avez que très peu de mémoire et que vous lancez plusieurs programmes, celui avec lequel vous interagissez sera en mémoire et les autres peuvent être dans le swap.
 
-Si votre swap a la même taille que votre mémoire vive vous pourrez "hiberner" votre ordinateur, ainsi toute la mémoire vive sera copiée dans le swap et l'ordinateur sera éteint, lorsqu'il sera rallumé tout le swap sera recopié en mémoire vive et les programmes reprendront là où ils en éteint.
+Si votre swap a la même taille que votre mémoire vive vous pourrez "hiberner" votre ordinateur, ainsi toute la mémoire vive sera copiée dans le swap et l'ordinateur sera éteint, lorsqu'il sera rallumé tout le swap sera recopié en mémoire vive et les programmes reprendront là où ils en étaient.
 
 C'est pour cela qu'il est intéressant de créer et paramétrer ses partitions et au minimum de créer une partition "/home" pour préserver le contenu de ses données en cas de crash sévère de l'OS, nous allons voir comment partitionner le disque.
 
@@ -343,7 +343,7 @@ Nous détaillerons le partitionnement ci-après.
 
 LVM (Logical Volume Manager) est un gestionnaire de volumes logiques qui vous permettra de créer des partitions virtuelles afin de pouvoir les retailler ou d'en créer de nouvelles.
 Linux crée alors une couche intermédiaire entre le(s) disque(s) physique(s) et l'OS, c'est dans cette couche virtuelle que vous aurez vos partitions virtuelles qui seront écrites dans la partition réelle.
-Toutefois si la partition physique est abîmée, on pert les partitions virtuelles écrites dessus, c'est pourquoi il faut faire des copies de sauvegardes ou avoir des disques montés en raid.
+Toutefois si la partition physique est abîmée, on perd les partitions virtuelles écrites dessus, c'est pourquoi il faut faire des copies de sauvegardes ou avoir des disques montés en raid.
 Vous pouvez également chiffrer la partition LVM.
 
 Étape 06
@@ -430,7 +430,7 @@ Pour les serveurs cette étape influence directement la sécurité du système (
 
 Au minimum, il est recommandé d'avoir une partition /, /home et swap.
 
-Pour activer le partitionnement manuelle, il suffit de cocher sur le bouton "Autre chose" à l'étape 04.
+Pour activer le partitionnement manuel, il suffit de cocher sur le bouton "Autre chose" à l'étape 04.
 
 Il faut alors choisir un disque.
 
@@ -613,7 +613,7 @@ Ce manuel est généralement traduit dans la langue de l'utilisateur ::
          3   Appels  de  bibliothèque  (fonctions  fournies  par  les  bib-
              liothèques des programmes) ;
          4   Fichiers spéciaux (situés généralement dans /dev) ;
-         5   Formats des fichiers et conventions. Par exemple /etc/passwd ;
+         5   Formats des fichiers et conventions. Par exemple /,etc/passwd ;
          6   Jeux ;
          7   Divers (y compris les macropaquets et les  conventions).   Par
              exemple, man(7), groff(7) ;
@@ -682,7 +682,7 @@ Shell & Commandes
 Les terminaux (tty)
 -------------------
 
-Historiquement, un terminal est une interface homme machine minimale issue des technologies de communication de la fin XIX et du début XX siècle, le Télétype marque déposée en 1906 est l'ancêtre des claviers numériques des premiers ordinateurs.
+Historiquement, un terminal est une interface homme-machine minimale issue des technologies de communication de la fin XIX et du début XX siècle, le Télétype marque déposée en 1906 est l'ancêtre des claviers numériques des premiers ordinateurs.
 
 L'abréviation tty de Télétype a été utilisée pour décrire l'interface série de communication utilisée au début d'Unix. Par usage c'est le terme qui décrit l'interface de saisie et d'affichage avec l'humain. On trouve aussi l'appellation de terminal ou console.
 
@@ -719,7 +719,7 @@ Pour connaître la version de bash en cours d'utilisation::
   michaellaunay@luciole:~$ echo $BASH_VERSION
   4.3.39(1)-release
 
-Pour modifier le shell par défaut associé à un utilisateur il faut modifier */etc/passwd* avec la commande **usermod -s /bin/bash login** : ::
+Pour modifier le shell par défaut associé à un utilisateur il faut modifier */,etc/passwd* avec la commande **usermod -s /bin/bash login** : ::
 
   michaellaunay@luciole:~$ grep michael /etc/passwd
   michaellaunay:x:1000:1000:Michael Launay,,,:/home/michaellaunay:/bin/bash
@@ -740,7 +740,7 @@ Détails sur le format du fichier passwd
        passwd - fichier des mots de passe
 
   DESCRIPTION
-       /etc/passwd contient différentes informations sur les comptes utilisateurs. Ces
+       /,etc/passwd contient différentes informations sur les comptes utilisateurs. Ces
        informations consistent en sept champs séparés par des deux-points (« : ») :
 
        ·   nom de connexion de l´utilisateur (« login »)
@@ -759,7 +759,7 @@ Détails sur le format du fichier passwd
 
        Le champ du mot de passe chiffré peut être vide. Dans ce cas, aucun mot de
        passe n´est nécessaire pour s´authentifier avec le compte donné. Cependant,
-       certaines applications qui lisent le fichier /etc/passwd peuvent décider de ne
+       certaines applications qui lisent le fichier /,etc/passwd peuvent décider de ne
        donner aucun accès si le mot de passe est vide. Si le mot de passe est un « x »
        minuscule, alors le mot de passe chiffré se trouve dans le fichier shadow(5) ;
        il doit y avoir une ligne correspondante dans le fichier shadow, sinon le
@@ -778,14 +778,14 @@ Au lancement du shell celui-ci détermine s'il a été appelé de façon interac
 
 Scripts exécutés lors du lancement d'un shell interactif en ouverture de session (interactive login shell) : ::
 
- /etc/profile
+ /,etc/profile
  ~/.bash_profile #le ~ désigne le répertoire "home" de l'utilisateur
  ~/.bash_login #si ~/.bash_profile n'existe pas
  ~/.profile #si ~/.bash_login
 
 Scripts exécutés lors d'un shell interactif : ::
 
- /etc/bash.bashrc
+ /,etc/bash.bashrc
  ~/.bashrc
 
 La modification de ces scripts nécessite la commande **source** pour une prise en compte immédiate dans le shell courant.
@@ -856,7 +856,7 @@ Pour accéder au contenu d'une variable, il suffit de la référencer en la pré
 
 Pour voir l'ensemble des définitions réalisées dans un shell (variable et fonction) il suffit de taper **set**.
 
-Pour voir les lignes exécutées dans un script **set -x** en début de cript.
+Pour voir les lignes exécutées dans un script **set -x** en début de script.
 
 Les caractères spéciaux
 +++++++++++++++++++++++
@@ -932,7 +932,7 @@ En plus des variables d'environnement vue précédemment nous avons : ::
 Création, affectation de variable
 +++++++++++++++++++++++++++++++++
 
-Pour créer une variable ou en modifier sa valeur il suffit de la définir : ::
+Pour créer une variable ou en modifier sa valeur, il suffit de la définir : ::
 
   michaellaunay@luciole:~$ VAR='Bonjour tout le monde'
   michaellaunay@luciole:~$ echo $VAR
@@ -1038,7 +1038,7 @@ La construction **$[ nombre1 opérateur nombre2 ]** permet de réaliser le calcu
   michaellaunay@luciole:~$ echo $[ 10 - 1 ]
   9
 
-La création de variable et sa modification : ::
+La création d'une variable et sa modification : ::
 
   michaellaunay@luciole:~$ CMPT=[0] # équivalent à la ligne suivante
   michaellaunay@luciole:~$ let CMPT=0
@@ -1123,7 +1123,7 @@ L'opérateur **||** permet d'exécuter la commande suivante si la commande préc
 La commande trap
 ++++++++++++++++
 
-Elle permet de positionner une fonction qui sera exécuté lors de la réception d'un signal (man 7 signal) : ::
+Elle permet de positionner une fonction qui sera exécutée lors de la réception d'un signal (man 7 signal) : ::
 
   trap "echo Fin d\'exécution" EXIT
   trap "echo Interruption violente Ctrl-c" SIGINT
@@ -1146,9 +1146,9 @@ Par exemple dans la ligne suivante : ::
 
 Le résultat est envoyé à **xargs** qui pour chaque ligne va créer une chaîne de caractères "mv contenu_ligne contenu_ligne"
 
-Le résultat est envoyé à **sed** qui supprime la seconde occurence de la chaîne "Ubuntu20.04" qu'il rencontre.
+Le résultat est envoyé à **sed** qui supprime la seconde occurrence de la chaîne "Ubuntu20.04" qu'il rencontre.
 
-Le résultat est exécuté par bash en transformant la chaîne de caractères reçu en ligne de commande.
+Le résultat est exécuté par bash en transformant la chaîne de caractères reçue en ligne de commande.
 
 Ici sed permet de renommer les fichiers de type Ubuntu20.04_00_EssayerOuInstaller.png en 00_EssayerOuInstaller.png.
 
@@ -1326,8 +1326,8 @@ Un **chemin relatif** est un chemin qui permet de se déplacer jusqu'au fichier 
 
 Un **chemin absolu** est un chemin qui commence à la racine **/** de l'arborescence et énonce tous les sous-répertoires jusqu'à la cible : ::
 
-  michaellaunay@luciole:~$ ls -l /etc/passwd
-  -rw-r--r-- 1 root root 1583 2009-04-02 11:35 /etc/passwd
+  michaellaunay@luciole:~$ ls -l /,etc/passwd
+  -rw-r--r-- 1 root root 1583 2009-04-02 11:35 /,etc/passwd
 
 Création / suppression de répertoire
 ++++++++++++++++++++++++++++++++++++
@@ -1349,7 +1349,7 @@ La commande **strings** permet de n'afficher que les chaînes de caractères d'u
 Rechercher des fichiers
 +++++++++++++++++++++++
 
-La commande **find** permet de réaliser des recherches basées sur les informations d'un fichier (nom, date de création, de modification etc.) : ::
+La commande **find** permet de réaliser des recherches basées sur les informations d'un fichier (nom, date de création, de modification, etc.) : ::
 
   michaellaunay@luciole:~$ find Documents/ecreall -name "*pdf" -ctime -2
   # recherche à partir de Documents/ecreall tous les fichiers finissant par pdf, créés depuis moins de 2 jours
@@ -1442,7 +1442,7 @@ Ainsi : ::
         indique que le propriétaire a le droit de traverser si le fichier est un répertoire
     --s (SUID) indique qu'un utilisateur qui exécute le fichier usurpe les droits du propriétaire
         pour tous les accès effectués par l'exécutable.
-        Le propriétaire a les droits d'exécuter ou de traverser (--x est positionné mais est caché).
+        Le propriétaire a les droits d'exécuter ou de traverser (--x est positionné, mais est caché).
     --S (SUID) indique qu'un utilisateur qui exécute le fichier usurpe les droits du propriétaire.
         Le propriétaire n'a pas les droits d'exécuter ou de traverser (--x n'est pas positionné).
 
@@ -1451,10 +1451,10 @@ Ainsi : ::
     --s (SGID) indique qu'un utilisateur appartenant au groupe qui exécute le fichier usurpe les
         droits du groupe et que le groupe a les droits d'exécution.
     --S (SGID) indique qu'un utilisateur appartenant au groupe qui exécute le fichier usurpe les
-        droits du groupe mais que le groupe n'a pas les droits d'exécuter ou de traverser.
+        droits du groupe, mais que le groupe n'a pas les droits d'exécuter ou de traverser.
 
   troisième groupe de 3 lettres :
-    même signification que précédemment, mais pour tous les autres utilisateurs et sauf SGID
+    même signification que précédemment mais pour tous les autres utilisateurs et sauf SGID
     --t (Sticky bit) Indique que les utilisateurs ont le droit de modifier le contenu du fichier
         ou du répertoire, mais pas de le supprimer.
         Les utilisateurs ont le droit d'exécution ou de traverser.
@@ -1483,7 +1483,7 @@ En effet la philosophie d'Unix est de vouloir que tout soit fichier : ::
   Les piles (fifo, lifo), les pipes nommées, sockets sont manipulés comme des fichiers.
   Les caractéristiques du système sont traduites à travers une arborescence.
   Le noyau lui-même est adressé à travers une arborescence qui permet de connaître son état et de le modifier.
-  Les processus sont eux même manipulés à travers une arborescence de fichiers.
+  Les processus sont eux-mêmes manipulés à travers une arborescence de fichiers.
 
 /dev
 ++++
@@ -1731,7 +1731,7 @@ Pour l'installer il suffit de faire :
 Pour connaître la liste des applications pouvant être autorisées par ufw à passer le firewall :
 
   root@luciole:~# ufw app list
-  Applications disponibles ::
+  Applications disponibles ::
 
     Apache
     Apache Full
@@ -1753,7 +1753,7 @@ On pourra alors : soit autoriser les ports manuellement, soit autoriser les port
 
 Modification du firewall pour permettre en entrée http, https, smtp :
 
-    vim /etc/ufw/ufw.conf  # ENABLED=yes #si pas déjà positionné
+    vim /,etc/ufw/ufw.conf  # ENABLED=yes #si pas déjà positionné
     ufw allow 22/tcp # Ouvre le port ssh à tous (on peut restreindre à certaines adresses)
     ufw allow 80/tcp # Ouverture de http
     ufw allow 443/tcp # Ouverture de https
@@ -1765,7 +1765,7 @@ Ces commandes permettent aussi de gérer ipv6
 Vérification :
 
     root@luciole:/etc/dovecot# ufw status
-    État : actif
+    État : actif
 
     Vers                       Action      De
     ----                       ------      --
@@ -1786,7 +1786,7 @@ Permettre le lancement au démarrrage::
 Un peu de configuration pour l'utilisation en ligne
 ---------------------------------------------------
 
-Beaucoup de paramètre par défaut peuvent être modifier dans /etc
+Beaucoup de paramètre par défaut peuvent être modifier dans /,etc
 
 Configurer vim and bash
 -----------------------
@@ -1800,7 +1800,7 @@ Pour avoir la recherche dans l'historique des commandes en saisissant les premi�
 
 Pour faire de vim l'éditeur par défaut::
 
-  echo "export EDITOR=vim" > /etc/profile.d/editor.sh
+  echo "export EDITOR=vim" > /,etc/profile.d/editor.sh
 
 Pour augmenter le nombre de ligne dans l'historique des commandes, créer "/etc/profile.d/history.sh" en mettant::
 
@@ -1834,7 +1834,7 @@ Comme vu précédemment la commande **ls -l** permet d'afficher les attributs d'
 
   michaellaunay@luciole:~$ umask
   0022
-  michaellaunay@luciole:~/tmp$ touch test1
+  michaellaunay@luciole:~/tmp$ touch test1 #Permet de créer un le fichier test1 s'il n'existe pas ou de mettre à jour sa date de modification à maintenant.
   michaellaunay@luciole:~/tmp$ ls -lh test1
   -rw-r--r-- 1 michaellaunay michaellaunay 0 avril  5 12:17 test1
   michaellaunay@luciole:~/tmp$ umask 027
@@ -1863,7 +1863,7 @@ On dispose aussi de la commande **chgrp** qui permet de changer le groupe d'un f
 Valeurs symboliques et octales des permissions
 ----------------------------------------------
 
-Les tableaux suivants donnent les équivalents symboliques octales des permissions.
+Les tableaux suivants donnent les équivalents symboliques octaux des permissions.
 
 +----------------------+------------+--------+
 | DROIT                | LETTRE     | VALEUR |
@@ -1892,7 +1892,7 @@ Ainsi les permissions *rwx* sont équivalentes à *7* et *rwxr-xr--* donne *754*
 
 Ainsi *rwsr-sr-t* est équivalent à *7755*.
 
-Si l'on a un S ou un T en majuscule cela signifie que les droits d'exécution n'ont pas été positionnés.
+Si l'on a un S ou un T en majuscule, cela signifie que les droits d'exécution n'ont pas été positionnés.
 
 Ceci n'a pas de sens dans le cas général et indique une suppression du droit d'exécution avec oubli du SUID ou GUID ou Sticky Bit.
 
@@ -1971,7 +1971,7 @@ C'est pour répondre ce besoin qu'ont été implémentées les Access Control Li
 
 Les ACLs reposent sur le mécanisme des attributs étendus.
 
-Pour les rendre disponibles, il faut que la partition soit montée avec les options *acl* et *user_xattr* (modifier en conséquence */etc/fstab*).
+Pour les rendre disponibles, il faut que la partition soit montée avec les options *acl* et *user_xattr* (modifier en conséquence */,etc/fstab*).
 
 Les fonctions d'accès aux *acl* sont **getfacl**, **setfacl**, **getfattr**, **setfattr**.
 
@@ -1982,11 +1982,11 @@ Attributs étendus
 
 Les attributs étendus permettent de gérer simplement les métadonnées associées à un fichier.
 
-Ceux sont ces attributs étendus qui recevront les informations liées aux ACLs.
+Ce sont ces attributs étendus qui recevront les informations liées aux ACLs.
 
 Pour installer le paquet : **apt-get install attr**
 
-Ajouter l'option *user_xattr* aux partitions dans */etc/fstab*.
+Ajouter l'option *user_xattr* aux partitions dans */,etc/fstab*.
 
 Puis utiliser **setfattr** pour positionner les attributs et **getfattr** pour les afficher : ::
 
@@ -2067,7 +2067,7 @@ Les processus utilisent des bibliothèques qui peuvent être statiques ou dynami
 
 L'extension des bibliothèques dynamiques est *.so* (shared object).
 
-Un processus est lancé par un autre processus, ainsi il existe une relation père fils entre les processus.
+Un processus est lancé par un autre processus, ainsi il existe une relation père-fils entre les processus.
 
 Le processus ancêtre de tous les autres est *init* qui est lancé lors du démarrage par le noyau.
 
@@ -2082,7 +2082,7 @@ PID : Identifiant du processus (Process Identification),
 
 PPID : Identifiant du processus père (Parent Process Identification),
 
-PGID : Identifiant du groupe de processus qui permet de connaitre l'application à laquelle appartient le processus,
+PGID : Identifiant du groupe de processus qui permet de connaître l'application à laquelle appartient le processus,
 
 UID : Le compte utilisateur ayant lancé le processus,
 
@@ -2092,7 +2092,7 @@ TTY : Terminal où a été lancé le processus,
 
 NICE : Priorité appliquée pour le scheduling,
 
-CMD : La commande à l'origine du proccessus.
+CMD : La commande à l'origine du processus.
 
 Cycle de vie d'un processus
 ---------------------------
@@ -2116,20 +2116,20 @@ Voir : http://en.wikipedia.org/wiki/Process_states
 Les différentes sortes de processus
 -----------------------------------
 
-On distingue les processus classiques des deamons qui sont les services unix.
+On distingue les processus classiques des démons qui sont les services unix.
 
-Les deamons ou démons fonctionnent en arrière plan ils ont en général pour père le processus 1.
+Les démons ou démons fonctionnent en arrière-plan ils ont en général pour père le processus 1.
 
-Les démons sont lancés et arrêtés à partir des scripts contenus dans **/etc/init.d**.
+Les démons sont lancés et arrêtés à partir des scripts contenus dans **/,etc/init.d**.
 
 Envoi de signaux aux processus
 ------------------------------
 
 L'envoi de signaux au processus se fait par la commande **kill** ou **pkill**.
 
-Les processus peuvent établir entre eux une communication événementielle basé sur les signaux.
+Les processus peuvent établir entre eux une communication événementielle basée sur les signaux.
 
-Seul les signaux **9** **SIGKILL**, et **SIGSTOP** ne peuvent être attrapés.
+Seuls les signaux **9** **SIGKILL**, et **SIGSTOP** ne peuvent être attrapés.
 
 Les commandes liées à la gestion des processus
 ----------------------------------------------
@@ -2155,10 +2155,10 @@ La commande **top** affiche la liste de processus classés par consommation déc
 La commande **uptime** affiche les informations de temps de fonctionnement, du nombre d'utilisateurs connectés, de la charge.
 
 
-Arrière plan / Avant plan / Détachement
+Arrière-plan / Avant-plan / Détachement
 ---------------------------------------
 
-Pour lancer un processus en arrière plan on peut soit terminer la ligne de commande qui le lance avec **&**, soit le lancer, faire **Ctrl+z** puis **bg**.
+Pour lancer un processus en arrière-plan, on peut soit terminer la ligne de commande qui le lance avec **&**, soit le lancer, faire **Ctrl+z** puis **bg**.
 
 Lors du **Ctrl+z** la commande **fg** ramène le processus au premier plan.
 
@@ -2189,7 +2189,7 @@ Sous unix deux démons sont chargés de la planification des tâches : **atd** q
 La commande crontab
 -------------------
 
-**crond** est un service qui peut être programmé grace à la commande **crontab**.
+**crond** est un service qui peut être programmé grâce à la commande **crontab**.
 
 **crontab -l** liste les commandes déjà programmées pour l'utilisateur courant.
 
@@ -2200,7 +2200,7 @@ L'éditeur utilisé par **crontab -e** est celui désigné par la variable *EDIT
 Le fichier crontab système
 --------------------------
 
-Ils est possible d'éditer directement le fichier /etc/crontab ou ceux contenu dans /var/spool/cron/crontabs/${USER}
+Il est possible d'éditer directement le fichier /,etc/crontab ou ceux contenus dans /var/spool/cron/crontabs/${USER}
 
 Le format du fichier est le même que lors de l'édition avec *crontab -e*:
 
@@ -2240,9 +2240,9 @@ Exemple : ::
   52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
   #
 
-Sur la plupart des distributions */etc/crontab* lance les scripts contenus dans */etc/cron.hourly*, */etc/cron.daily*, */etc/cron.weekly*, */etc/cron.monthly*. Pour ajouter une tâche il suffit d'ajouter un script au répertoire désiré.
+Sur la plupart des distributions */,etc/crontab* lance les scripts contenus dans */,etc/cron.hourly*, */,etc/cron.daily*, */,etc/cron.weekly*, */,etc/cron.monthly*. Pour ajouter une tâche, il suffit d'ajouter un script au répertoire désiré.
 
-Les fichiers */etc/cron.allow* et */etc/cron.deny* permettent s'ils existent de nommer les utilisateurs pouvant programmer des tâches.
+Les fichiers */,etc/cron.allow* et */,etc/cron.deny* permettent s'ils existent de nommer les utilisateurs pouvant programmer des tâches.
 
 La commande at
 --------------
@@ -2255,10 +2255,10 @@ La commande at
 
 Exemple : ::
 
-  root@server:~# apt-get install mailutils # Pour avoir la commande mail
+  root@server:~# apt install mailutils # Pour avoir la commande mail
   root@server:~# at 6:45; mail -s "Debout" michaellaunay@ecreall.com < reveil.msg
 
-Les fichiers */etc/at.allow* et *at.deny* permettent comme pour cron de lister les utilisateurs pouvant ou non lancer **at**.
+Les fichiers */,etc/at.allow* et *at.deny* permettent comme pour cron de lister les utilisateurs pouvant ou non lancer **at**.
 
 Les utilisateurs et les groupes
 ===============================
@@ -2284,7 +2284,7 @@ Chaque utilisateur d'un système Unix est associé à un identifiant unique qui 
 
 Ainsi au *login* le système demande à l'utilisateur son mot de passe.
 
-Lorsque la connexion réussit le système associe à l'utilisateur l'**UID** (**User IDentification**) correspondant à son identifiant.
+Lorsque la connexion réussit, le système associe à l'utilisateur l'**UID** (**User IDentification**) correspondant à son identifiant.
 
 Le système associe également à l'utilisateur un **GID** (**Groupe IDentification**) qui est le groupe principal de l'utilisateur.
 
@@ -2294,7 +2294,7 @@ Un **UID** est associé à un répertoire personnel et à un shell.
 
 L'UID 0 désigne l'utilisateur **root**
 
-Un utilisateur peut ne pas être une personne physique mais être l'utilisateur d'exécution d'un démon.
+Un utilisateur peut ne pas être une personne physique, mais être l'utilisateur d'exécution d'un démon.
 
 En conséquence, les **UID** des personnes physiques commencent généralement à partir de 1000.
 
@@ -2332,7 +2332,7 @@ Changer le mot de passe d'un utilisateur
 
 La commande **passwd** permet sous *root* de changer le mot de passe d'un utilisateur.
 
-Si l'on est un utilisateur la commande demandera de saisir l'ancien mot de passe.
+Si l'on est un utilisateur, la commande demandera de saisir l'ancien mot de passe.
 
 La commande **chpasswd** permet de scripter les changements de mots de passe.
 
@@ -2411,25 +2411,25 @@ Supprimer un groupe
 
 La commande **groupdel** permet de supprimer un groupe.
 
-Le fichier /etc/passwd
+Le fichier /,etc/passwd
 ----------------------
 
-Le fichier */etc/passwd* contient la définition de tous les comptes.
+Le fichier */,etc/passwd* contient la définition de tous les comptes.
 
-Le fichier /etc/shadow
+Le fichier /,etc/shadow
 ----------------------
 
-Le fichier */etc/shadow* contient les mots de passe des comptes définis dans */etc/passwd*
+Le fichier */,etc/shadow* contient les mots de passe des comptes définis dans */,etc/passwd*
 
-Le fichier /etc/group
+Le fichier /,etc/group
 ---------------------
 
-Le fichier */etc/group* contient la définition de tous les groupes.
+Le fichier */,etc/group* contient la définition de tous les groupes.
 
 Installation openldap
 ---------------------
 
-Ldap est un annuaire qui permet de gérer le utilisateur d'un service sans créer un compte unix.
+Ldap est un annuaire qui permet de gérer l'utilisateur d'un service sans créer un compte unix.
 
 Installation du serveur ldap :
 
@@ -2440,7 +2440,7 @@ Modification de la configuration :
     dpkg-reconfigure slapd
     # saisie de "ecreall.com" comme domaine
     # saisie de "people" comme organization
-    # saisie du mot de passe (comme celui de l'utilisateur michaellaunay mais pour LDAP)
+    # saisie du mot de passe (comme celui de l'utilisateur michaellaunay, mais pour LDAP)
 
 Attention ! Configurer LTS pour chiffrer les connexions si elles sont extérieures à la machine, car les mots de passe circulent en clair (voir  https://wiki.debian.org/LDAP/OpenLDAPSetup#Enable_TLS.2FSSL)!
 
@@ -2530,15 +2530,15 @@ Syslog
 
 **Syslog** est le système chargé d'enregistrer les fichiers journaux.
 
-Le démon **klogd** consigne les événements de type message du noyau, authentification, connexion alors que **syslogd** enregistre les message d'envoi ou réception de courrier, ceux d'erreur, etc.
+Le démon **klogd** consigne les événements de type message du noyau, authentification, connexion alors que **syslogd** enregistre les messages d'envoi ou réception de courrier, ceux d'erreur, etc.
 
 Les fichiers de messages se trouvent dans */var/log*
 
-**syslogd** est configuré avec le fichier */etc/syslog.conf*. Ce fichier permet d'indiquer les sources de messages et les destinations associées (fichier, tty, application ou syslog d'une autre machine). Pour être prise en compte, la modification du fichier de conf doit être suivie par un *kill 1 $PID_SYSLOG*.
+**syslogd** est configuré avec le fichier */,etc/syslog.conf*. Ce fichier permet d'indiquer les sources de messages et les destinations associées (fichier, tty, application ou syslog d'une autre machine). Pour être prise en compte, la modification du fichier de conf doit être suivie par un *kill 1 $PID_SYSLOG*.
 
 Toutefois de nombreux programmes n'utilisent pas *syslog* comme *CUPS*, *Samba*, etc.
 
-Afin d'éviter que la taille des fichiers de logs n'explose la capacité du disque les fichiers sont compressés de façon régulière par **logrotate** dont la configuration est modifiable en éditant **/etc/logrotate**
+Afin d'éviter que la taille des fichiers de logs n'explose la capacité du disque les fichiers sont compressés de façon régulière par **logrotate** dont la configuration est modifiable en éditant **/,etc/logrotate**
 
 La commande **dmesg** permet d'afficher les messages du noyau.
 
@@ -2548,7 +2548,7 @@ Modification de la configuration de logrotate
 Logrotate possède une configuration par défaut contenue dans "/etc/logrotate.conf" puis un répertoire avec les configurations des services pour compléter ou remplacer la configuration par défaut.
 
 Il est fréquent que pour des raisons légales, on doive garder un ou deux ans de logs selon la nature des utilisateurs et des services.
-Souvant on garde 104 semaines de connexions et 52 semaines de navigation et 14 semaines pour les autres services.
+Souvent on garde 104 semaines de connexions et 52 semaines de navigation et 14 semaines pour les autres services.
 
 Pour modifier la conf par défaut à 14 semaines on édite "/etc/logrotate.conf" : ::
 
@@ -2557,15 +2557,15 @@ Pour modifier la conf par défaut à 14 semaines on édite "/etc/logrotate.conf"
   - Ajouter delaycompress chaque vieux fichier de log
   - Limiter la taille d'un fichier de log à 100M
 
-On doit donc avoir dans /etc/logrotate.conf :
+On doit donc avoir dans /,etc/logrotate.conf :
 
     rotate 14
     compress
     delaycompress
     size 100M
 
-Puis on change "rotate X" à "rotate 104" dans les fichier des services concernés se trouvant dans le répertoire "/etc/logrotate.d/".
-Par exemple, on va modifier "/etc/logrotate.d/apache2" pour mettre rotate à 104, et modifier le fichier "/etc/logrotate.d/rsyslog" modifier les logs des services d'authentifications.
+Puis on change "rotate X" à "rotate 104" dans les fichiers des services concernés se trouvant dans le répertoire "/etc/logrotate.d/".
+Par exemple, on va modifier "/,etc/logrotate.d/apache2" pour mettre rotate à 104, et modifier le fichier "/etc/logrotate.d/rsyslog" modifier les logs des services d'authentifications.
 
 Périphérique disque et système de fichiers
 ==========================================
@@ -2577,7 +2577,7 @@ L'organisation physique d'un disque est constituée de plateaux superposés divi
 
 Chaque piste contenant un certain nombre de secteurs de 512 octets.
 
-L'ensemble des pistes des différents plateaux accessible sans nouveau déplacement des têtes de lecture constitue un cylindre.
+L'ensemble des pistes des différents plateaux accessibles sans nouveau déplacement des têtes de lecture constitue un cylindre.
 
 Voire http://fr.wikipedia.org/wiki/Disque_dur.
 
@@ -2594,7 +2594,7 @@ Un disque est "découpé" en partitions.
 
 Le premier secteur contient le MBR (Master Boot Record) qui décrit la table des 4 premières partitions et contient également le code du chargeur primaire (primary loader).
 
-L'une des quatre partitions primaires peut être du type étendue et contenir des partitions logiques qui sont alors chaînées entre elles.
+L'une des quatre partitions primaires peut être du type étendu et contenir des partitions logiques qui sont alors chaînées entre elles.
 
 La taille des partitions est donnée en nombre de cylindres, ce qui fixe le nombre de secteurs de la partition.
 
@@ -2605,7 +2605,7 @@ Les systèmes de fichiers
 
 Un système de fichier est une structure de données permettant de stocker et organiser les informations dans des fichiers.
 
-Le système de fichier est généralement stocké dans une partition mais il peut l'être sur un disque amovible (USB) ou dans un fichier.
+Le système de fichier est généralement stocké dans une partition, mais il peut l'être sur un disque amovible (USB) ou dans un fichier.
 
 Partitions
 ----------
@@ -2621,11 +2621,11 @@ La numérotation des partitions est réalisée en accolant au nom du périphéri
 Utilitaires de partitionnement
 ------------------------------
 
-Historiquement la commande permettant de créer les partitions était **fdisk**, mais elle est limité à des partitions de taille inférieure à 2To.
+Historiquement la commande permettant de créer les partitions était **fdisk**, mais elle est limitée à des partitions de taille inférieure à 2To.
 
-Elle est remplacée par la commande **parted** et par sa version graphique **gparted** qui permettent de créer et retailler des partitions déjà existantes, mais il faut descendre le paquet.
+Elle est remplacée par la commande **parted** et par sa version graphique **gparted** qui permet de créer et retailler des partitions déjà existantes, mais il faut descendre le paquet.
 
-La commande **partprobe** permet d'avertir le système que l'on a modifié la tables des partitions.
+La commande **partprobe** permet d'avertir le système que l'on a modifié la table des partitions.
 
 Arborescence standard et organisation du FHS
 --------------------------------------------
@@ -2643,14 +2643,14 @@ Arborescence de /
  * /bin contient les exécutables du système d'exploitation,
  * /boot les fichiers de démarrage,
  * /dev les périphériques sous forme de fichiers pouvant être lus ou écrits,
- * /etc les fichier de configuration et ceux nécessaires au démarrage,
+ * /,etc les fichier de configuration et ceux nécessaires au démarrage,
  * /home les répertoires des utilisateurs,
- * /lib le bibliothèques partagées et les modules du noyau dans le sous répertoire modules,
+ * /lib le bibliothèques partagées et les modules du noyau dans le sous-répertoire modules,
  * /mnt les dossier des points de montage temporaires,
  * /proc les états du noyau,
  * /root le répertoire du super utilisateur root,
  * /sbin les exécutables du super utilisateur,
- * /sys contient les caractéristiques et informations sur les périfériques comme le nom du fabriquant, les bus connectés,
+ * /sys contient les caractéristiques et informations sur les périphériques comme le nom du fabriquant, les bus connectés,
  * /tmp les fichiers temporaires liés à l'exécution des applications ou services, ils sont effacés au reboot,
  * /usr les ressources du système non essentielles (Unix Système Ressources)
  * /var les fichiers tels que les based de données, les pages html, les mails, les logs
@@ -2679,7 +2679,7 @@ Arborescence de /var
  * /var/lib/ Données persistantes telles les bases de données,
  * /var/lock Les fichiers de verrous,
  * /var/log Les fichiers de Log
- * /var/mail Les mails si la configurations précise qu'ils doivent être stockés ici
+ * /var/mail Les mails si la configuration précise qu'ils doivent être stockés ici
  * /var/run Les informations d'exécution des daemons
  * /var/spool Les queues de traitement (mail, impression, etc)
  * /var/tmp Les fichiers temporaires à préserver des reboots
@@ -2703,12 +2703,12 @@ Pour démonter un système de fichier monté avec sshfs : **fusermount -u point_
 Les tables de montage : /etc/fstab
 ----------------------------------
 
-Le fichier **/etc/fstab** contient les montages à réaliser au démarrage ou pour lesquels *root* a autorisé un montage manuel.
+Le fichier **/,etc/fstab** contient les montages à réaliser au démarrage ou pour lesquels *root* a autorisé un montage manuel.
 
 Tables systèmes, inodes
 -----------------------
 
-Un file system est composé de différentes tables systèmes :
+Un file system est composé de différentes tables système :
 
  * Le super-bloc contenant les informations de taille, d'état de montage.
  * La table des *inodes* (nœud d'index) qui fait correspondre à chaque fichier un numéro d'identification unique et qui possède les informations des droits d'accès, de propriété.
@@ -2726,13 +2726,13 @@ Journalisation
 
 La journalisation permet d'enregistrer les manipulations réalisées sur les fichiers et l'arborescence.
 
-Pour certain système de fichier elle enregistre en plus les différences, ce qui permet de revenir à un état précédent.
+Pour certains systèmes de fichier, elle enregistre en plus les différences, ce qui permet de revenir à un état précédent.
 
-Les système simples permettent néanmoins de revenir au dernier état cohérent en cas de plantage du système.
+Les systèmes simples permettent néanmoins de revenir au dernier état cohérent en cas de plantage du système.
 
 Toutefois, les coupures de courant peuvent aboutir à des états incohérents, ceci à cause du cache en écriture des disques durs.
 
-Au redémarrage de la machine la journalisation va permettre d'accélérer le diagnostique des disques.
+Au redémarrage de la machine, la journalisation va permettre d'accélérer le diagnostic des disques.
 
 **ext3** est un système journalisé de manière simple.
 
@@ -2773,17 +2773,17 @@ Montage des périphériques amovibles
 
 La commande **lsusb** permet de voir les périphériques USB connectés.
 
-La commade **lspci** permet de voir les périphériques PCI connectés.
+La commande **lspci** permet de voir les périphériques PCI connectés.
 
 Lorsqu'un périphérique de type blocs ou caractères est détecté par le noyau, un périphérique correspondant est ajouté dans */dev* par le démon **udevd** du système **udev**.
 
-Le système **udev** a pour rôle de gérer l'unicité des noms pour les prériphériques et de maintenir */dev* en cohérence avec les périphériques présents.
+Le système **udev** a pour rôle de gérer l'unicité des noms pour les périphériques et de maintenir */dev* en cohérence avec les périphériques présents.
 
-Les fichiers de configuration de **udev** sont placés dans */etc/udev*. Il est possible de définir des règles dans */etc/udev/rules.d* qui seront évaluées dans l'ordre lexicographique.
+Les fichiers de configuration de **udev** sont placés dans */,etc/udev*. Il est possible de définir des règles dans */,etc/udev/rules.d* qui seront évaluées dans l'ordre lexicographique.
 
 Le démon HAL (Hardware Abstraction Layer) **hald** est notifié par **udev** de l'ajout d'un périphérique (règle */etc/udev/rules.d/90-hal.rules*).
 
-**HAL** identifie alors le type des périphériques connectés, du système de fichers, et en fonction des informations comme *VendorId* ou *ProductId* d'associer le contenu avec un type d'application.
+**HAL** identifie alors le type des périphériques connectés, du système de fichiers, et en fonction des informations comme *VendorId* ou *ProductId* d'associer le contenu avec un type d'application.
 
 La base de données des périphériques est située dans le répertoire */usr/share/hal/fdi/* : ::
 
@@ -2870,9 +2870,9 @@ Installation : ::
 
 Le démon smartd est alors installé et peu prévenir l'administrateur par mail lorsque les informations d'état des disques atteindront les seuils d'alertes.
 
-La vérification se fait au démarrage et est modifiable en éditant *etc/smartd.conf*.
+La vérification se fait au démarrage et est modifiable en éditant *,etc/smartd.conf*.
 
-Si les erreurs disque n'ont pus être corrigées il faut fortement songer à changer de disque...
+Si les erreurs disque n'ont pu être corrigées, il faut fortement songer à changer de disque...
 
 Attention à l'usage de *smart* avec le *RAID* qui pose problème avec certains contrôleurs.
 
@@ -2941,7 +2941,7 @@ Lecture du résultat : ::
       Always : la valeur est maintenue à jour.
       Offline : la valeur est calculée uniquement lors des tests.
 
-  VALUE : La valeur actuelle du disque. Une valeur comprise entre 100 et 255 indique générelement
+  VALUE : La valeur actuelle du disque. Une valeur comprise entre 100 et 255 indique généralement
       une bonne santé du disque.
 
   WORST : La pire valeur enregistrée par le disque.
@@ -2993,7 +2993,7 @@ Le RAID (Redundant Array of Independant Disk) permet d'augmenter la tolérance a
 
 La tolérance est obtenue soit par mirroring, soit par calcul de parité.
 
-Les performances sont obtenues par multiplexage des disques, par exemple un mot de 4 octets voit chacun de ses octets écrits en parallèle sur 4 disques différent.
+Les performances sont obtenues par multiplexage des disques, par exemple un mot de 4 octets voit chacun de ses octets écrits en parallèle sur 4 disques différents.
 
 La concaténation permet elle de disposer virtuellement d'un seul disque dont la capacité est la somme de chacun des disques.
 
@@ -3033,22 +3033,22 @@ La commande **mdadm --detail /dev/mdX** affiche l'état d'un *RAID*.
 
 La commande **mdadm --deamonise /dev/mdX** démarre le *RAID*.
 
-Le fichier */etc/mdadm/mdadm.conf* contient la configuration utilisée par mdadm au démarrage.
+Le fichier */,etc/mdadm/mdadm.conf* contient la configuration utilisée par mdadm au démarrage.
 
-La commande **mdadm --detail --scan --verbose** permet de récupérer la configuration et si nécessaire de la stocker dans */etc/mdadm/mdadm.conf* pour le prochain démarrage.
+La commande **mdadm --detail --scan --verbose** permet de récupérer la configuration et si nécessaire de la stocker dans */,etc/mdadm/mdadm.conf* pour le prochain démarrage.
 
 Lien : http://doc.ubuntu-fr.org/raid_logiciel
 
-Exemple creation d'un dique : ::
+Exemple création d'un disque : ::
 
   fdisk /dev/sda #Pour la création de /dev/sda1
   fdisk /dev/sdb #Pour la création de /dev/sdb1
   mdadm --create /dev/md0 --level=1 --raid-devices=2 /dev/sda1 /dev/sdb1
   mdadm --daemonise /dev/md0
-  #sinon en éditant /etc/mdadm/mdadm.conf on peut y ajouter
+  #sinon en éditant /,etc/mdadm/mdadm.conf on peut y ajouter
   #ARRAY /dev/md0 level=raid1 num-devices=2 devices=/dev/sda1,/dev/sdb1
 
-Les périphérique *RAID* apparaissent sous */dev/md#*.
+Les périphériques *RAID* apparaissent sous */dev/md#*.
 
 LVM
 ---
@@ -3056,16 +3056,16 @@ LVM
 **LVM** Logical Volume Manager s'intercale entre le noyau et les partitions des disques afin de permettre :
 
  * de redimensionner les partitions,
- * de concaténer les disque,
+ * de concaténer les disques,
  * de réaliser des instantanés du système de fichier.
 
-Sa mise en place doit être faite dés le partitionnement (type 8E).
+Sa mise en place doit être faite dès le partitionnement (type 8E).
 
 *GRUB* ne fonctionne pas avec *LVM* il faut donc soit utiliser *Lilo* soit réserver LVM à */home*.
 
 Glossaire :
 
-**PV** *Physical Volume* est un disque ou un ensemble de disque utilisé par *LVM*,
+**PV** *Physical Volume* est un disque ou un ensemble de disques utilisés par *LVM*,
 
 **VG** *Volume Group* est un ensemble de PV,
 
@@ -3089,7 +3089,7 @@ Il ne faut pas oublier de formater un volume logique pour pouvoir s'en servir, o
 
 La commande **lvextend** permet de modifier la taille d'un *LV*.
 
-Pour retailler le système de fichier on utilisera la commande **resize2fs** après avoir démonté le système de fichier.
+Pour retailler le système de fichier, on utilisera la commande **resize2fs** après avoir démonté le système de fichier.
 
 Python
 ======
@@ -3182,7 +3182,7 @@ Les opérateurs
 
 L'affectation =
 
-La division / (Attention identique au C donc 5/6 = 0 mais 5.0/6 = 0.83333....)
+La division / (Attention identique au C donc 5/6 = 0, mais 5.0/6 = 0.83333....)
 
 La division entière //
 
@@ -3248,7 +3248,7 @@ L'instruction while
 Les fonctions
 -------------
 
-La définition des fonctions se fait à l'aide de l'instruction « def ».
+La définition des fonctions se fait à l'aide de l'instruction « def ».
 
 La fonction est un objet.
 
@@ -3258,7 +3258,7 @@ Les paramètres ne sont pas typés.
 
 Les paramètres peuvent recevoir une valeur par défaut *p1 = 0*.
 
-Les paramètres non explicites (ex: def f(\*\*dict)) sont placés dans un dictionnaires.
+Les paramètres non explicites (ex: def f(\*\*dict)) sont placés dans un dictionnaire.
 
 Les paramètres arbitraires (ex : def f(\*pars))sont placé dans un tuple.
 
@@ -3294,7 +3294,7 @@ Exemple : ::
   >>execution de f
   >>coucou
 
-Utile pour tester les pré-conditions des fonctions.
+Utile pour tester les préconditions des fonctions.
 
 Les Classes
 -----------
@@ -3389,6 +3389,60 @@ Liens :
  * http://docs.python.org/
  * http://www.afpy.org/
 
+Environnement virtuel
+-------------------
+
+Les environnements virtuels python permettent de créer des environnements de développements ou d'exécutions isolés les uns des autres.
+C'est à dire que l'on va pouvoir y installer des bibliothèques sans contaminer les autres environnements python.
+Et l'on va pouvoir lister précisément les dépendances dont notre programme a besoin. Fini la livraison où il manque des bibliothèques parce que dans un autre projet on a installé une bibliothèque que l'on utilise sans rendre compte.
+Installer le paquet de la distribution : ::
+
+  pip3 install virtualenv virtualenvwrapper
+
+Éditer notre .bashrc et ajouter les lignes suivantes : ::
+
+  # virtualenv
+  export WORKON_HOME=$HOME/.virtualenvs
+  VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
+  source /usr/local/bin/virtualenvwrapper.sh
+
+Pour céer un environnement virtuel : ::
+
+  mkvirtualenv my_venv -p python3
+
+Par exemple pour installer QT6 dans un environnement vituel : ::
+
+  mkvirtualenv qt6_env -p python3
+
+  (qt6_env) michaellaunay@luciole:~$ pip install numpy matplotlib PyQT6 # pour installer QT
+  (qt6_env) michaellaunay@luciole:~$ pip install flake8 pylint # pour installer flake8 qui vérifie le respect de la pep8 et Pylint pour la vérification du code
+
+Depuis python3.6, il existe un outil qui fusionne pip et virtual env : **pipenv**
+
+Installation de pipenv : ::
+
+    pip3 install pipenv
+
+Création d'un vitual env lors de l'installation d'un module
+
+    cd $MY_WORKING_DIR # Aller dans votre espace de travail
+    pipenv install pyside6 --python=python3.9
+    # Attention si python 3.9 n'est pas installé sur la machine ne pas oublier de faire "apt install python3.9"
+
+Pour voir son virtualenv : ::
+
+    pipenv --venv #Indique les virtual env associés avec le chemin courant
+
+
+Pour activer le virtual env créé : ::
+
+    pipenv shell #Depuis le répertoire de travail
+
+
+Vérification de la conformité pep8 : 
+
+  (qt6_env) michaellaunay@luciole:~$ flake8 demo.py
+
 
 Initialisation du système et des services
 =========================================
@@ -3433,7 +3487,7 @@ La version 2 est celle installée avec Ubuntu 20.04.
 
 La mise à jour du noyau entraine la modification du fichier */boot/grub/grub.cfg*, mais il est possible de la forcer avec la commande **update-grub**.
 
-Pour customiser le bootloader on doit éditer le fichier /etc/grub.d/40_custom
+Pour customiser le bootloader on doit éditer le fichier /,etc/grub.d/40_custom
 
 Lors du démarage de Grub on peut passer des options au kernel en appuyant sur la touche "e".
 
@@ -3478,9 +3532,9 @@ Ce système est remplacé par **upstart** sur les dernières Ubuntu et Fedora.
 
 Au démarrage, le noyau lance *init*.
 
-L'ancien système était paramétrable via le fichier */etc/inittab* qui est remplacé par la notion de *job*.
+L'ancien système était paramétrable via le fichier */,etc/inittab* qui est remplacé par la notion de *job*.
 
-**init** lit le répertoire */etc/event.d* qui contient les jobs à lancer.
+**init** lit le répertoire */,etc/event.d* qui contient les jobs à lancer.
 
 Chaque job réalise des actions en fonction du niveau d'exécution du noyau.
 
@@ -3527,7 +3581,7 @@ Signification des niveaux pour Ubuntu : ::
  Niveau S : Initialisation du système (le système de fichier est en read only),
  Niveau 0 : Extinction,
  Niveau 1 : Mode mono utilisateur,
- Niveau 2 et 5 : Mode multi-utilisateurs avec réseau avec démarrage du serveur X,
+ Niveau 2 et 5 : Mode multi-utilisateur avec réseau avec démarrage du serveur X,
  Niveau 6 : Reboot.
 
 Le système de démarrage des services
@@ -3537,11 +3591,11 @@ Lors du lancement d'*init* par le noyau, celui-ci transmet l'information de nive
 
 Ainsi *init* lance les jobs en leur précisant le niveau demandé.
 
-Le job *rc5* lance */etc/init.d/rc 5*, qui à son tour va lancer les scripts contenu dans */etc/rc5.d* selon l'ordre lexicographique.
+Le job *rc5* lance */,etc/init.d/rc 5*, qui à son tour va lancer les scripts contenus dans */,etc/rc5.d* selon l'ordre lexicographique.
 
-Les répertoires */etc/rcX.d* contiennent des liens vers les scripts de */etc/init.d*.
+Les répertoires */,etc/rcX.d* contiennent des liens vers les scripts de */,etc/init.d*.
 
-Les scripts contenus dans */etc/init.d* permettent de démarrer, arrêter, ou connaître le statut des démons.
+Les scripts contenus dans */,etc/init.d* permettent de démarrer, arrêter, ou connaître le statut des démons.
 
 Changement du niveau d'exécution
 --------------------------------
@@ -3557,7 +3611,7 @@ Modules
 
 Le noyau Linux est modulaire.
 
-La gestion de nombreux périphériques n'est pas faite dans le noyau mais dans des modules qui sont chargés à la demande.
+La gestion de nombreux périphériques n'est pas faite dans le noyau, mais dans des modules qui sont chargés à la demande.
 
 La commande **modprobe** permet de charger un module directement par son nom.
 
@@ -3606,12 +3660,12 @@ Infos : http://fr.wikipedia.org/wiki/DHCP
 La commande ip
 --------------
 
-La commande ip permet d'afficher et modifier toutes les interfaces réseaux.
+La commande ip permet d'afficher et modifier toutes les interfaces réseau.
 
 
 ip addr : Affiche les adresses ip et toutes les informations.
 ip addr show dev em1 : Affiche les informations pour le périphérique em1
-ip addr add 192.168.1.1/24 dev em1 : Ajoute l'adresse 192.168.1.1 avec le masque 24 au préiphérique em1.
+ip addr add 192.168.1.1/24 dev em1 : Ajoute l'adresse 192.168.1.1 avec le masque 24 au périphérique em1.
 
 ip link : Gère et affiche toutes les interfaces réseaux.
 ip link show dev em1 : Affiche les informations pour em1.
@@ -3624,13 +3678,13 @@ ip route : Affiche et permet la modification de la table de routage.
 ip maddr : Affiche et permet la gestion des adresses multicast.
 ip maddr show dev em1 : Affiche les informations multicast de em1
 
-ip neigh : Affiche les objets voisins c'est à dire la table ARP pour IPv4.
+ip neigh : Affiche les objets voisins c'est-à-dire la table ARP pour IPv4.
 ip neigh show dev em1 : Affiche le cache ARP de l'interface em1
 
 
 
-La commande ip permet de consulter et changer l'état ou les paramettres de tous les types de périphériques réseaux.
-Elle remplace les commandes ifconfig, iwconfig, ifup/ifdown, route que nous détaillerons ci après, car elles sont encore proposées par certaines docs.
+La commande ip permet de consulter et changer l'état ou les paramètres de tous les types de périphériques réseau.
+Elle remplace les commandes ifconfig, iwconfig, ifup/ifdown, route que nous détaillerons ci-après, car elles sont encore proposées par certaines docs.
 
 voir :
 
@@ -3641,7 +3695,7 @@ https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatshe
 ifconfig (déprécié)
 -------------------
 
-La commande **ifconfig** permet à la fois de consulter les paramètres réseau mais également de configurer les interfaces.
+La commande **ifconfig** permet à la fois de consulter les paramètres réseau, mais également de configurer les interfaces.
 Cette commande est aujourd'hui obsolète et remplacée par **ip** que nous détaillerons ci-après, on peut l'installer avec **apt install net-tools**.
 Toutefois elle est beaucoup plus simple, mais moins complète que **ip** .
 
@@ -3651,7 +3705,7 @@ Exemple de configuration : ::
 
 La configuration ainsi réalisée n'est pas permanent, elle sera perdue au prochain démarrage.
 
-Pour modifier de façon permanente la configuration réseau il faut éditer */etc/network/interfaces*.
+Pour modifier de façon permanente la configuration réseau il faut éditer */,etc/network/interfaces*.
 
 **ifconfig** est remplacé par la commande **ip addr** ou **ip a**
 **ifconfig eth0 192.168.0.11** est remplacé par **ip addr add 192.168.0.11/255.255.255.0 dev enxe4b97aef38eb**
@@ -3665,7 +3719,7 @@ La commande **iwconfig** permet de configurer les cartes wifi.
 ifup/ifdown (déprécié)
 ----------------------
 
-La commande **ifup** permet de démarrer une interface réseau en fonction de la configuration indiquée dans */etc/network/interfaces*
+La commande **ifup** permet de démarrer une interface réseau en fonction de la configuration indiquée dans */,etc/network/interfaces*
 Remplacée par **ip link set NOM_PERIPHERIQUE up**
 
 La commande **ifdown** permet de l'arrêter.
@@ -3691,7 +3745,7 @@ La commande ip est le couteau suisse de la configuration réseau, son paquet **i
   
     ip addr add 192.168.0.54/24 dev eth0
   
-  Connaitre son adresse : ::
+  Connaître son adresse : ::
 
     ip -4c addr show #-4 affiche uniquement les IPv4, -c pour l'affichage couleur
 
@@ -3714,7 +3768,7 @@ La commande ip est le couteau suisse de la configuration réseau, son paquet **i
 Les interfaces virtuelles
 -------------------------
 
-La création d'interface virtuelle permet de donner plusieurs adresses IP à une même carte réseau.
+La création d'interfaces virtuelles permet de donner plusieurs adresses IP à une même carte réseau.
 
 Cela permet par exemple de créer une adresse ip fixe pour une entrée DNS tout en la redirigeant via l'interface du datacenter vers une autre ip.
 
@@ -3737,24 +3791,24 @@ En effet de nombreuse machines recoivent leur nom par la couche réseau lors du 
 
 Attention il ne s'agit pas du Fully Qualified Domain Name, mais seulement du nom de la machine sans le nom de domaine.
 
-Il est possible aussi de modifier le nom de façon définitive via le fichier /etc/hostname
+Il est possible aussi de modifier le nom de façon définitive via le fichier /,etc/hostname
 
 Positionner le reverse
 ----------------------
 
-Pour ne pas être considérer comme spameur lors de l'envoi de mail il faut positionner le "reverse" du serveur sur le même Full Qualified Domain Name (fqdn), c'est à dire que si on fait une recherche du nom de la machine à partir de son adresse ip, le résultat doit être le nom de la machine suivi de son domaine.
+Pour ne pas être considéré comme spameur lors de l'envoi de mail il faut positionner le "reverse" du serveur sur le même Full Qualified Domain Name (fqdn), c'est-à-dire que si on fait une recherche du nom de la machine à partir de son adresse ip, le résultat doit être le nom de la machine suivi de son domaine.
 Pour cela il faut ::
 
  - Vérifier que dans la zone DNS de notre registrar, là où on a enregistré le nom de notre domaine, on a bien un champ A qui corresponde à l'adresse de la machine ;
  - Aller sur l'interface d'administration du serveur (Scaleway, OVH, Gandi, etc) ;
  - Modifier le reverse en donnant le fqdn de la machine.
 
-Pour vérifier, il suffira de comparer l'adresse obtenu avec "dig $FQDN_Du_Serveur" avec "dig -x $IP_Du_Serveur".
+Pour vérifier, il suffira de comparer l'adresse obtenue avec "dig $FQDN_Du_Serveur" avec "dig -x $IP_Du_Serveur".
 
 Démarrage et arrêt du réseau
 ----------------------------
 
-La commande **/etc/init.d/networking start** permet de démarrer la couche réseau.
+La commande **/,etc/init.d/networking start** permet de démarrer la couche réseau.
 
 La résolution de nom
 --------------------
@@ -3763,12 +3817,12 @@ La commande **dig** permet de réaliser la résolution de nom.
 
 La commande **dig -x $ADRESSE_IP** permet de réaliser la résolution inverse.
 
-Le fichier **/etc/resolv.conf** est utilisé pour connaître les adresses des DNS.
+Le fichier **/,etc/resolv.conf** est utilisé pour connaître les adresses des DNS.
 
-La modification du fichier /etc/hosts
+La modification du fichier /,etc/hosts
 -------------------------------------
 
-Le fichier */etc/hosts* contient les adresses et noms des machines connues.
+Le fichier */,etc/hosts* contient les adresses et noms des machines connues.
 
 On y trouve au minimum la définition du loopback et de la machine.
 
@@ -3780,7 +3834,7 @@ Exemple : ::
   127.0.0.1	localhost griffon griffon.ecreall.com
   88.191.77.45    griffon.ecreall.com
 
-La modification est trivial puisqu'il suffit d'ajouter une ligne $Adresse $Nom1 $Nom2.
+La modification est triviale puisqu'il suffit d'ajouter une ligne $Adresse $Nom1 $Nom2.
 
 Les outils et commandes de tests réseau
 ---------------------------------------
@@ -3834,17 +3888,18 @@ La commande **tcpdump** permet "d'espionner" ce qui se passe sur nos interfaces 
 nmap
 ++++
 
-La commande **nmap** permet de scanner les ports d'un machine et donc de faire un diagnostic des éventuelles portes d'entrées.
+La commande **nmap** permet de scanner les ports d'une machine et donc de faire un diagnostic des éventuelles portes d'entrée.
 
 ngrep
 +++++
 
-La commande **ngrep** permet de n'afficher les paquets réseaux qu'à la condition qu'ils contiennent la chaîne cherchée.
+La commande **ngrep** permet de n'afficher les paquets réseau qu'à la condition qu'ils contiennent la chaîne cherchée.
 
 wireshark
 +++++++++
 
-Permet d'osculter les paquets réseaux comme ceux enregistrés par **tcpdump**.
+Elle permet d'ausculter les paquets réseau comme ceux enregistrés par **tcpdump**.
+
 last
 ++++
 
@@ -3871,11 +3926,11 @@ Les dépôts
 
 Nous avons vu précédemment la gestion graphique des dépôts.
 
-Nous pouvons éditer le fichier */etc/apt/sources.list* et ajouter des dépôts.
+Nous pouvons éditer le fichier */,etc/apt/sources.list* et ajouter des dépôts.
 
 Exemple : ::
 
-  echo "deb http://packages.medibuntu.org/ karmic free non-free" >> /etc/apt/sources.list*
+  echo "deb http://packages.medibuntu.org/ karmic free non-free" >> /,etc/apt/sources.list*
 
 Toutefois il faudra télécharger la clé d'authentification du nouveau dépôt et l'ajouter avec  : ::
 
@@ -3914,6 +3969,46 @@ Pour mettre à jour la distribution : ::
   apt update
   apt upgrade
 
+Installation avec paramétrage
+-----------------------------
+
+Pour installer un paquet en fournissant les réponses aux questions interactives et donc pourvoir scripter l'installation, il faut utiliser **debconf**.
+
+Par exemple pour connaître les paramètres du paquet **postfix** : ::
+
+  root@luciole:~# apt install debconf 
+  root@luciole:~# debconf-show postfix
+    postfix/main_cf_conversion_warning: true
+    postfix/sqlite_warning:
+    postfix/recipient_delim: +
+    postfix/root_address:
+    postfix/not_configured:
+    postfix/compat_conversion_warning: true
+    postfix/tlsmgr_upgrade_warning:
+    postfix/mailbox_limit: 0
+    postfix/newaliases: false
+    postfix/kernel_version_warning:
+    postfix/retry_upgrade_warning:
+    postfix/lmtp_retired_warning: true
+    postfix/mydomain_warning:
+    postfix/protocols: all
+  * postfix/main_mailer_type: Internet Site
+    postfix/bad_recipient_delimiter:
+    postfix/rfc1035_violation: false
+    postfix/relay_restrictions_warning:
+    postfix/mynetworks: 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
+    postfix/dynamicmaps_conversion_warning:
+    postfix/chattr: false
+  * postfix/mailname: luciole.ecreall.com
+    postfix/procmail: false
+    postfix/destinations: $myhostname, luciole.ecreall.com, localhost
+    postfix/relayhost:
+  
+Puis pour fixer les valeurs : ::
+    debconf-set-selections
+
+
+
 Interfaces graphiques
 ---------------------
 
@@ -3930,7 +4025,7 @@ Apache
 Présentation
 ------------
 
-Apache est un serveur web pouvant être utilisé comme proxy, cache etc.
+Apache est un serveur web pouvant être utilisé comme proxy, cache, etc.
 
 Il supporte le protocole https et est donc utilisé pour servir les applications web à sécuriser.
 
@@ -3954,11 +4049,11 @@ Puis sur le serveur nous allons activer les modules utilisés pour la sécurisat
 
   root@monserveur:~# a2enmod ssl
 
-Cette commande créer 2 liens dans /etc/apache2/mods-enabled pointant vers ../mods-available/ssl.conf et ../mods-available/ssl.load.
+Cette commande créer 2 liens dans /,etc/apache2/mods-enabled pointant vers ../mods-available/ssl.conf et ../mods-available/ssl.load.
 
-Pour ajouter un site, il suffit de créer un fichier de configuration dans */etc/apache2/sites-available* puis de l'activer : ::
+Pour ajouter un site, il suffit de créer un fichier de configuration dans */,etc/apache2/sites-available* puis de l'activer : ::
 
-  root@monserveur:~# vim /etc/apache2/sites-available/www.monsite.com
+  root@monserveur:~# vim /,etc/apache2/sites-available/www.monsite.com
 
     <VirtualHost *:443>
       ServerAdmin michaellaunay@ecreall.com
@@ -3996,14 +4091,14 @@ Puis d'activer le site : ::
 Sécurisation
 ------------
 
-La sécurisation de fait en ajoutant un certificat X 509 sous forme d'une clé privée et d'une clé privée.
+La sécurisation se fait en ajoutant un certificat X 509 sous forme d'une clé privée et d'une clé privée.
 
-Nous verrons au chapitre X 509 l'usage d'une clé auto-signée.
+Nous verrons au chapitre X 509 l'usage d'une clé autosignée.
 
 Traçage
 -------
 
-La configuration des logs permet de surveillez les accès aux sites.
+La configuration des logs permet de surveiller les accès aux sites.
 
 On constatera que pour un site mis en ligne sur internet les tentatives d'intrusions sont importantes.
 
@@ -4037,13 +4132,17 @@ https://www.bortzmeyer.org/7208.html
 Les variables d'opendkim
 http://www.opendkim.org/opendkim.8.html
 
+Pour envoyer un mail avec le From correctement rempli : ::
+
+  echo test | mail -s "Test postfix" -aFROM:michaellaunay@ecreall.com michaellaunay@ecreall.com
+
 Installation
 ------------
 
   apt install postfix
 
-Lors de l'installation il faut préciser le nom du host, mettez le FQDN.
-Il faut que le reverse ait été corectement positionné sinon les mails risquent d'être considérés comme du spam dés la connexion du serveur.
+Lors de l'installation, il faut préciser le nom du host, mettez le FQDN.
+Il faut que le reverse ait été correctement positionné sinon les mails risquent d'être considérés comme du spam dés la connexion du serveur.
 On va en profiter pour installer spf et dkim, puis, dmarc,
 
 Si postfix transmet des mails ::
@@ -4051,7 +4150,7 @@ Si postfix transmet des mails ::
   apt install opendkim opendkim-tools #Pour la chaîne de signature
   apt install mailutils # Pour pouvoir tester l'envoi de mail avec la commande mail
 
-Si postfix gére la réception des mails alors installer aussi ::
+Si postfix gère la réception des mails alors installer aussi ::
 
   apt install postfix-policyd-spf-python
   vim /etc/postfix/master.cf
@@ -4064,7 +4163,7 @@ L'édition du fichier master permet de lancer le démon d'analyse des mails reç
 Configuration
 -------------
 
-Le fichier de configuration est */etc/postfix/main.cf*
+Le fichier de configuration est */,etc/postfix/main.cf*
 
 Selon que le serveur est la destination ou seulement un relai on précisera *mydestination* ou non.
 
@@ -4119,18 +4218,18 @@ Configuration de spf ::
 
   Ajouter une entrée spf à vos entrées DNS sur votre Registrar.
 
-  Par exemple le registrar de **ecreall.com** est OVH et il faut ajouter une entrée SPF et la remplir comme suit :
+  Par exemple, le registrar de **ecreall.com** est OVH et il faut ajouter une entrée SPF et la remplir comme suit :
 
-    Sous-domaine []**.ecreall.com** #Préciser le sous domaine, ici il n'y en a pas donc on laisse vide
-    TTL [Par défaut] #Mais pour les tests [Personnalisé] on peut alors mettre une valeur faible en secondes comme [60]
-    Autoriser l'IP de **ecreall.com** à envoyer des emails ? [v]oui # on autorisera les adresses ip que l'on souaite.
+    Sous-domaine []**.ecreall.com** #Préciser le sous-domaine, ici il n'y en a pas donc on laisse vide
+    TTL [Par défaut] #Mais pour les tests [personnalisés] on peut alors mettre une valeur faible en secondes comme [60]
+    Autoriser l'IP de **ecreall.com** à envoyer des emails ? [v]oui # on autorisera les adresses ip que l'on souhaite.
     Autoriser les serveurs MX à envoyer des emails [v]oui #si MX est notre serveur
-    Autoriser tous les serveurs dont le nom se termine par **ecreall.com** [v]Non # permet de gérer les sous domaines
-    D'autres serveurs ? # Mettre les autres adresses ou noms autorisés à envoyer
+    Autoriser tous les serveurs dont le nom se termine par **ecreall.com** [v]Non # permet de gérer les sous-domaines
+    D'autres serveurs ? # Mettre les autres adresses ou noms autorisés à envoyer.
 
   Sous Gandi il ne faut surtout pas utiliser le champ spf qui est documenté comme obsolète, à la place il faut utiliser une entrée TXT
 
-  Il faut alors mettre "v=spf1 a mx ip4:62.210.112.125 -all" dans le champ.
+  Il faut alors mettre "v=spf1 a mx ip4:51.159.31.17 -all" dans le champ.
 
   La valeur des champs spf est expliquée par Google ici https://support.google.com/a/answer/33786
 
@@ -4139,7 +4238,7 @@ Pour tester ::
 
   nslookup -type=txt ecreall.com
   #Ce qui donne
-    ecreall.com	text = "v=spf1 a mx ip4:62.210.112.125 -all"
+    ecreall.com	text = "v=spf1 a mx ip4:51.159.31.255 -all"
 
 Configuration de opendkim ::
 
@@ -4152,14 +4251,14 @@ Configuration de opendkim ::
     Socket inet:8992@localhost
 
 Le champ "Domain" indique quels vont être les mails signés avec la clé contenue dans le fichier "Keyfile"
-Le champ "Selector" indique quelle clé dans le fichier utilisée pour ce domaine.
+Le champ "Selector" indique quelle clé dans le fichier utiliser pour ce domaine.
 UsserID indique l'utilisateur du démon, attention le fichier de la clé privée doit pouvoir être lu par cet utilisateur.
-Socket Indique la socket qui sera utilisée par postfix pour se connecter et signer les mails transmis.
+Socket indique la socket qui sera utilisée par postfix pour se connecter et signer les mails transmis.
 
 Génération de la clé de signature des mails ::
 
   cd /etc/dkimkeys/
-  opendkim-genkey -t -s dkim -d nova-ideo.com
+  opendkim-genkey -t -s dkim -d ecreall.com
   chown root:opendkim dkim.private
   chmod 660 dkim.private
 
@@ -4183,7 +4282,7 @@ Vérifier la clé ::
   opendkim-testkey: key not secure
   opendkim-testkey: key OK
 
-La ligne "opendkim-testkey: key not secure" est due au fait  DNSSEC n'a pas été activé sur le dns.
+La ligne "opendkim-testkey: key not secure" est due au fait que DNSSEC n'a pas été activé sur le dns.
 
 
 Afficher le contenu de dkim.txt
@@ -4201,18 +4300,18 @@ Configurer votre registrar ::
 
     Version [v]
 
-    Alorithme (hash) -256 [v]
+    Algorithme (hash) -256 [v]
 
     Clé Publique [MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1YRDtepyDeIgVolfFz4bRgacdE0hxGFhB+9XTXmZbYcPc0iyDaGJivpd7TYAZ2zRBG+wU6s8viK9mxA/JLDTklhdbnD2oQOjBA1g7bcqqo/F3gHbApaz/M2DrQ4y5HEaHTjm/bsCLzbO7v3buTuhxu6mpVp5m/q+uX7o2LB1GkTw/DbqE2j3tHx5N5sojX6dZxvk+V9nyInArY4ni3uWrH3Y8aLSK7+QHyZVJAVGiT6jdRDdEERQlo2CTZj6UQu3jGtic+GZCU8Hp/SJWQj/xrx/ygZEJ0z294fLEIOGgUw66vRl6iVE9NJCaavTqBxlfgX7QNOa/9bqnR9uDI2flwIDAQAB
     ]
 
     Type de service []
 
-    Mode test [v] # Permet de demander aux serveur recevant nos mails de ne pas tenir compte de DKIM tant qu'on a pas fini
+    Mode test [v] # Permet de demander aux serveurs recevant nos mails de ne pas tenir compte de DKIM tant qu'on a pas fini
 
-    Sous domaine [v] La clé publique n'est pas valide pour les sous-domaine
+    sous-domaine [v] La clé publique n'est pas valide pour les sous-domaines
 
-  Quand tout est au point ne pas oublier d'éditer l'entrée pour enlever le mode de test.
+  Quand tout est au point, ne pas oublier d'éditer l'entrée pour enlever le mode de test.
 
 dmarc
 -----
@@ -4223,7 +4322,7 @@ L'ajout de DMARC se fait par simple ajoute d'une entrée de type DMARC ou TXT po
 
 Où V est la version du protocole,
 
-p est la politique à appliqer pour les messages reçu soit disant de notre domaine mais qui échoue, None (rien faire) ou Quarantine marquer douteux, Reject rejeter.
+p est la politique à appliquer pour les messages reçus soi-disant de notre domaine, mais qui échoue, None (ne rien faire) ou Quarantine marquer douteux, Reject rejeter.
 
 pct le pourcentage à traiter.
 
@@ -4240,9 +4339,10 @@ MySQL
 Présentation
 ------------
 
-MySQL est une base de données légère facile à mettre en œuvre est très utilisées par les sites web.
+MySQL est une base de données légère facile à mettre en œuvre est très utilisée par les sites web, on lui préfèrera MariaDB (https://mariadb.com/fr/) ou mieux PostgresSQL (https://www.postgresql.org/).
+À noter que MariaDB possède des offres serverless.
 
-Sont utilisation est libre mais si les sources de l'application réalisée ne sont pas en GPL, il faut s'acquitter de l'achat d'une licence commerciale.
+Son utilisation est libre, mais si les sources de l'application réalisée ne sont pas en GPL, il faut s'acquitter de l'achat d'une licence commerciale.
 
 Installation
 ------------
@@ -4252,7 +4352,7 @@ La commande **apt install mysql-server** permet d'installer le serveur contenant
 Configuration
 -------------
 
-A l'installation il est fortement recommandé de donner un mot de passe à l'utilisateur root.
+À l'installation il est fortement recommandé de donner un mot de passe à l'utilisateur root.
 
 Liens :
 
@@ -4265,9 +4365,9 @@ Sécurisation
 Certificat X 509
 ----------------
 
-Les certificats X 509 sont utilisés à la fois pour l'authentification et pour le chiffrage des infrastructures à clés publiques (PKI) comme par exemple dans le protocole ssl lors des connexion ssh (port 22) ou https (port 443).
+Les certificats X 509 sont utilisés à la fois pour l'authentification et pour le chiffrage des infrastructures à clés publiques (PKI) par exemple dans le protocole ssl lors des connexions ssh (port 22) ou https (port 443).
 
-Ils sont délivrés par une autorité de certification et son liées à une adresse électronique ou à une entrée DNS.
+Ils sont délivrés par une autorité de certification et sont liés à une adresse électronique ou à une entrée DNS.
 
 Si l'autorité de certification est connue du navigateur, la connexion se fera sans alerter l'utilisateur. Dans le cas contraire, il sera prévenu que le site n'est pas de confiance.
 
@@ -4279,9 +4379,9 @@ Toutefois, il est possible de disposer des avantages du chiffrement sans passer 
   SSLCertificateKeyFile /etc/apache2/ssl/ssl.monsite.com.pem
   root@monserveur:~# service apache2 restart
 
-Mais les certificats autosignés ont l'inconvéniant de ne pas avoir d'autorité connue et donc d'être refusé.
+Mais les certificats autosignés ont l'inconvénient de ne pas avoir d'autorité connue et donc d'être refusé.
 
-Nous pouvons utiliser les service let's encrypt qui poermette d'avoir un 
+Nous pouvons utiliser les services let's encrypt qui permettent d'avoir un certificat valide reconnu par tous les navigateurs.
 
 Configuration de Let's Encrypt pour générer nos certificats ssl ::
 
@@ -4294,9 +4394,15 @@ Vérification de la génération ::
     root@triticale:~# openssl x509 -noout -text -in /etc/letsencrypt/live/URL_De_Mon_Site/fullchain.pem | grep "Not After"
             Not After : Aug  5 11:25:06 2020 GMT
 
-Modifier le cron de renouvellement "/etc/cron.d/certbot" et mettre ::
+Modifier le cron de renouvellement "/,etc/cron.d/certbot" et mettre ::
     
     0 \*/12 \* \* \* root test -x /usr/bin/certbot -a \! -d /run/systemd/system && perl -e 'sleep int(rand(43200))' && certbot -q renew --apache
+
+Forcer le renouvellement ::
+
+    certbot renew --force-renewal #Pour forcer le renouvellement de tous les noms de domaines
+
+    certbot -d michaellaunay.ecreall.com --force-renewal # Pour renouveler un domaine en particulier
 
 Liens :
 
@@ -4315,7 +4421,210 @@ fail2ban
 
 Fail2ban est un démon qui permet de modifier les règles du firewall pour bannir pendant un temps déterminé les adresses IP qui ont échoué plusieurs connexions de suite à l'un des services du serveur.
 
-Le temps d'exclusion, le nombre de tentatives tolérées, les adresses non bannies sont configurables via les fichiers /etc/fail2ban/fail2ban.conf et /etc/fail2ban/jail.conf.
+Le temps d'exclusion, le nombre de tentatives tolérées, les adresses non bannies sont configurables via les fichiers /,etc/fail2ban/fail2ban.conf et /,etc/fail2ban/jail.conf.
+
+Docker
+------
+
+Nous allons voir comment installer et utiliser Docker.
+Docker est un système de conteneurisation, c'est-à-dire qu'il permet de crée des images d'une autre distribution très légère qui utilisent ou partagent les ressources de l'ordinateur hôte.
+De plus les images sont partagées sur un HUB (attention peu ou pas de vérification de la plupart des images)
+
+Pour installer docker le plus simple est d'utiliser la version des dépôts et donc de faire : ::
+
+  apt install docker
+
+Nous allons chercher notre première image ce qui permettra de vérifier notre installation de docker et notre accès au réseau :
+
+  root@Luciole:~# docker run hello-world
+  Unable to find image 'hello-world:latest' locally
+  latest: Pulling from library/hello-world
+  2db29710123e: Pull complete 
+  Digest: sha256:2498fce14358aa50ead0cc6c19990fc6ff866ce72aeb5546e1d59caac3d0d60f
+  Status: Downloaded newer image for hello-world:latest
+
+  Hello from Docker!
+
+  To generate this message, Docker took the following steps:
+    1. The Docker client contacted the Docker daemon.
+    2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+        (amd64)
+    3. The Docker daemon created a new container from that image which runs the
+        executable that produces the output you are currently reading.
+    4. The Docker daemon streamed that output to the Docker client, which sent it
+        to your terminal.
+
+  To try something more ambitious, you can run an Ubuntu container with:
+    $ docker run -it ubuntu bash
+
+  Share images, automate workflows, and more with a free Docker ID:
+    https://hub.docker.com/
+
+  For more examples and ideas, visit:
+    https://docs.docker.com/get-started/
+ 
+Nous voyons que docker a été chercher l'image sur dockerhub, puis l'a exécuté en suivant les étapes indiquées par l'exécution.
+
+Il est possible de faire les étapes d'exécution individuellement : ::
+
+  docker pull hello-world
+  docker create --name docker-hello hello-world
+  docker start --attach docker-hello
+
+L'exécution terminée le conteneur est détruit : ::
+
+  root@luciole:~# docker ps --ALL
+  CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+  f842b65b9e36   hello-world   "/hello"   5 hours ago   Exited (0) 5 hours ago             funny_hermann
+
+On peut alors supprimer le conteneur puis l'image du disque : ::
+  
+  root@Caravale:~# docker rm funny_hermann
+  funny_hermann
+  root@Caravale:~# docker rmi hello-world
+  ...
+
+Pour faire le ménage de toutes les images non en cours d'exécution : ::
+
+  docker rm $(sudo docker ps -a -q)
+  docker rmi $(sudo docker images -a -q)
+
+Différentes versions d'une image existent, elles sont taguées et il suffit de descendre l'une d'elles pour avoir une image partielle.
+
+Pour tester la future version de python par exemple on peut faire : ::
+
+  docker run python:3.11-rc-alpine python -c "from typing import TypeVar; help(TypeVar)"
+
+Qui affichera la doc de TypeVar.
+
+Pour accéder au shell du conteneur en mode interactif, il faut mettre le flag -it
+Pour effacer le conteneur une fois terminé, mettre le flag --rm 
+
+
+Liens :
+
+ * https://docs.docker.com/engine/install/#server
+ * https://www.nextinpact.com/article/48913/docker-et-conteneurisation-par-exemple
+
+git
+---
+
+Git est un outil de gestion de versions du code développé par Linus Torval fondateur de Linux pour gérer le "versioning" du noyau Linux à partir de 2005.
+
+Pour l'installer :
+
+  apt install git
+
+Pour configurer son compte (crée un fichier )
+
+Liens :
+
+ * https://git-scm.com/book/fr/v2
+
+gitlab
+------
+
+Gitlab évoluant sans cesse, il vaut mieux installer les paquets fournis par les développeurs.
+Ajout des clés de gitlab : ::
+
+  curl --silent https://packages.gitlab.com/gpg.key | sudo apt-key add -
+  apt update
+  apt install gitlab
+
+
+
+Visual code
+-----------
+
+Visual code est devenu l'outil d'édition de code incontournable, nous allons voir comment l'utiliser et le configurer pour nos besoins.
+
+Quelques extensions à installer :
+reStructuredText (pip install snooty-lextudio, pip install sphinx sphinx-autobuild, pip install rstcheck)
+docstrings
+
+
+Paramétrer son environnement virtuel python
++++++++++++++++++++++++++++++++++++++++++++
+
+Créer un environnement comme indiqué en fin de section python et installer flake8 et pylint : ::
+
+  michaellaunay@Luciole:~$ workon venv #Pour activer l'environnement virtuel
+
+Ouvrir le dossier du projet où l'on souhaite travailler.
+Normalement VisualCode a créé un répertoire ".vscode" qui contient un fichier settings.json
+Éditer ce fichier et positionner la variable python.defaultInterpreterPath à :
+
+  "python.defaultInterpreterPath": "${env:HOME}/.virtualenvs/venv/bin/python"
+
+Liens :
+  
+  * https://code.visualstudio.com/docs/python/environments
+  * https://code.visualstudio.com/docs/editor/tasks#_variable-substitution
+
+Ne pas oublier d'installer pytest et pytest-cov :
+
+  pip3 install pytest pytest-cov
+
+Pour lancer les tests, on pourra alors faire :
+
+  python3 -m unittest discover # pour unittest
+  python3 -m pytest #pour pytest et donc avoir une syntaxe à base de "assert"
+  python3 -m pytest --cov=perfect_maze #Pour avoir le taux de couverture des tests
+
+Pour automatiser les tests, par exemple dans une intégration continue (CI), on peut utiliser Tox et le brancher à notre dépôt "git" via un hook.
+
+  pip3 install tox
+
+Pour le configurer, lancer "tox-quickstart" depuis le dossier du projet et répondre aux questions.
+
+
+Ajouter la prévisualisation sphinx pour le format rest
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Pour cela il faut d'abord ajouter rest à l'environnement virtuel par défaut et le configurer :
+
+  (venv) michaellaunay@Luciole:~/workspace$ pip install sphinx
+  (venv) michaellaunay@Luciole:~/workspace$ sphinx-quickstart
+
+Puis éditer la configuration de l'extension (Ctrl+Shift+P) et y ajouter comme chemin celui saisit pour Sphinx c'est-à-dire là où on a dit quickstart de travailler et où il a créé le fichier conf.py (le workspace est le plus pratique).
+
+Site de tests des requêtes html
+-------------------------------
+
+Pour tester les différentes requêtes du web : ::
+
+  https://httpbin.org
+
+Capturer la session en cours
+----------------------------
+
+Ubuntu inclut un outil de capture d'écran appelé Screenshot pour l'image est Screencast pour la vidéo, pour le déclencher faire la combinaison de touches :
+
+  Ctrl+Alt+Shift+R
+
+Pour interrompre la session, faire la même combinaison de touches.
+
+Il est possible de le lancer en ligne avec par exemple un délai avant enregistrement, mais il ne prend alors qu'un seul cliché à la fois: 
+
+  gnome-screenshot -d 30 -f /tmp/capture.png #Dans 30s prend une capture et l'enregistre au format png
+
+Par défaut le temps de capture de screencast est positionné à 30s pour le changer :
+
+  gsettings set org.gnome.settings-daemon.plugins.media-keys max-screencast-length 240 #remplacer 240s par ce que vous voulez
+
+Formats de fichier de configuration
+-----------------------------------
+
+Selon les logiciels installés, on trouve différents formats de fichier de configuration dont voici les principaux : ::
+
+  * json
+  * xml
+  * toml
+  * ini
+  * yaml
+
+
+@TODO
 
 .. [#] http://en.wikipedia.org/wiki/Comparison_of_operating_systems
 .. _shebang: http://en.wikipedia.org/wiki/Shebang_(Unix)
