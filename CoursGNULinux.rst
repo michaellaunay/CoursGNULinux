@@ -1670,6 +1670,8 @@ où ${PORT_SOURCE} est le numéro de port d'entrée du tunnel sur la machine où
 ${USER} est le nom d'utilisateur
 ${DEST} est le nom complet du serveur de destination
 
+On peut ajouter l'option -i avec un nom de fichier clé à utiliser
+
 Exemple : ::
 
   ssh -l 9880:localhost:80 michaellaunay@plateforme.test.com
@@ -1684,6 +1686,7 @@ Compréhension de ssh :
 
   - http://fr.wikipedia.org/wiki/Ssh
   - http://web.archive.org/web/20110907084212/http://www.unixgarden.com/index.php/administration-systeme/principes-et-utilisation-de-ssh
+  - https://youtu.be/pLJC96zfwrE
 
 Si la clé d'une machine à laquelle on se connecte habituellement a changé (cas d'une réinstallation), on peut être amené à supprimer son entrée dans le fichier *~/.ssh/known_hosts*.
 
@@ -1693,16 +1696,32 @@ L'installation du deamon **apt-get install ssh**
 
 Pour sécuriser les connexions **ssh**, il faut éditer */etc/ssh/sshd_config* et mettre l'option *PermitRootLogin=no* et ajouter en fin de fichier *AllowUsers idUtilisateurAutorise*.
 
+On peut aussi limiter les adresses pouvant se connecter via le paramètre *ListenAddress* et les ports avec *PermitOpen host:port*.
+
+Il est possible de créer des sections de configuration par utilisateur :
+
+  Match User michaellaunay
+  X11Forwarding yes
+  MAtch All
+
+Pour ne permettre la connexion que par clé on positionne "ChallengeResponseAuthentication no"
+
+Voir vidéo https://youtu.be/qrS1rSFb-1w
+
 La commande **screen** est très utilisée avec "ssh", elle permet de conserver le **tty** ouvert lors des déconnexions et donc de reprendre là où on en était.
 Il suffit de la relancer avec l'option "-r" pour rattacher une session précédente,  de même en début de session on peut faire "Ctrl A" "esc" pour enregistrer les lignes et donc avoir la scroll bar.
 
 Créer une clé::
 
   ssh-keygen
+  # L'option -i permet de préciser le nom du fichier de destination
 
 Ajouter sa clé public à un serveur distant ::
 
   ssh-copy-id user@Serveur_Distant
+  # L'option -i permet de préciser le nom du fichier clé à utiliser
+
+Pour limiter les connexions par clé à seulement certaines adresses, éditer le fichier ~/.ssh/authorized_keys ajouter devant la clé 'from="192.168.0.1" '
 
 Supprimer la clé d'un serveur distant ::
 
@@ -1716,6 +1735,48 @@ On peut utiliser **tar** et **ssh** pour faire des archives à travers un flux s
 La restauration se fera alors comme suit ::
 
   ssh user@ServeurSauvegarde "cat nom_archive.tar" | tar xf
+
+Utiliser un Agent ssh
+
+Saisir à chaque fois sa clé ou son mot de passe peut être fastidieux. On a alors la possibilité d'utiliser un agent ssh.
+
+Vérifiez qu'il est déjà en train de tourner :
+
+  ps -p $SSH_AGENT_PID # s'il fonctionne la variable d'environnement contient son PID
+
+Le lancer sinon :
+
+  eval `ssh-agent`
+
+Pour ajouter des clés :
+
+  ssh-add
+
+Pour se connecter et continuer à utiliser les clés de l'agent sur la destination  (forward agent):
+
+  ssh -A ...
+
+Pour rebondir (embarque l'agent sur les dernières versions de ssh)
+
+  ssh -J 192.168.0.3,192.168.0.1 usedest@destination.ecreall.com #Enchaîne les rebonds sur les adresses séparées par la virgule
+
+On peut aussi paramétrer des rebonds en éditant ~/.ssh/config :
+
+  Host machine_intermediaire_ou_alias
+    Hostname adresse_ip_ou_nom
+    User nom_utilisateur
+    IdentityFile chemin_vers_cle_intermediaire
+
+  Host serveur_dest_alias
+    Hostname adresse_ip_ou_nom
+    User nom_utilisateur
+    ProxyJump machine_intermediaire_ou_alias
+
+Voir https://youtu.be/vpbD7xA2wac
+
+Créer un tunnel entre deux machines en tâche de fond :
+
+  ssh -fNL port_local_sortant:adresse_rebond:port_entrant_distant user@Serveur_Distant # -f pour mettre en fond -N pour ne pas exécuter de commande
 
 iptables et ufw
 ---------------
