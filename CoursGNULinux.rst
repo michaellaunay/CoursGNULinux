@@ -115,7 +115,7 @@ Il existe presque plusieurs centaines de licences appliquées aux logiciels libr
 La licence GPL
 --------------
 
-La licence GPL a pour but de protéger l'auteur et l'utilisateur en garantissant les droits suivants (appelés libertés) :
+La licence GPL a pour but de protéger l'auteur et l'utilisateur en garantissant les droits suivants (appelés libertés) : ::
 
 1. La liberté d'exécuter le logiciel, pour n'importe quel usage ;
 2. La liberté d'étudier le fonctionnement d'un programme et de l'adapter à ses besoins, ce qui passe par l'accès aux codes sources ;
@@ -172,7 +172,8 @@ Les distributions
 Qu'est-ce qu'un noyau ?
 -----------------------
 
-Pour définir le noyau, nous pouvons nous baser sur les services qu'il fournit :
+Pour définir le noyau, nous pouvons nous baser sur les services qu'il fournit : ::
+
  Abstraction du matériel (fourniture d'interface)
  Gestion des interruptions
  Gestion des tâches et autres logiciels
@@ -741,20 +742,14 @@ Détails sur le format du fichier passwd
 
   DESCRIPTION
        /,etc/passwd contient différentes informations sur les comptes utilisateurs. Ces
-       informations consistent en sept champs séparés par des deux-points (« : ») :
+       informations consistent en sept champs séparés par des deux-points (« : ») : ::
 
        ·   nom de connexion de l´utilisateur (« login »)
-
        ·   un mot de passe chiffré optionnel
-
        ·   l´identifiant numérique de l´utilisateur
-
        ·   l´identifiant numérique du groupe de l´utilisateur
-
        ·   le nom complet de l´utilisateur ou un champ de commentaires
-
        ·   le répertoire personnel de l´utilisateur
-
        ·   l´interpréteur de commandes de l´utilisateur (optionnel)
 
        Le champ du mot de passe chiffré peut être vide. Dans ce cas, aucun mot de
@@ -1426,7 +1421,8 @@ Ainsi : ::
 
 *lrwxrwxrwx 1 michaellaunay users 11 2009-03-01 21:23* est la liste des attributs qui doit être décomposée comme ceci : ::
 
-  première lettre :
+  première lettre : ::
+  
     l indique que le fichier est un lien symbolique (un raccourci).
     d indique que le fichier est un répertoire
     - indique que le fichier est un fichier ordinaire
@@ -1435,7 +1431,8 @@ Ainsi : ::
     s socket
     p fifo
 
-  premier groupe de 3 lettres :
+  premier groupe de 3 lettres : ::
+  
     r-- indique que le propriétaire a le droit de lecture
     -w- indique que le propriétaire a le droit d'écriture
     --x indique que le propriétaire a le droit d'exécuter si le fichier est ordinaire
@@ -1446,14 +1443,16 @@ Ainsi : ::
     --S (SUID) indique qu'un utilisateur qui exécute le fichier usurpe les droits du propriétaire.
         Le propriétaire n'a pas les droits d'exécuter ou de traverser (--x n'est pas positionné).
 
-  second groupe de 3 lettres :
+  second groupe de 3 lettres : ::
+
     même signification que précédemment, mais pour les groupes et sauf pour le SUID.
     --s (SGID) indique qu'un utilisateur appartenant au groupe qui exécute le fichier usurpe les
         droits du groupe et que le groupe a les droits d'exécution.
     --S (SGID) indique qu'un utilisateur appartenant au groupe qui exécute le fichier usurpe les
         droits du groupe, mais que le groupe n'a pas les droits d'exécuter ou de traverser.
 
-  troisième groupe de 3 lettres :
+  troisième groupe de 3 lettres : ::
+
     même signification que précédemment mais pour tous les autres utilisateurs et sauf SGID
     --t (Sticky bit) Indique que les utilisateurs ont le droit de modifier le contenu du fichier
         ou du répertoire, mais pas de le supprimer.
@@ -1698,7 +1697,7 @@ Pour sécuriser les connexions **ssh**, il faut éditer */etc/ssh/sshd_config* e
 
 On peut aussi limiter les adresses pouvant se connecter via le paramètre *ListenAddress* et les ports avec *PermitOpen host:port*.
 
-Il est possible de créer des sections de configuration par utilisateur :
+Il est possible de créer des sections de configuration par utilisateur : ::
 
   Match User michaellaunay
   X11Forwarding yes
@@ -1732,7 +1731,7 @@ On peut utiliser **tar** et **ssh** pour faire des archives à travers un flux s
 
   tar cf - RepertoireSource | ssh user@ServeurSauvegarde "cat > nom_archive.tar"
 
-La restauration se fera alors comme suit ::
+La restauration se fera alors comme suit : ::
 
   ssh user@ServeurSauvegarde "cat nom_archive.tar" | tar xf
 
@@ -1740,41 +1739,47 @@ Utiliser un Agent ssh
 
 Saisir à chaque fois sa clé ou son mot de passe peut être fastidieux. On a alors la possibilité d'utiliser un agent ssh.
 
-Vérifiez qu'il est déjà en train de tourner :
+Vérifiez qu'il est déjà en train de tourner : ::
 
   ps -p $SSH_AGENT_PID # s'il fonctionne la variable d'environnement contient son PID
 
-Le lancer sinon :
+Le lancer sinon : ::
 
   eval `ssh-agent`
 
-Pour ajouter des clés :
+Pour ajouter des clés : ::
 
   ssh-add
 
-Pour se connecter et continuer à utiliser les clés de l'agent sur la destination  (forward agent):
+Pour se connecter et continuer à utiliser les clés de l'agent sur la destination  (forward agent): ::
 
   ssh -A ...
 
-Pour rebondir (embarque l'agent sur les dernières versions de ssh)
+Pour rebondir (embarque l'agent sur les dernières versions de ssh) : ::
 
   ssh -J 192.168.0.3,192.168.0.1 usedest@destination.ecreall.com #Enchaîne les rebonds sur les adresses séparées par la virgule
 
-On peut aussi paramétrer des rebonds en éditant ~/.ssh/config :
+On peut aussi paramétrer des rebonds en éditant ~/.ssh/config : ::
 
   Host machine_intermediaire_ou_alias
+
     Hostname adresse_ip_ou_nom
+
     User nom_utilisateur
+
     IdentityFile chemin_vers_cle_intermediaire
 
   Host serveur_dest_alias
+
     Hostname adresse_ip_ou_nom
+
     User nom_utilisateur
+
     ProxyJump machine_intermediaire_ou_alias
 
 Voir https://youtu.be/vpbD7xA2wac
 
-Créer un tunnel entre deux machines en tâche de fond :
+Créer un tunnel entre deux machines en tâche de fond : ::
 
   ssh -fNL port_local_sortant:adresse_rebond:port_entrant_distant user@Serveur_Distant # -f pour mettre en fond -N pour ne pas exécuter de commande
 
@@ -1785,11 +1790,11 @@ La commande **iptables** permet de consulter et modifier les règles du firewall
 
 Le service **ufw** est un "firewall" pré-configurer que l'on peut facilement compléter.
 
-Pour l'installer il suffit de faire :
+Pour l'installer il suffit de faire : ::
 
   apt install ufw
 
-Pour connaître la liste des applications pouvant être autorisées par ufw à passer le firewall :
+Pour connaître la liste des applications pouvant être autorisées par ufw à passer le firewall : ::
 
   root@luciole:~# ufw app list
   Applications disponibles ::
@@ -1812,7 +1817,7 @@ On pourra alors : soit autoriser les ports manuellement, soit autoriser les port
     ufw allow OpenSSH
 
 
-Modification du firewall pour permettre en entrée http, https, smtp :
+Modification du firewall pour permettre en entrée http, https, smtp : ::
 
     vim /,etc/ufw/ufw.conf  # ENABLED=yes #si pas déjà positionné
     ufw allow 22/tcp # Ouvre le port ssh à tous (on peut restreindre à certaines adresses)
@@ -1823,7 +1828,7 @@ Modification du firewall pour permettre en entrée http, https, smtp :
 
 Ces commandes permettent aussi de gérer ipv6
 
-Vérification :
+Vérification : ::
 
     root@luciole:/etc/dovecot# ufw status
     État : actif
@@ -1861,7 +1866,7 @@ Pour avoir la recherche dans l'historique des commandes en saisissant les premi�
 
 Pour faire de vim l'éditeur par défaut::
 
-  echo "export EDITOR=vim" > /,etc/profile.d/editor.sh
+  echo "export EDITOR=vim" > /etc/profile.d/editor.sh
 
 Pour augmenter le nombre de ligne dans l'historique des commandes, créer "/etc/profile.d/history.sh" en mettant::
 
@@ -2492,11 +2497,11 @@ Installation openldap
 
 Ldap est un annuaire qui permet de gérer l'utilisateur d'un service sans créer un compte unix.
 
-Installation du serveur ldap :
+Installation du serveur ldap : ::
 
     apt install slapd ldap-utils
 
-Modification de la configuration :
+Modification de la configuration : ::
 
     dpkg-reconfigure slapd
     # saisie de "ecreall.com" comme domaine
@@ -2505,18 +2510,18 @@ Modification de la configuration :
 
 Attention ! Configurer LTS pour chiffrer les connexions si elles sont extérieures à la machine, car les mots de passe circulent en clair (voir  https://wiki.debian.org/LDAP/OpenLDAPSetup#Enable_TLS.2FSSL)!
 
-Activer le service au démarrage :
+Activer le service au démarrage : ::
 
     systemctl enable slapd
 
-Rendre "ldap" accessible en éditant "/etc/ldap/ldap.conf" en ajoutant :
+Rendre "ldap" accessible en éditant "/etc/ldap/ldap.conf" en ajoutant : ::
 
     BASE    dc=ecreall,dc=com
     URI     ldap://127.0.0.1
 
 Ajout d'une entrée LDAP :
 
-    Créer un fichier ecreall.ldif contenant :
+    Créer un fichier ecreall.ldif contenant : ::
 
         dn: ou=People,dc=ecreall,dc=com
         ou: People
@@ -2534,20 +2539,20 @@ Ajout d'une entrée LDAP :
 
     ldapadd -x -D "cn=admin,dc=ecreall,dc=com" -W -f ecreall.ldif
 
-Mettre à jour l'index (cache) :
+Mettre à jour l'index (cache) : ::
 
     systemctl stop slapd
     slapindex
     chown -R openldap:openldap /var/lib/ldap
     systemctl start slapd
 
-Vérification :
+Vérification : ::
 
     ldapsearch -x -b 'dc=ecreall,dc=com' '(objectclass=*)'
 
 Ajout d'une OrganizationUnit :
 
-    Créer un fichier "e-services.ldif" et y mettre :
+    Créer un fichier "e-services.ldif" et y mettre : ::
 
         dn: ou=Études,dc=ereall,dc=com
         objectClass: organizationalUnit
@@ -2557,7 +2562,7 @@ Ajout d'une OrganizationUnit :
 
 Ajouter une personne :
 
-    Exemple pour ajouter Michaël Launay, créer un fichier "ldif_files/michaellaunay.ldif" :
+    Exemple pour ajouter Michaël Launay, créer un fichier "ldif_files/michaellaunay.ldif" : ::
 
         dn: cn=Michaël Launay, ou=People, dc=ecreall, dc=com
         objectclass: top
@@ -2575,7 +2580,7 @@ Ajouter une personne :
         postalCode: 59650
         l: Villeneuve d ASCQ
     
-    L'ajouter :
+    L'ajouter : ::
     
         ldapadd -x -D "cn=admin,dc=ecreall,dc=com" -W -f ldif_files/michaellaunay.ldif
 
@@ -2611,14 +2616,14 @@ Logrotate possède une configuration par défaut contenue dans "/etc/logrotate.c
 Il est fréquent que pour des raisons légales, on doive garder un ou deux ans de logs selon la nature des utilisateurs et des services.
 Souvent on garde 104 semaines de connexions et 52 semaines de navigation et 14 semaines pour les autres services.
 
-Pour modifier la conf par défaut à 14 semaines on édite "/etc/logrotate.conf" : ::
+Pour modifier la conf par défaut à 14 semaines on édite "/etc/logrotate.conf" :
 
   - Remplacer "rotate 4" par "rotate 14" pour garder 3 mois de log par défaut
   - Décommenter "compress" pour compresser les anciens fichiers log
   - Ajouter delaycompress chaque vieux fichier de log
   - Limiter la taille d'un fichier de log à 100M
 
-On doit donc avoir dans /,etc/logrotate.conf :
+On doit donc avoir dans /,etc/logrotate.conf : ::
 
     rotate 14
     compress
@@ -2698,7 +2703,7 @@ Tout est fichier. Les périphériques (scanner, imprimante, etc) sont manipulés
 Arborescence de /
 +++++++++++++++++
 
-/ est la racine, elle a pour contenu :
+/ est la racine, elle a pour contenu : ::
 
 
  * /bin contient les exécutables du système d'exploitation,
@@ -2722,7 +2727,7 @@ Arborescence de /
 Arborescence de /usr
 ++++++++++++++++++++
 
-/usr contient :
+/usr contient : ::
 
  * /usr/bin/ Binaires de l'utilisateur,
  * /usr/include/ Entêtes des bibliothèques partagées,
@@ -2994,11 +2999,13 @@ Consultation de l'état d'un disque : ::
 Lecture du résultat : ::
 
   TYPE :
+
       Old_age : indique qu'un dépassement n'est pas critique, nous avons simplement dépassé la valeur
                 garantie par le constructeur.
       Pre-fail : indique que tout dépassement risque de provoquer une perte du disque.
 
   UPDATED :
+
       Always : la valeur est maintenue à jour.
       Offline : la valeur est calculée uniquement lors des tests.
 
@@ -4572,15 +4579,60 @@ git
 
 Git est un outil de gestion de versions du code développé par Linus Torval fondateur de Linux pour gérer le "versioning" du noyau Linux à partir de 2005.
 
-Pour l'installer :
+Pour installer le client : ::
 
   apt install git
 
-Pour configurer son compte (crée un fichier )
+Pour configurer son compte : ::
 
-Liens :
+  git config user.name Michaël Launay
+  git config user.mail michaellaunay@ecreall.com
+
+Connaître sa configuration : ::
+
+  git config --list
+
+La configuration se trouve soit dans : ::
+  
+  "/etc/gitconfig"
+  "~/.gitconfig"
+  <rep_projet>/.git/config
+
+Liens : ::
+
+  https://git-scm.com/book/fr/v2/Personnalisation-de-Git-Configuration-de-Git
+  https://youtu.be/KVULgIbyeQs
+
+Créer un projet : ::
+
+  Soit directement depuis github ou gitlab, puis faire un "git clone", soit créer un porjet local et l'importer dans github/gitlab en ayant créé un projet vide.
+
+  Si l'option locale en premier est choisie : ::
+
+    mkdir MonProjet
+    cd MonProjet
+    vim README.md
+    git init
+
+ Il est indispensable de créer à minima un fichier ".gitkeep" dans un répertoire, car git n'archive pas les dossiers vides !
+
+Liens : ::
 
  * https://git-scm.com/book/fr/v2
+ * https://youtu.be/0sGQgfUdCAY
+
+Les commandes principales : ::
+
+  git status # Donne l'état du dépôt git local
+  git add Fichiers_ou_* # Versionne les fichiers passés en paramètre ou tous les fichiers
+  git commit -m "Nature du commit" # Enregistre localement les modifications ajoutées
+  git push # Transmet au dépôt partagé les modifications commitées
+  git pull # Met à jour le dépôt local
+  git diff <coomit1> <commit2> # Affiche les différences entre deux versions, marche aussi sur les banches
+  git log # Affiche les dernière modification, "git log --graph --online "
+  git checkout # Permet de revenir à un état précédent
+  git branch #Permet de manipuler les branches
+
 
 gitlab
 ------
@@ -4592,16 +4644,19 @@ Ajout des clés de gitlab : ::
   apt update
   apt install gitlab
 
+Liens : ::
 
+  * 
 
 Visual code
 -----------
 
 Visual code est devenu l'outil d'édition de code incontournable, nous allons voir comment l'utiliser et le configurer pour nos besoins.
 
-Quelques extensions à installer :
-reStructuredText (pip install snooty-lextudio, pip install sphinx sphinx-autobuild, pip install rstcheck)
-docstrings
+Quelques extensions à installer : ::
+
+  reStructuredText (pip install snooty-lextudio, pip install sphinx sphinx-autobuild, pip install rstcheck)
+  docstrings
 
 
 Paramétrer son environnement virtuel python
@@ -4613,7 +4668,7 @@ Créer un environnement comme indiqué en fin de section python et installer fla
 
 Ouvrir le dossier du projet où l'on souhaite travailler.
 Normalement VisualCode a créé un répertoire ".vscode" qui contient un fichier settings.json
-Éditer ce fichier et positionner la variable python.defaultInterpreterPath à :
+Éditer ce fichier et positionner la variable python.defaultInterpreterPath à : ::
 
   "python.defaultInterpreterPath": "${env:HOME}/.virtualenvs/venv/bin/python"
 
@@ -4622,11 +4677,11 @@ Liens :
   * https://code.visualstudio.com/docs/python/environments
   * https://code.visualstudio.com/docs/editor/tasks#_variable-substitution
 
-Ne pas oublier d'installer pytest et pytest-cov :
+Ne pas oublier d'installer pytest et pytest-cov : ::
 
   pip3 install pytest pytest-cov
 
-Pour lancer les tests, on pourra alors faire :
+Pour lancer les tests, on pourra alors faire : ::
 
   python3 -m unittest discover # pour unittest
   python3 -m pytest #pour pytest et donc avoir une syntaxe à base de "assert"
@@ -4642,7 +4697,7 @@ Pour le configurer, lancer "tox-quickstart" depuis le dossier du projet et répo
 Ajouter la prévisualisation sphinx pour le format rest
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Pour cela il faut d'abord ajouter rest à l'environnement virtuel par défaut et le configurer :
+Pour cela il faut d'abord ajouter rest à l'environnement virtuel par défaut et le configurer : ::
 
   (venv) michaellaunay@Luciole:~/workspace$ pip install sphinx
   (venv) michaellaunay@Luciole:~/workspace$ sphinx-quickstart
@@ -4669,7 +4724,7 @@ Il est possible de le lancer en ligne avec par exemple un délai avant enregistr
 
   gnome-screenshot -d 30 -f /tmp/capture.png #Dans 30s prend une capture et l'enregistre au format png
 
-Par défaut le temps de capture de screencast est positionné à 30s pour le changer :
+Par défaut le temps de capture de screencast est positionné à 30s pour le changer : ::
 
   gsettings set org.gnome.settings-daemon.plugins.media-keys max-screencast-length 240 #remplacer 240s par ce que vous voulez
 
