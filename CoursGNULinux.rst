@@ -4630,8 +4630,10 @@ Les commandes principales : ::
   git pull # Met à jour le dépôt local
   git diff <coomit1> <commit2> # Affiche les différences entre deux versions, marche aussi sur les banches
   git log # Affiche les dernière modification, "git log --graph --online "
-  git checkout # Permet de revenir à un état précédent
+  git checkout # Permet de revenir à l'état précédent d'un fichier non encore indexé
   git branch #Permet de manipuler les branches
+  git revert HEAD~3..HEAD # permet de revenir à la troisième version précédente tout en gardant l'historique de la version actuelle
+  git reset # permet de revenir à une version précédente en effaçant l'histprique de la version actuelle
 
 
 gitlab
